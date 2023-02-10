@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prog1.controller.grafico.RegistrationControllerGrafico">
+   <children>
+      <Label fx:id="onBackClicked" layoutX="170.0" layoutY="30.0" onMouseClicked="#onBackClicked" text="DIVERS WORLD">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Line endX="149.0" endY="0.1999969482421875" layoutX="283.0" layoutY="72.0" startX="-111.0" startY="0.1999969482421875" strokeWidth="2.0" />
+      <TextField fx:id="name" layoutX="170.0" layoutY="84.0" prefHeight="25.0" prefWidth="265.0" promptText="NAME " style="-fx-background-color: white;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="lastname" layoutX="170.0" layoutY="119.0" prefHeight="25.0" prefWidth="265.0" promptText="SURNAME" style="-fx-background-color: white;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="license" layoutX="170.0" layoutY="154.0" prefHeight="25.0" prefWidth="265.0" promptText="LICENSE NUMBER " style="-fx-background-color: white;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="email" layoutX="170.0" layoutY="189.0" prefHeight="25.0" prefWidth="265.0" promptText="EMAIL" style="-fx-background-color: white;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="password" layoutX="169.0" layoutY="224.0" prefHeight="25.0" prefWidth="265.0" promptText="PASSWORD " style="-fx-background-color: white;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </PasswordField>
+      <PasswordField fx:id="password1" layoutX="168.0" layoutY="259.0" prefHeight="25.0" prefWidth="265.0" promptText="CONFIRM PASSAWORD " style="-fx-background-color: white;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="signUp" layoutX="357.0" layoutY="354.0" mnemonicParsing="false" onAction="#signUp" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="Sign Up">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <RadioButton fx:id="scubaCheck" layoutX="217.0" layoutY="300.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="92.0" text="ScubaDiver">
+         <toggleGroup>
+            <ToggleGroup fx:id="attivita" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="freeCheck" layoutX="217.0" layoutY="319.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="92.0" text="FreeDiver" toggleGroup="$attivita" />
+      <RadioButton fx:id="managerCheck" layoutX="217.0" layoutY="338.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="114.0" text="DivingManager" toggleGroup="$attivita" />
+      <Label layoutX="168.0" layoutY="319.0" text="Activity" />
+      <Label fx:id="errorLabel" layoutX="168.0" layoutY="361.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
