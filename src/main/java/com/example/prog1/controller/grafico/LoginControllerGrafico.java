@@ -32,7 +32,7 @@ public class LoginControllerGrafico {
     @FXML
     private PasswordField userPass;
     @FXML
-    public void onBackClicked(ActionEvent event){
+    public void onBackClick(ActionEvent event){
         ScreenControllerGrafico.getInstance().onBackClick((Node)event.getSource());
     }
     @FXML

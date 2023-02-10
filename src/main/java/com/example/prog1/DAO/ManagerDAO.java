@@ -2,13 +2,11 @@ package com.example.prog1.DAO;
 
 import com.example.prog1.dbConnection.MyConnectionSingleton;
 import com.example.prog1.exception.DuplicatedUserException;
+import com.example.prog1.model.Manager;
 import com.example.prog1.model.User;
 import com.example.prog1.query.UserQuery;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ManagerDAO {
     private static final String MANAGER = "manager";
@@ -24,13 +22,33 @@ public class ManagerDAO {
         try(Statement stmt = con.createStatement())
         {
             UserQuery.insertIntoUser(stmt, manager.getEmail(), manager.getPass(), MANAGER);
-            UserQuery.insertIntoScuba(stmt, manager.getLicense(), manager.getName(), manager.getLastname(), manager.getEmail());
+            UserQuery.insertIntoManager(stmt, manager.getLicense(), manager.getName(), manager.getLastname(), manager.getEmail());
         } catch (SQLIntegrityConstraintViolationException e) {
             throw new DuplicatedUserException("User already registered");
         }
         catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
+    }
+    public Manager loadManager(String managerEmail){
+        Connection con = connection.getConnection();
+        Manager manager = null;
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = UserQuery.selectManagerByEmail(stmt, managerEmail);){
+            if(rs.next()){
+                manager = createManager(rs);
+            }
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return manager;
+    }
+    public Manager createManager(ResultSet rs) throws SQLException {
+        String email = rs.getString(MANAGER_EMAIL);
+        String name = rs.getString(MANAGER_NAME);
+        String surname = rs.getString(MANAGER_SURNAME);
+        String license = rs.getString(MANAGER_LICENSE);
 
+        return new Manager(email,"",name,surname,license);
     }
 }

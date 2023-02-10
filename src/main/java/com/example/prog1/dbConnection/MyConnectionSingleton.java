@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MyConnectionSingleton {
     private static MyConnectionSingleton instance = null;
     private Connection con;
-    private static String nomeDB = "mydb";
+    private static String nomeDB = "prog1";
     private String portaDB = "3306";
     private static String usernameDB = "root";
     private static String passwordDB = "root";

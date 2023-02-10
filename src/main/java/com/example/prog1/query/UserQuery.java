@@ -25,5 +25,9 @@ public class UserQuery {
         String query = String.format("INSERT INTO User values ('%s', '%s', '%s', '%s');", lic, name, surname,email);
         return stmt.execute(query);
     }
+    public static ResultSet selectManagerByEmail(Statement stmt, String manEmail) throws SQLException {
+        String query = String.format("SELECT * FROM Manager WHERE email = '%s';", manEmail);
+        return stmt.executeQuery(query);
+    }
 
 }
