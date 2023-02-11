@@ -17,10 +17,8 @@ public class FreeDAO {
     private static final String FREE_SURNAME = "lastname";
     private static final String FREE_LICENSE = "license";
 
-    MyConnectionSingleton connection = MyConnectionSingleton.getInstance();
-
     public void insertFree (User free) throws DuplicatedUserException {
-        Connection con =connection.getConnection();
+        Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement())
         {
             UserQuery.insertIntoUser(stmt, free.getEmail(), free.getPass(), FREE);

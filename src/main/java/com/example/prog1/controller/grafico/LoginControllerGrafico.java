@@ -17,6 +17,10 @@ import java.io.IOException;
 
 public class LoginControllerGrafico {
     private static final String REGISTER_SCREEN = "registration1.fxml";
+    private static final String SCUBA_SCREEN = "scubaHome1.fxml";
+    private static final String FREE_SCREEN = "freeHome1.fxml";
+    private static final String MANAGER_SCREEN = "managerHome1.fxml";
+
     @FXML
     private Button createAccout;
 
@@ -31,6 +35,7 @@ public class LoginControllerGrafico {
 
     @FXML
     private PasswordField userPass;
+    private Integer type = -1;
     @FXML
     public void onBackClick(ActionEvent event){
         ScreenControllerGrafico.getInstance().onBackClick((Node)event.getSource());
@@ -40,7 +45,7 @@ public class LoginControllerGrafico {
         Node source = (Node) event.getSource();
         ScreenControllerGrafico.getInstance().pushScreen(source.getScene());
         Stage stage = (Stage) (source).getScene().getWindow();
-
+        Integer userType;
         if(source == entry) {
             if (email.getText().isEmpty() || userPass.getText().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Fill all fields!");
@@ -48,8 +53,27 @@ public class LoginControllerGrafico {
                 return;
             }
             UserBean userBean = login();
+            userType = userBean.getUserType();
             if(userBean != null) {
-                InternalControllerGrafico.getInternalControllerInstance().enterAsUser(null, stage);
+               // InternalControllerGrafico.getInternalControllerInstance().enterAsUser(null, stage);
+                switch(userType){
+                    case 0:
+                        InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
+                        MainApp app = new MainApp();
+                        app.changeScene(SCUBA_SCREEN);
+                        break;
+                    case 1:
+                        InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
+                        MainApp app1 = new MainApp();
+                        app1.changeScene(FREE_SCREEN);
+                        break;
+                    case 2:
+                        InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
+                        MainApp app2 = new MainApp();
+                        app2.changeScene(MANAGER_SCREEN);
+                        break;
+                    default: userType = type;
+                }
             }
          } else if (source == createAccout) {
 //            ScreenControllerGrafico.getInstance().pushScreen(source.getScene());

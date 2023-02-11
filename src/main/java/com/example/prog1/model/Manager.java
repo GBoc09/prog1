@@ -6,4 +6,7 @@ public class Manager extends User implements Serializable {
     public Manager(String email, String pass, String name, String last, String lic){
         super (email,pass,name,last,lic);
     }
+    public Manager(String email, String name, String last, String lic){
+        super (email,name,last,lic);
+    }
 }

@@ -18,10 +18,8 @@ public class UserDAO {
     private static final Integer FREE_CODE = 1;
     private static final Integer MANAGER_CODE = 2;
 
-    MyConnectionSingleton connection = MyConnectionSingleton.getInstance();
-
     public Integer loadUserByCredentials(String userEmail, String userPass) throws NotExistentUserException {
-        Connection con =connection.getConnection();
+        Connection con = MyConnectionSingleton.getConnection();
         Integer userType = -1;
         try (Statement stmt = con.createStatement();
              ResultSet rs = UserQuery.selectUserByCredentials(stmt, userEmail, userPass))

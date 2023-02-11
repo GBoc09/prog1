@@ -14,19 +14,23 @@ public class UserQuery {
         return stmt.execute(query);
     }
     public static boolean insertIntoScuba (Statement stmt, String lic, String name, String surname, String email) throws SQLException {
-        String query = String.format("INSERT INTO User values ('%s', '%s', '%s', '%s');", lic, name, surname,email);
+        String query = String.format("INSERT INTO Scuba values ('%s', '%s', '%s', '%s');", lic, name, surname,email);
         return stmt.execute(query);
     }
     public static boolean insertIntoFree (Statement stmt, String lic, String name, String surname, String email) throws SQLException {
-        String query = String.format("INSERT INTO User values ('%s', '%s', '%s', '%s');", lic, name, surname,email);
+        String query = String.format("INSERT INTO Free values ('%s', '%s', '%s', '%s');", lic, name, surname,email);
         return stmt.execute(query);
     }
     public static boolean insertIntoManager (Statement stmt, String lic, String name, String surname, String email) throws SQLException {
-        String query = String.format("INSERT INTO User values ('%s', '%s', '%s', '%s');", lic, name, surname,email);
+        String query = String.format("INSERT INTO Manager values ('%s', '%s', '%s', '%s');", lic, name, surname,email);
         return stmt.execute(query);
     }
-    public static ResultSet selectManagerByEmail(Statement stmt, String manEmail) throws SQLException {
-        String query = String.format("SELECT * FROM Manager WHERE email = '%s';", manEmail);
+    public static ResultSet selectManagerByLicense(Statement stmt, String manLic) throws SQLException {
+        String query = String.format("SELECT * FROM Manager WHERE license = '%s';", manLic);
+        return stmt.executeQuery(query);
+    }
+    public static ResultSet selectScubaByEmail(Statement stmt, String email) throws SQLException {
+        String query = String.format("SELECT * FROM Scuba WHERE email = '%s';", email);
         return stmt.executeQuery(query);
     }
 

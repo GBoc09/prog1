@@ -29,7 +29,7 @@ public class CartBean implements Bean {
         return cartRowBeanList;
     }
 
-    public void setCartRowBeanList(List<CartRowBean> cartRowBeanList) {
+    public  void setCartRowBeanList(List<CartRowBean> cartRowBeanList) {
         this.cartRowBeanList = cartRowBeanList;
     }
 }

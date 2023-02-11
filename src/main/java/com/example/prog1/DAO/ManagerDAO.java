@@ -10,15 +10,14 @@ import java.sql.*;
 
 public class ManagerDAO {
     private static final String MANAGER = "manager";
-    private static final String MANAGER_EMAIL = "emailUser";
+    /* colonne SQL */
+    private static final String MANAGER_EMAIL = "email";
     private static final String MANAGER_NAME = "name";
     private static final String MANAGER_SURNAME = "lastname";
     private static final String MANAGER_LICENSE = "license";
 
-    MyConnectionSingleton connection = MyConnectionSingleton.getInstance();
-
     public void insertManager(User manager) throws DuplicatedUserException {
-        Connection con =connection.getConnection();
+        Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement())
         {
             UserQuery.insertIntoUser(stmt, manager.getEmail(), manager.getPass(), MANAGER);
@@ -30,11 +29,11 @@ public class ManagerDAO {
             sqlException.printStackTrace();
         }
     }
-    public Manager loadManager(String managerEmail){
-        Connection con = connection.getConnection();
+    public Manager loadManager(String manLic){
+        Connection con = MyConnectionSingleton.getConnection();
         Manager manager = null;
         try (Statement stmt = con.createStatement();
-             ResultSet rs = UserQuery.selectManagerByEmail(stmt, managerEmail);){
+             ResultSet rs = UserQuery.selectManagerByLicense(stmt, manLic);){
             if(rs.next()){
                 manager = createManager(rs);
             }
@@ -44,10 +43,10 @@ public class ManagerDAO {
         return manager;
     }
     public Manager createManager(ResultSet rs) throws SQLException {
-        String email = rs.getString(MANAGER_EMAIL);
+        String license = rs.getString(MANAGER_LICENSE);
         String name = rs.getString(MANAGER_NAME);
         String surname = rs.getString(MANAGER_SURNAME);
-        String license = rs.getString(MANAGER_LICENSE);
+        String email = rs.getString(MANAGER_EMAIL);
 
         return new Manager(email,"",name,surname,license);
     }

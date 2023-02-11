@@ -78,7 +78,7 @@ public class ScubaHomeControllerGrafico {
     void rentEquip(ActionEvent event) {
         try{
             MainApp app = new MainApp();
-            app.changeScene("login1.fxml");
+            app.changeScene("rentEquip1.fxml");
         } catch (Exception e){
             logger.log(Level.INFO, "Exception Error");
         }

@@ -5,8 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -79,7 +77,9 @@ public class InternalControllerGrafico {
     public void setLoggedUser(UserBean loggedUser) {
         this.loggedUser = loggedUser;
     }
-    public void enterAsUser (UserBean userBean, Stage stage) throws IOException {
+
+
+   /* public void enterAsUser (UserBean userBean, Stage stage) throws IOException {
         String homeScreen = null;
         setLoggedUser(userBean);
         if(userBean == null || userBean.getUserType() == SCUBA_TYPE ){
@@ -94,5 +94,5 @@ public class InternalControllerGrafico {
         BorderPane homePane = (BorderPane) homeScene.getRoot();
         homePane.setCenter(userScreen.load());
         stage.setScene(homeScene);
-    }
+    }*/
 }

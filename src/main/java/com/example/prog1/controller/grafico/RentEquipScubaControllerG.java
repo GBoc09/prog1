@@ -1,5 +1,6 @@
 package com.example.prog1.controller.grafico;
 
+import com.example.prog1.bean.EquipBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,7 +34,7 @@ public class RentEquipScubaControllerG {
     private MenuItem home;
 
     @FXML
-    private ListView<?> listView;
+    private ListView<EquipBean> listView;
 
     @FXML
     private MenuItem logbook;
@@ -49,6 +50,7 @@ public class RentEquipScubaControllerG {
 
     @FXML
     private Label size;
+
 
     @FXML
     void goToLogin(MouseEvent event) {

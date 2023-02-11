@@ -1,12 +1,14 @@
 package com.example.prog1.model;
 
 public class Diving {
+    private Integer id;
     private String name;
     private String location;
     private String telephone;
     private String divingMan;
 
-    public Diving (String name, String loc, String tel, String man){
+    public Diving (Integer id, String name, String loc, String tel, String man){
+        this.id = id;
         this.name = name;
         this.location = loc;
         this.telephone = tel;
@@ -43,5 +45,13 @@ public class Diving {
 
     public void setDivingMan(String divingMan) {
         this.divingMan = divingMan;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

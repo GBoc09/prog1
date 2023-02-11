@@ -2,12 +2,12 @@ package com.example.prog1.bean;
 
 public class CartRowBean {
     private String equipType;
-    private String equipID;
+    private Integer equipID;
     private Integer quantity;
     private Double price;
     private String size;
 
-    public CartRowBean(String equipType, String equipID, Integer quantity, Double price, String size){
+    public CartRowBean(String equipType, Integer equipID, Integer quantity, Double price, String size){
         setEquipType(equipType);
         setEquipID(equipID);
         setQuantity(quantity);
@@ -23,11 +23,11 @@ public class CartRowBean {
         this.equipType = equipType;
     }
 
-    public String getEquipID() {
+    public Integer getEquipID() {
         return equipID;
     }
 
-    public void setEquipID(String equipID) {
+    public void setEquipID(Integer equipID) {
         this.equipID = equipID;
     }
 

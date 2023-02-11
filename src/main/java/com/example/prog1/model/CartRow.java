@@ -39,7 +39,7 @@ public class CartRow implements Serializable {
         return equipment.getPrice();
     }
     /* teniamo traccia della mail dove affiattiamo le cose */
-    public String getEquimentRental(){
-        return equipment.getRentalEmail();
+    public Integer getEquimentRental(){
+        return equipment.getRentalID();
     }
 }

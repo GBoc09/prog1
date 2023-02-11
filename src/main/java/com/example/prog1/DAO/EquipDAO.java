@@ -2,9 +2,10 @@ package com.example.prog1.DAO;
 
 import com.example.prog1.catalogue.EquipCatalogue;
 import com.example.prog1.dbConnection.MyConnectionSingleton;
+import com.example.prog1.model.Diving;
 import com.example.prog1.model.Equipment;
-import com.example.prog1.model.Manager;
 import com.example.prog1.query.EquipQuery;
+import com.example.prog1.query.RentalQuery;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,18 +14,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class EquipDAO {
-    private static final String ID_EQUIP = "id";
-    private static final String TYPE_EQUIP = "type";
+    /* SQL column*/
+    private static final String ID_EQUIP = "idEquipment";
+    private static final String TYPE_EQUIP = "equipType";
     private static final String PRICE = "price";
-    private static final String DIVING = "diving";
     private static final String SIZE = "size";
     private static final String AVAIL = "availability";
+    private String managerLicense;
 
+    public String getManagerLicense() {
+        return managerLicense;
+    }
 
-    MyConnectionSingleton connection = MyConnectionSingleton.getInstance();
+    public void setManagerLicense(String managerLicense) {
+        this.managerLicense = managerLicense;
+    }
+
     public EquipCatalogue loadAllProducts(){
         ArrayList<Equipment> equips = new ArrayList<>();
-        Connection con = connection.getConnection();
+        Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();
             ResultSet rs = EquipQuery.loadAllProducts(stmt);){
             while (rs.next()){
@@ -42,14 +50,22 @@ public class EquipDAO {
         String size = rs.getString(SIZE);
         String avail = rs.getString(AVAIL);
         Double price = rs.getDouble(PRICE);
-        String diving = rs.getString(DIVING);
-        ManagerDAO managerDAO = new ManagerDAO();
-        Manager rental = managerDAO.loadManager()
+        DivingDAO divingDAO = new DivingDAO();
+        Diving diving = divingDAO.loadDivingByManLic(managerLicense);
+
+        return new Equipment(id, type,size,avail,size,price,diving);
     }
-    /**
-     * rental è il manager o il diving ?
-     * devo controllare bene e ragionare
-     * in questo caso è conveniente che sia il diving, controllare nei casi precedenti
-     * dovrebbe essere conveniente avere sempre il riferimento al diving e da li posso arrivare
-     * comunque al manager con una join */
+    public Equipment loadEquipByID (Integer id) {
+        Equipment equipment = null;
+        Connection con = MyConnectionSingleton.getConnection();
+        try(Statement stmt = con.createStatement();
+        ResultSet rs = EquipQuery.loadEquipByID(stmt, id)){
+            if(rs.next()){
+                equipment = createProduct(rs);
+            }
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return equipment;
+    }
 }

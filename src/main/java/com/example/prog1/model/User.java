@@ -16,6 +16,12 @@ public abstract class User implements Serializable {
         this.lastname = lastname;
         this.license = license;
     }
+    protected User (String email, String name, String lastname, String license){
+        this.email = email;
+        this.name = name;
+        this.lastname = lastname;
+        this.license = license;
+    }
     protected User(){}
 
     protected User(String cName, String cSurname){

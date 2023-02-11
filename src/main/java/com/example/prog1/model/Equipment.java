@@ -8,12 +8,12 @@ public class Equipment implements Serializable {
     private String size;
     private Double price;
     private Integer avail;
-    private Manager rental;
+    private Diving rental;
 
-    public Equipment(){
+    public Equipment(Integer id, String type, String size, String avail, String s, Double price, Diving diving){
         this(0,"","",0.0,0,null);
     }
-    public Equipment(Integer id, String type, String taglia, Double prezzo, Integer disp, Manager rental){
+    public Equipment(Integer id, String type, String taglia, Double prezzo, Integer disp, Diving rental){
         setEquipID(id);
         setEquipType(type);
         setSize(taglia);
@@ -62,15 +62,15 @@ public class Equipment implements Serializable {
         this.avail = avail;
     }
 
-    public Manager getRental() {
+    public Diving getRental() {
         return rental;
     }
 
-    public void setRental(Manager rental) {
+    public void setRental(Diving rental) {
         this.rental = rental;
     }
-    public String getRentalEmail(){
-        return rental.getEmail();
+    public Integer getRentalID(){
+        return rental.getId();
     }
    /* @Override
     public boolean equals (Object toCompare){

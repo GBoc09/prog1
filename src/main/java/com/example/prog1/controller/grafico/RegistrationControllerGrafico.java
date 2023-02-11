@@ -69,9 +69,7 @@ public class RegistrationControllerGrafico {
         ScreenControllerGrafico.getInstance().onBackClick((Node) event.getSource());
         MainApp app = new MainApp();
         app.changeScene(LOGIN_SCREEN);
-
     }
-
     @FXML
     void signUp(ActionEvent event) {
         Node source = (Node)event.getSource();
@@ -96,12 +94,11 @@ public class RegistrationControllerGrafico {
                     break;
                 default: type = NOT_LOG;
             }
-
             Alert alert = new Alert( Alert.AlertType.CONFIRMATION, "Registration successful");
             alert.showAndWait();
           //  ScreenControllerGrafico.getInstance().onBackClick(source);
         }catch (InvalidCredentialException | DuplicatedUserException | IOException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Try again");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "You are already registered");
             alert.showAndWait();
         }
     }
