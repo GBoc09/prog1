@@ -4,10 +4,8 @@ import com.example.prog1.DAO.CartFileSaver;
 import com.example.prog1.DAO.EquipDAO;
 import com.example.prog1.DAO.RentalDAO;
 import com.example.prog1.DAO.ScubaDAO;
-import com.example.prog1.bean.CartBean;
-import com.example.prog1.bean.CartRowBean;
-import com.example.prog1.bean.EquipBean;
-import com.example.prog1.bean.UserBean;
+import com.example.prog1.bean.*;
+import com.example.prog1.boundary.RentEquipEmail;
 import com.example.prog1.catalogue.EquipCatalogue;
 import com.example.prog1.exception.NotExistentUserException;
 import com.example.prog1.model.*;
@@ -49,6 +47,21 @@ public class RentalEquipApplicativo {
         }
         return equipBeanList;
     }
+    public List<EquipBean> getEquips () {
+        List<EquipBean> equip = new ArrayList<>();
+        EquipDAO equipmentDAO = new EquipDAO();
+        List<Equipment> equip2 = equipmentDAO.getEquipInfo();
+        for (Equipment d : equip2) {
+            EquipBean equipmentBean = new EquipBean();
+            equipmentBean.setId(d.getEquipID());
+            equipmentBean.setType(d.getEquipType());
+            equipmentBean.setSize(d.getSize());
+            equipmentBean.setAvail(d.getAvail());
+            equipmentBean.setPrice(d.getPrice());
+            equip.add(equipmentBean);
+        }
+        return equip;
+    }
     public CartBean insertItemToCart(EquipBean equipBean){
         Equipment equipment = equipCatalogue.getEquipByID(equipBean.getId());
         cart.insertEquip(equipment);
@@ -89,7 +102,19 @@ public class RentalEquipApplicativo {
 
         cartFileSaver.deleteCartFromFile();
 
-
-
+        RentEquipEmail rentEquipEmail = new RentEquipEmail();
+        ArrayList<Integer> divingInfo = cart.getVendorInfo();
+        for (Integer vendor: divingInfo){
+            rentEquipEmail.notifyDiving(createNotificationInfo(vendor, rental));
+        }
+    }
+    private DivingOrderBean createNotificationInfo(Integer diving, Rental rental){
+        return new DivingOrderBean(diving, rental.getOwnerEmail(), rental.getIdRent());
+    }
+    public CartBean changeProductQuantity(CartRowBean cartRowBean, Integer change){
+        EquipBean equipBean = new EquipBean(cartRowBean.getEquipID());
+        if(change > 0){
+            return insertItemToCart(equipBean);
+        }else return removeItemFromCart(equipBean);
     }
 }

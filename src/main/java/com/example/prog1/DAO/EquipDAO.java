@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class EquipDAO {
     /* SQL column*/
@@ -67,5 +68,24 @@ public class EquipDAO {
             sqlException.printStackTrace();
         }
         return equipment;
+    }
+    public List<Equipment> getEquipInfo(){
+        Connection con = MyConnectionSingleton.getConnection();
+        List<Equipment> equips = new ArrayList<>();
+        try(Statement stmt = con.createStatement();
+            ResultSet rs = EquipQuery.loadEquip(stmt)){
+            while (rs. next()){
+                Equipment newEquip = new Equipment();
+                newEquip.setEquipID(rs.getInt(1));
+                newEquip.setEquipType(rs.getString(2));
+                newEquip.setSize(rs.getString(3));
+                newEquip.setAvail(rs.getInt(4));
+                newEquip.setPrice(rs.getDouble(5));
+                equips.add(newEquip);
+            }
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return equips;
     }
 }

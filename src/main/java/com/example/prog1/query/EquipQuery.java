@@ -13,4 +13,8 @@ public class EquipQuery {
         String query = String.format("SELECT * FROM Equipment WHERE idEquipment = '%d';", id);
         return stmt.executeQuery(query);
     }
+    public static ResultSet loadEquip(Statement stmt) throws SQLException {
+        String query = String.format("SELECT (idEquipment, equipType, size, availability, price)FROM Equipment;");
+        return stmt.executeQuery(query);
+    }
 }

@@ -9,7 +9,7 @@ public class Equipment implements Serializable {
     private Double price;
     private Integer avail;
     private Diving rental;
-
+    public Equipment(){}
     public Equipment(Integer id, String type, String size, String avail, String s, Double price, Diving diving){
         this(0,"","",0.0,0,null);
     }
