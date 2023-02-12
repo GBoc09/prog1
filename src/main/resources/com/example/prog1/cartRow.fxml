@@ -3,17 +3,17 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prog1.controller.grafico.RentEquipScubaControllerG">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prog1.controller.grafico.CartRowControllerG">
    <children>
-      <MenuBar fx:id="menuBar" prefHeight="26.0" prefWidth="600.0" style="-fx-background-color: white;">
+      <MenuBar fx:id="menuBar" layoutY="-1.0" prefHeight="26.0" prefWidth="600.0" style="-fx-background-color: white;">
          <menus>
             <Menu mnemonicParsing="false" text="Home">
                <items>
@@ -40,7 +40,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </MenuBar>
-      <Label layoutX="14.0" layoutY="35.0" text="Our products!">
+      <Label fx:id="back" layoutX="14.0" layoutY="49.0" onMouseClicked="#back" text="Select your choices">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
@@ -48,47 +48,51 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Line endX="130.20001220703125" endY="-1.52587890625E-5" layoutX="114.0" layoutY="84.0" startX="-100.0" strokeWidth="2.0" />
-      <ListView fx:id="listView" layoutX="28.0" layoutY="100.0" prefHeight="220.0" prefWidth="200.0" style="-fx-background-color: white;" />
-      <Label layoutX="275.0" layoutY="178.0" text="Type">
+      <Line endX="214.5999755859375" endY="0.20001220703125" layoutX="113.0" layoutY="100.0" startX="-100.0" strokeWidth="2.0" />
+      <Label layoutX="40.0" layoutY="120.0" text="Equipment type">
          <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="430.0" layoutY="178.0" text="Price">
+      <Label layoutX="40.0" layoutY="200.0" text="Price">
          <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="339.0" layoutY="178.0" text="Size ">
+      <Label layoutX="40.0" layoutY="240.0" text="Size ">
          <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="equipType" layoutX="245.0" layoutY="197.0" prefHeight="26.0" prefWidth="330.0" text="select item" textFill="#a4a4a4">
+      <Label fx:id="equipType" layoutX="332.0" layoutY="120.0" prefHeight="18.0" prefWidth="200.0" text="select item">
          <font>
-            <Font size="17.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="390.0" layoutY="178.0" text="Avail">
+      <Label fx:id="priceLabel" layoutX="332.0" layoutY="200.0" prefHeight="18.0" prefWidth="200.0" text="select item">
          <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="quantity" layoutX="275.0" layoutY="263.0" mnemonicParsing="false" onAction="#onButtonClicked" prefWidth="90.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="Quantities">
+      <Label fx:id="sizeLabel" layoutX="332.0" layoutY="240.0" prefHeight="18.0" prefWidth="200.0" text="select item">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="addToCart" layoutX="225.0" layoutY="314.0" mnemonicParsing="false" onAction="#onButtonClicked" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="AddToCart">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="goToCart" layoutX="401.0" layoutY="263.0" mnemonicParsing="false" onAction="#onButtonClicked" prefWidth="90.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="GoToCart">
+      <Label layoutX="40.0" layoutY="160.0" text="Quantity">
          <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <Label layoutX="245.0" layoutY="178.0" text="ID">
-         <font>
-            <Font size="15.0" />
+            <Font size="20.0" />
          </font>
       </Label>
+      <TextField fx:id="insertQuantity" layoutX="317.0" layoutY="153.0" prefHeight="18.0" prefWidth="200.0" promptText="select quanity" style="-fx-background-color: none;">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

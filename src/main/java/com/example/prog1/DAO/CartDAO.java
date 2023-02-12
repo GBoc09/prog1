@@ -29,7 +29,7 @@ public class CartDAO {
         }
     }
     /* rental = divingID  */
-    public List<CartRow> loadCartByOrderCodeAndRental(Integer orderCode, Integer rental){
+    public List<CartRow> loadCartByOrderCodeAndVendor(Integer orderCode, String license){
         Connection con = MyConnectionSingleton.getConnection();
         List<CartRow> cartRowList = new ArrayList<>();
         try(Statement stmt = con.createStatement();
@@ -40,7 +40,7 @@ public class CartDAO {
                 Integer quantity = rs.getInt(AVAIL);
 
                 Equipment equipment = equipDAO.loadEquipByID(itemId);
-                if(equipment.getRentalID().equals(rental)){
+                if(equipment.getManLicense().equals(license)){
                     CartRow cartRow = new CartRow(equipment, quantity);
                     cartRowList.add(cartRow);
                 }

@@ -37,11 +37,11 @@ public class Cart implements Serializable, Price {
         }
         return null;
     }
-    public ArrayList<Integer> getVendorInfo(){
-        ArrayList<Integer> vendorInfo = new ArrayList<>();
+    public ArrayList<String> getVendorInfo(){
+        ArrayList<String> vendorInfo = new ArrayList<>();
         for (CartRow cartRow: cartRowArrayList){
-            if (!vendorInfo.contains(cartRow.getEquimentRental())){
-                vendorInfo.add(cartRow.getEquimentRental());
+            if (!vendorInfo.contains(cartRow.getEquipVendor())){
+                vendorInfo.add(cartRow.getEquipVendor());
             }
         }
         return vendorInfo;

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dw_1.grafico.ManagerHomeControllerGrafico">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prog1.controller.grafico.ManagerHomeControllerG">
    <children>
       <Label fx:id="goToLogin" layoutX="180.0" layoutY="30.0" onMouseClicked="#goToLogin" text="DIVERS WORLD">
          <font>

@@ -56,16 +56,15 @@ public class ScubaHomeControllerGrafico {
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
-        BorderPane scubaBorderPane = (BorderPane) menuBar.getScene().getRoot();
-        InternalControllerGrafico.getInternalControllerInstance().onNextScreen(scubaBorderPane);
-        String newNode;
+//        BorderPane scubaBorderPane = (BorderPane) menuBar.getScene().getRoot();
+//        InternalControllerGrafico.getInternalControllerInstance().onNextScreen(scubaBorderPane);
         if (sourceItem == home){
             MainApp app = new MainApp();
-            app.changeScene("scubaHome.fxml");
+            app.changeScene("scubaHome1.fxml");
         } else if (sourceItem == logout){
-            InternalControllerGrafico.getInternalControllerInstance().onBackClicked(event);
+            MainApp app = new MainApp();
+            app.changeScene("login1.fxml");
         } else if (sourceItem == cart){
-            /* aggiungere un controller grafico per il carrello */
             MainApp app = new MainApp();
             app.changeScene("cart1.fxml");
         }

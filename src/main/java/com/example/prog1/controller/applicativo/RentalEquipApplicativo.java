@@ -62,6 +62,19 @@ public class RentalEquipApplicativo {
         }
         return equip;
     }
+    public List<EquipBean> getEquipForCart (int i) {
+        List<EquipBean> equip = new ArrayList<>();
+        EquipDAO equipmentDAO = new EquipDAO();
+        List<Equipment> equip2 = equipmentDAO.getEquipInfoForCart(i);
+        for (Equipment d : equip2) {
+            EquipBean equipmentBean = new EquipBean();
+            equipmentBean.setType(d.getEquipType());
+            equipmentBean.setSize(d.getSize());
+            equipmentBean.setPrice(d.getPrice());
+            equip.add(equipmentBean);
+        }
+        return equip;
+    }
     public CartBean insertItemToCart(EquipBean equipBean){
         Equipment equipment = equipCatalogue.getEquipByID(equipBean.getId());
         cart.insertEquip(equipment);
@@ -103,13 +116,13 @@ public class RentalEquipApplicativo {
         cartFileSaver.deleteCartFromFile();
 
         RentEquipEmail rentEquipEmail = new RentEquipEmail();
-        ArrayList<Integer> divingInfo = cart.getVendorInfo();
-        for (Integer vendor: divingInfo){
+        ArrayList<String> vendorInfo = cart.getVendorInfo();
+        for (String vendor: vendorInfo){
             rentEquipEmail.notifyDiving(createNotificationInfo(vendor, rental));
         }
     }
-    private DivingOrderBean createNotificationInfo(Integer diving, Rental rental){
-        return new DivingOrderBean(diving, rental.getOwnerEmail(), rental.getIdRent());
+    private VendorOrderBean createNotificationInfo(String vendor, Rental rental){
+        return new VendorOrderBean(vendor, rental.getOwnerEmail(), rental.getIdRent());
     }
     public CartBean changeProductQuantity(CartRowBean cartRowBean, Integer change){
         EquipBean equipBean = new EquipBean(cartRowBean.getEquipID());

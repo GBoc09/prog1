@@ -8,20 +8,19 @@ public class Equipment implements Serializable {
     private String size;
     private Double price;
     private Integer avail;
-    private Diving rental;
-    public Equipment(){}
-    public Equipment(Integer id, String type, String size, String avail, String s, Double price, Diving diving){
-        this(0,"","",0.0,0,null);
+    private Manager manager;
+    public Equipment(Integer id, String type, String size, Integer avail, Double price, Manager manager){
+        this(0,"","",0.0,0, null);
     }
-    public Equipment(Integer id, String type, String taglia, Double prezzo, Integer disp, Diving rental){
+    public Equipment(Integer id, String type, String taglia, Double prezzo, Integer disp, Manager manager){
         setEquipID(id);
         setEquipType(type);
         setSize(taglia);
         setPrice(prezzo);
         setAvail(disp);
-        setRental(rental);
+        setManager(manager);
     }
-
+    public Equipment(){}
     public Integer getEquipID() {
         return equipID;
     }
@@ -62,26 +61,27 @@ public class Equipment implements Serializable {
         this.avail = avail;
     }
 
-    public Diving getRental() {
-        return rental;
+    public Manager getManager() {
+        return manager;
     }
 
-    public void setRental(Diving rental) {
-        this.rental = rental;
+    public void setManager(Manager manager) {
+        this.manager = manager;
     }
-    public Integer getRentalID(){
-        return rental.getId();
+    public String getManLicense () {
+        return manager.getLicense();
     }
-   /* @Override
-    public boolean equals (Object toCompare){
-        Boolean result;
-        if (this == toCompare){
-            result = true;
-        } else if (toCompare instanceof Equipment) {
-            result = (String.compare(this.getEquipID(), (Equipment)((Equipment) toCompare).getEquipID()) == 0);
-        }else result = false;
-        return result;
-    }*/
+
+    /* @Override
+        public boolean equals (Object toCompare){
+            Boolean result;
+            if (this == toCompare){
+                result = true;
+            } else if (toCompare instanceof Equipment) {
+                result = (String.compare(this.getEquipID(), (Equipment)((Equipment) toCompare).getEquipID()) == 0);
+            }else result = false;
+            return result;
+        }*/
     @Override
     public int hashCode(){
         return super.hashCode();

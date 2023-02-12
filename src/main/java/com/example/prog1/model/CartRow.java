@@ -38,8 +38,8 @@ public class CartRow implements Serializable {
     public Double getPrice (){
         return equipment.getPrice();
     }
-    /* teniamo traccia della mail dove affiattiamo le cose */
-    public Integer getEquimentRental(){
-        return equipment.getRentalID();
+    /* teniamo traccia della licensa del manager del diving dove prendiamo le cose */
+    public String getEquipVendor(){
+        return equipment.getManLicense();
     }
 }

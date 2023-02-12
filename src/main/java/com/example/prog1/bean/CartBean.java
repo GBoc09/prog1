@@ -14,7 +14,6 @@ public class CartBean implements Bean {
     public CartBean(Double total, List<CartRowBean> cartRowBean){
         setTotal(total);
         setCartRowBeanList(cartRowBean);
-
     }
 
     public Double getTotal() {

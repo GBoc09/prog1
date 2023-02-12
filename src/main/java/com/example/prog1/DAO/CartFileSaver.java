@@ -6,6 +6,9 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * cerchiamo di usere i file come contenitori di informazioni sugli acquaisti degli utenti
+ * */
 public class CartFileSaver {
     private final String cartFileName;
     public CartFileSaver(String userName){
