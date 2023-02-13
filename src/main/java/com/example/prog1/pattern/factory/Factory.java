@@ -14,4 +14,5 @@ public class Factory {
     public User createManager(String email, String pass, String name, String last, String lic){
         return new Scuba(email, pass, name, last, lic);
     }
+
 }

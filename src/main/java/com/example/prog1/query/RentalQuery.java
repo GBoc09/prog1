@@ -9,4 +9,8 @@ public class RentalQuery {
         String query = String.format("SELECT * FROM Rental WHERE idRental = %d;", rentalID);
         return stmt.executeQuery(query);
     }
+    public static boolean insertIntoCart (Statement stmt, String type, String size, Double price, Integer quant) throws SQLException {
+        String query = String.format("INSERT INTO Cart (equipType, equipSize, equipPrice, equipQuantity)values ('%s', '%s', '%fd', '%d');", type, size, price, quant);
+        return stmt.execute(query);
+    }
 }

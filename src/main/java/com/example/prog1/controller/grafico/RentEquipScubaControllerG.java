@@ -46,14 +46,16 @@ public class RentEquipScubaControllerG implements Initializable {
     @FXML
     private MenuBar menuBar;
 
-    private final RentalEquipApplicativo rentalEquipApplicativo;
+//    private final RentalEquipApplicativo rentalEquipApplicativo;
     public static final String CART_USER_SCREEN = "cart1.fxml";
     public static Integer selectionIndex;
     public RentEquipScubaControllerG (){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        rentalEquipApplicativo = new RentalEquipApplicativo(userBean);
+//        rentalEquipApplicativo = new RentalEquipApplicativo(userBean);
     }
-
+/**
+ * salvare in variabile statica publica le cose scritte nelle label della selezione qiantità per poi passarle e salvare
+ * in una tabella db e poi scrivere tutto su file */
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
@@ -69,8 +71,6 @@ public class RentEquipScubaControllerG implements Initializable {
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
-//        BorderPane scubaBorderPane = (BorderPane) menuBar.getScene().getRoot();
-//        InternalControllerGrafico.getInternalControllerInstance().onNextScreen(scubaBorderPane);
         if (sourceItem == home){
             MainApp app = new MainApp();
             app.changeScene("scubaHome1.fxml");
@@ -85,6 +85,7 @@ public class RentEquipScubaControllerG implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         quantity.setDisable(true);
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<EquipBean> equipmentBeanList = rentalEquipApplicativo.getEquips();
         for (EquipBean d : equipmentBeanList) {
             Integer id = d.getId();
@@ -97,7 +98,7 @@ public class RentEquipScubaControllerG implements Initializable {
             listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                      equipType.setText(listView.getSelectionModel().getSelectedItem());
+                    equipType.setText(listView.getSelectionModel().getSelectedItem());
                     selectionIndex = listView.getSelectionModel().getSelectedIndex();
                     CartControllerGrafico cartControllerGrafico = new CartControllerGrafico();
                     CartRowControllerG cartRowControllerG = new CartRowControllerG();

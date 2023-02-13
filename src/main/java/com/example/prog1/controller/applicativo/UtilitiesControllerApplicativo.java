@@ -1,5 +1,6 @@
 package com.example.prog1.controller.applicativo;
 
+import com.example.prog1.DAO.CartDAO;
 import com.example.prog1.DAO.EquipDAO;
 import com.example.prog1.bean.EquipBean;
 
@@ -16,5 +17,12 @@ public class UtilitiesControllerApplicativo {
         Integer i;
         i = equipDAO.selectAvailability(index);
         return i;
+    }
+    public void infoEquipCart(int selectedIndex, int quant) {
+        EquipDAO equipDAO = new EquipDAO();
+        CartDAO cartDAO = new CartDAO();
+        EquipBean equipBean = null;
+        equipBean = equipDAO.selectEquipByOrder(selectedIndex);
+        cartDAO.insertIntoCart(equipBean, quant);
     }
 }

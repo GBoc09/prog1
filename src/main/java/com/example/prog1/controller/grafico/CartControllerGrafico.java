@@ -26,28 +26,20 @@ public class CartControllerGrafico implements Initializable {
 
     @FXML
     private Button addItems;
-
     @FXML
     private MenuItem cart;
-
     @FXML
     private ListView<String> cartView;
-
     @FXML
     private Button completeRental;
-
     @FXML
     private Button deleteItems;
-
     @FXML
     private MenuItem home;
-
     @FXML
     private MenuItem logbook;
-
     @FXML
     private MenuItem logout;
-
     @FXML
     private MenuBar menuBar;
 
@@ -59,19 +51,14 @@ public class CartControllerGrafico implements Initializable {
             app.changeScene("rentEquip1.fxml");
         }
     }
-
     private RentalEquipApplicativo rentalEquipApplicativo;
-
     public CartControllerGrafico() {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        rentalEquipApplicativo = new RentalEquipApplicativo(userBean);
+//        rentalEquipApplicativo = new RentalEquipApplicativo(userBean);
     }
-
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
-//        BorderPane scubaBorderPane = (BorderPane) menuBar.getScene().getRoot();
-//        InternalControllerGrafico.getInternalControllerInstance().onNextScreen(scubaBorderPane);
         if (sourceItem == home) {
             MainApp app = new MainApp();
             app.changeScene("scubaHome1.fxml");
@@ -85,6 +72,7 @@ public class CartControllerGrafico implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<EquipBean> equipmentBeanList = rentalEquipApplicativo.getEquipForCart(val);
         Integer q = quantity;
         for (EquipBean d : equipmentBeanList) {
@@ -93,16 +81,16 @@ public class CartControllerGrafico implements Initializable {
             Double price = d.getPrice();
             cartView.getItems().add(type+ "   "+size+"   "+price+"   "+q+"\n\n");
         }
-        viewCart();
+        //viewCart();
     }
     private static Integer val;
     public int memoryIndex (Integer selectionIndex){
         val = selectionIndex+1;
         return val;
     }
-    private void viewCart(){
-        CartBean cartBean = rentalEquipApplicativo.showCart();
-    }
+//    private void viewCart(){
+//        CartBean cartBean = rentalEquipApplicativo.showCart();
+//    }
 }
 
 

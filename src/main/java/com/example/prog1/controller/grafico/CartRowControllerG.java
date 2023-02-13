@@ -1,10 +1,11 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.DAO.EquipDAO;
 import com.example.prog1.MainApp;
 import com.example.prog1.bean.EquipBean;
+import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.controller.applicativo.UtilitiesControllerApplicativo;
+import com.example.prog1.exception.InvalidInsertionEquipException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CartRowControllerG {
+public class CartRowControllerG { // fxml per inserimento quantità
     @FXML
     private Button addToCart;
     @FXML
@@ -38,6 +39,11 @@ public class CartRowControllerG {
     @FXML
     private Label back;
     Logger logger = Logger.getLogger(CartRowControllerG.class.getName());
+    private RentalEquipApplicativo rentalEquipApplicativo;
+    public CartRowControllerG() {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+//        rentalEquipApplicativo = new RentalEquipApplicativo(userBean);
+    }
     @FXML
     void back(MouseEvent event) {
         try{
@@ -50,15 +56,13 @@ public class CartRowControllerG {
     }
 
     @FXML
-    void onButtonClicked(ActionEvent event) throws IOException {
+    void onButtonClicked(ActionEvent event) throws IOException, InvalidInsertionEquipException {
         checkQuantity();
     }
 
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
-//        BorderPane scubaBorderPane = (BorderPane) menuBar.getScene().getRoot();
-//        InternalControllerGrafico.getInternalControllerInstance().onNextScreen(scubaBorderPane);
         if (sourceItem == home){
             MainApp app = new MainApp();
             app.changeScene("scubaHome1.fxml");
@@ -86,7 +90,7 @@ public class CartRowControllerG {
     }
     @FXML
     public void initialize (){
-        EquipBean equipBean = new EquipBean();
+        EquipBean equipBean;
         UtilitiesControllerApplicativo utilities = new UtilitiesControllerApplicativo();
         equipBean = utilities.infoEquipGeneral(val);
         equipType.setText(equipBean.getType());
@@ -94,7 +98,7 @@ public class CartRowControllerG {
         priceLabel.setText(String.valueOf(equipBean.getPrice()));
     }
     public static Integer quantity;
-    public Integer checkQuantity() throws IOException {
+    public Integer checkQuantity() throws IOException, InvalidInsertionEquipException {
         if(insertQuantity.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please insert a valid quantity");
             alert.showAndWait();
@@ -108,6 +112,7 @@ public class CartRowControllerG {
                 alert.showAndWait();
                 insertQuantity.setText("");
             } else if (disp >= quantity) {
+                utilities.infoEquipCart(val, quantity);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Your request is accepted.");
                 alert.showAndWait();
                 MainApp app = new MainApp();
@@ -116,5 +121,9 @@ public class CartRowControllerG {
         }
         return quantity;
     }
+    /**
+     * inserimento di cose nel carrello avviene solo come equip bean
+     * o modifico l'inerimento e lo prendo come stringa ma poi non posso fare le operazioni sul totale oppure trovo il modo di passaerlo
+     * ad equip bean e inserirlo come lista di equip bean nel carrello */
 
 }

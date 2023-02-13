@@ -14,6 +14,7 @@ public class CartFileSaver {
     public CartFileSaver(String userName){
         cartFileName = userName+"_CART";
     }
+    /** File: accesso sequenziale ai file presenti nel file system */
     public Cart loadCartFromFile() {
         Cart cart = new Cart();
         try (FileInputStream fileInputStream = new FileInputStream(cartFileName);
