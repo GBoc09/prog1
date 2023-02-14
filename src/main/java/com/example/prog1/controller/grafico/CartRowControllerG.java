@@ -112,18 +112,14 @@ public class CartRowControllerG { // fxml per inserimento quantità
                 alert.showAndWait();
                 insertQuantity.setText("");
             } else if (disp >= quantity) {
-                utilities.infoEquipCart(val, quantity);
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Your request is accepted.");
                 alert.showAndWait();
+                utilities.infoEquipCart(val, quantity);
                 MainApp app = new MainApp();
                 app.changeScene("cart1.fxml");
             }
         }
         return quantity;
     }
-    /**
-     * inserimento di cose nel carrello avviene solo come equip bean
-     * o modifico l'inerimento e lo prendo come stringa ma poi non posso fare le operazioni sul totale oppure trovo il modo di passaerlo
-     * ad equip bean e inserirlo come lista di equip bean nel carrello */
 
 }

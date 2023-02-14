@@ -19,6 +19,8 @@ public class CartDAO {
     private static final String EQUIP_PRICE_CART = "equipPrice";
     private static final String EQUIP_Q_CART = "equipQuantity";
 
+    /**
+     * data truncated for column equipPrice */
     public void insertIntoCart(EquipBean equipBean, int quant)  {
         Connection con = MyConnectionSingleton.getConnection();
         try (Statement stmt = con.createStatement()) {

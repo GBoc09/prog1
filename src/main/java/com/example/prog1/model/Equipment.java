@@ -1,8 +1,6 @@
 package com.example.prog1.model;
 
-import java.io.Serializable;
-
-public class Equipment implements Serializable {
+public class Equipment {
     private Integer equipID;
     private String equipType;
     private String size;
@@ -72,19 +70,5 @@ public class Equipment implements Serializable {
         return manager.getLicense();
     }
 
-    /* @Override
-        public boolean equals (Object toCompare){
-            Boolean result;
-            if (this == toCompare){
-                result = true;
-            } else if (toCompare instanceof Equipment) {
-                result = (String.compare(this.getEquipID(), (Equipment)((Equipment) toCompare).getEquipID()) == 0);
-            }else result = false;
-            return result;
-        }*/
-    @Override
-    public int hashCode(){
-        return super.hashCode();
-    }
 }
 
