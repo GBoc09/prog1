@@ -8,42 +8,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ScubaHomeControllerGrafico {
-
-    @FXML
-    private Button bookCourse;
-
-    @FXML
-    private MenuItem cart;
-
-    @FXML
-    private Label goToLogin;
-
-    @FXML
-    private MenuItem home;
-
-    @FXML
-    private Button logBook;
-
-    @FXML
-    private MenuItem logbook;
-
-    @FXML
-    private MenuItem logout;
-
-    @FXML
-    private MenuBar menuBar;
-
-    @FXML
-    private Button rentEqip;
+    @FXML private Button bookCourse;
+    @FXML private MenuItem cart;
+    @FXML private Label goToLogin;
+    @FXML private MenuItem home;
+    @FXML private Button logBook;
+    @FXML private Button addDiveToLog;
+    @FXML private MenuItem logout;
+    @FXML private MenuBar menuBar;
+    @FXML private Button rentEqip;
     Logger logger = Logger.getLogger(ScubaHomeControllerGrafico.class.getName());
-
     @FXML
     void goToLogin(MouseEvent event) {
         try{
@@ -56,8 +36,6 @@ public class ScubaHomeControllerGrafico {
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
-//        BorderPane scubaBorderPane = (BorderPane) menuBar.getScene().getRoot();
-//        InternalControllerGrafico.getInternalControllerInstance().onNextScreen(scubaBorderPane);
         if (sourceItem == home){
             MainApp app = new MainApp();
             app.changeScene("scubaHome1.fxml");

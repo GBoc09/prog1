@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentalEquipApplicativo {
-    public RentalEquipApplicativo(){}
+    public RentalEquipApplicativo(){/* costruttore */ }
     public List<EquipBean> getEquips () {
         List<EquipBean> equip = new ArrayList<>();
         EquipDAO equipmentDAO = new EquipDAO();

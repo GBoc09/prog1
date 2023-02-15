@@ -83,11 +83,11 @@ public class CartRowControllerG { // fxml per inserimento quantità
      *
      * posso valutare l'indice per andare a selezionare dal db le cose che mi servono*/
     private static Integer val;
-    public int memoryIndex (Integer selectionIndex){
+    public static int memoryIndex (Integer selectionIndex){
         val = selectionIndex+1;
         return val;
     }
-    private static String email;
+    private String email;
     @FXML
     public void initialize (){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
@@ -99,7 +99,7 @@ public class CartRowControllerG { // fxml per inserimento quantità
         sizeLabel.setText(equipBean.getSize());
         priceLabel.setText(String.valueOf(equipBean.getPrice()));
     }
-    public static Integer quantity;
+    public Integer quantity;
     private Integer checkQuantity()  {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         email = userBean.getUserEmail();

@@ -5,7 +5,7 @@ import com.example.prog1.DAO.EquipDAO;
 import com.example.prog1.bean.EquipBean;
 
 public class UtilitiesControllerApplicativo {
-    public UtilitiesControllerApplicativo(){}
+    public UtilitiesControllerApplicativo(){/* costruttore */}
     public EquipBean infoEquipGeneral(int selectedIndex){
         EquipDAO equipDAO = new EquipDAO();
         EquipBean equipBean = null;

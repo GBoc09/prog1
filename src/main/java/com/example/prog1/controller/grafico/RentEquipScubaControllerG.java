@@ -18,40 +18,19 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class RentEquipScubaControllerG implements Initializable {
-
-    @FXML
-    private Button quantity;
-
-    @FXML
-    private MenuItem cart;
-
-    @FXML
-    private Label equipType;
-
-    @FXML
-    private Button goToCart;
-
-    @FXML
-    private MenuItem home;
-
-    @FXML
-    private ListView<String> listView;
-
-    @FXML
-    private MenuItem logbook;
-
-    @FXML
-    private MenuItem logout;
-
-    @FXML
-    private MenuBar menuBar;
-
-//    private final RentalEquipApplicativo rentalEquipApplicativo;
+    @FXML private Button quantity;
+    @FXML private MenuItem cart;
+    @FXML private Label equipType;
+    @FXML private Button goToCart;
+    @FXML private MenuItem home;
+    @FXML private ListView<String> listView;
+    @FXML private MenuItem logbook;
+    @FXML private MenuItem logout;
+    @FXML private MenuBar menuBar;
     public static final String CART_USER_SCREEN = "cart1.fxml";
-    public static Integer selectionIndex;
+    public Integer selectionIndex;
     public RentEquipScubaControllerG (){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-//        rentalEquipApplicativo = new RentalEquipApplicativo(userBean);
     }
 /**
  * salvare in variabile statica publica le cose scritte nelle label della selezione qiantità per poi passarle e salvare

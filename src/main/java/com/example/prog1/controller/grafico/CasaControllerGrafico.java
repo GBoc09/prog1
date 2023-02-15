@@ -19,7 +19,7 @@ public class CasaControllerGrafico {
     public void accessButtonClicked(ActionEvent event) throws IOException {
       try{
         MainApp app = new MainApp();
-         app.changeScene("login1.fxml");
+         app.changeScene(LOGIN_SCREEN);
       }
       catch (Exception e){
          logger.log(Level.INFO, "Exception Error");

@@ -1,7 +1,6 @@
 package com.example.prog1.model;
 
 import java.io.Serializable;
-import java.util.function.ToIntBiFunction;
 
 public class CartRow implements Serializable {
     private Equipment equipment;

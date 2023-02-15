@@ -75,7 +75,7 @@ public class CartControllerGrafico implements Initializable {
 //        }
     }
     private static Integer val;
-    public int memoryIndex (Integer selectionIndex){
+    public static int memoryIndex (Integer selectionIndex){
         val = selectionIndex+1;
         return val;
     }

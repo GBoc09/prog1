@@ -29,7 +29,7 @@ public class ManagerHomeControllerG {
 
     @FXML
     void aggiungiDiving(ActionEvent event) {
-
+        // todo
     }
 
     @FXML
@@ -56,7 +56,7 @@ public class ManagerHomeControllerG {
 
     @FXML
     void visualizzaDivingCenter(ActionEvent event) {
-
+        //todo
     }
 
 }
