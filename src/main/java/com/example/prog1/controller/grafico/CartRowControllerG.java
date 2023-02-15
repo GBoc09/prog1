@@ -116,8 +116,6 @@ public class CartRowControllerG { // fxml per inserimento quantità
                 alert.showAndWait();
                 insertQuantity.setText("");
             } else if (disp >= quantity) {
-//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Your request is accepted.");
-//                alert.showAndWait();
                 utilities.infoEquipCart(val, quantity, email);
             }
         }

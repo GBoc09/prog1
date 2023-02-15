@@ -131,23 +131,23 @@ public class EquipDAO {
         }
         return equips;
     }
-//    public List<Equipment> getEquipInfoForCart(int i){
-//        Connection con = MyConnectionSingleton.getConnection();
-//        List<Equipment> equips = new ArrayList<>();
-//        try(Statement stmt = con.createStatement();
-//            ResultSet rs = EquipQuery.loadEquipByOrder(stmt, i)){
-//            while (rs. next()){
-//                Equipment newEquip = new Equipment();
-//                newEquip.setEquipType(rs.getString(1));
-//                newEquip.setSize(rs.getString(2));
-//                newEquip.setPrice(rs.getInt(3));
-//                equips.add(newEquip);
-//            }
-//        }catch (SQLException sqlException){
-//            sqlException.printStackTrace();
-//        }
-//        return equips;
-//    }
+    public List<Equipment> getEquipInfoForCart(int i){
+        Connection con = MyConnectionSingleton.getConnection();
+        List<Equipment> equips = new ArrayList<>();
+        try(Statement stmt = con.createStatement();
+            ResultSet rs = EquipQuery.loadEquipByOrder(stmt, i)){
+            while (rs. next()){
+                Equipment newEquip = new Equipment();
+                newEquip.setEquipType(rs.getString(1));
+                newEquip.setSize(rs.getString(2));
+                newEquip.setPrice(rs.getInt(3));
+                equips.add(newEquip);
+            }
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return equips;
+    }
     public List<Equipment> getCart(String email){
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();

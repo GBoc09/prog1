@@ -12,7 +12,7 @@ public class CartDAO {
         try (Statement stmt = con.createStatement()) {
             RentalQuery.insertIntoCart(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getPrice(), quant,email);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
 
     }

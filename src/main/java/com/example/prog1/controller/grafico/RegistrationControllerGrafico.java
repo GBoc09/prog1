@@ -42,7 +42,7 @@ public class RegistrationControllerGrafico {
         app.changeScene(LOGIN_SCREEN);
     }
     @FXML
-    void signUp(ActionEvent event) {
+    void signUp(ActionEvent event) throws InvalidCredentialException {
         UserBean userBean;
         try {
             userBean = insertInfo();
@@ -72,7 +72,7 @@ public class RegistrationControllerGrafico {
         } catch (InvalidCredentialException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please check credentials");
             alert.showAndWait();
-            throw new RuntimeException(e);
+            throw new InvalidCredentialException();
         }
     }
     private UserBean insertInfo() throws InvalidCredentialException {
@@ -82,9 +82,6 @@ public class RegistrationControllerGrafico {
         }
         if (!password.getText().equals(password1.getText())){
             throw new InvalidCredentialException("The password must be the same");
-        }
-        if(!email.getText().matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")){
-            throw new InvalidCredentialException("The email must be: youremail@something.domain");
         }
         UserBean userBeanInfo = new UserBean();
         userBeanInfo.setUserEmail(email.getText());
