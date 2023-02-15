@@ -1,34 +1,46 @@
 package com.example.prog1.bean;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class CartBean implements Bean {
-    private Double total;
-    private List<CartRowBean> cartRowBeanList;
-
-    public CartBean(){
-        this(0.0, new ArrayList<>());
-
-    }
-    public CartBean(Double total, List<CartRowBean> cartRowBean){
-        setTotal(total);
-        setCartRowBeanList(cartRowBean);
-    }
-
-    public Double getTotal() {
-        return total;
+    private String type;
+    private String size;
+    private Integer quant;
+    private Integer price;
+    public CartBean(){}
+    public CartBean (String type, String size, Integer quant, Integer price){
+        this.type = type;
+        this.size = size;
+        this.quant = quant;
+        this.price = price;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
+    public String getType() {
+        return type;
     }
 
-    public List<CartRowBean> getCartRowBeanList() {
-        return cartRowBeanList;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public  void setCartRowBeanList(List<CartRowBean> cartRowBeanList) {
-        this.cartRowBeanList = cartRowBeanList;
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public Integer getQuant() {
+        return quant;
+    }
+
+    public void setQuant(Integer quant) {
+        this.quant = quant;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 }

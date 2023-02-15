@@ -2,10 +2,8 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.MainApp;
 import com.example.prog1.bean.CartBean;
-import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,41 +18,26 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.example.prog1.controller.grafico.CartRowControllerG.quantity;
-
 public class CartControllerGrafico implements Initializable {
 
-    @FXML
-    private Button addItems;
-    @FXML
-    private MenuItem cart;
-    @FXML
-    private ListView<String> cartView;
-    @FXML
-    private Button completeRental;
-    @FXML
-    private Button deleteItems;
-    @FXML
-    private MenuItem home;
-    @FXML
-    private MenuItem logbook;
-    @FXML
-    private MenuItem logout;
-    @FXML
-    private MenuBar menuBar;
-
+    @FXML private Button addItems;
+    @FXML private MenuItem cart;
+    @FXML private ListView<String> cartView;
+    @FXML private Button completeRental;
+    @FXML private Button deleteItems;
+    @FXML private MenuItem home;
+    @FXML private MenuItem logbook;
+    @FXML private MenuItem logout;
+    @FXML private MenuBar menuBar;
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
         if (source == addItems) {
             MainApp app = new MainApp();
             app.changeScene("rentEquip1.fxml");
+        } else if (source == deleteItems) {
+            deleteCart();
         }
-    }
-    private RentalEquipApplicativo rentalEquipApplicativo;
-    public CartControllerGrafico() {
-        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-//        rentalEquipApplicativo = new RentalEquipApplicativo(userBean);
     }
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
@@ -72,25 +55,38 @@ public class CartControllerGrafico implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        List<EquipBean> equipmentBeanList = rentalEquipApplicativo.getEquipForCart(val);
-        Integer q = quantity;
-        for (EquipBean d : equipmentBeanList) {
-            String type = d.getType();
-            String size = d.getSize();
-            Integer price = d.getPrice();
-            cartView.getItems().add(type+ "   "+size+"   "+price+"   "+q+"\n\n");
+        List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
+        for (CartBean c : cartBeanList){
+            String type = c.getType();
+            String size = c.getSize();
+            Integer quant = c.getQuant();
+            Integer price = c.getPrice();
+            cartView.getItems().add(type+"   "+size+"   "+quant+"   "+price);
         }
-        //viewCart();
+////        List<EquipBean> equipmentBeanList = rentalEquipApplicativo.getEquipForCart(val);
+////        Integer q = quantity;
+////        for (EquipBean d : equipmentBeanList) {
+////            String type = d.getType();
+////            String size = d.getSize();
+////            Integer price = d.getPrice();
+//            cartView.getItems().add(type+ "   "+size+"   "+price+"   "+q+"\n\n");
+//        }
     }
     private static Integer val;
     public int memoryIndex (Integer selectionIndex){
         val = selectionIndex+1;
         return val;
     }
-//    private void viewCart(){
-//        CartBean cartBean = rentalEquipApplicativo.showCart();
-//    }
+    private void deleteCart() throws IOException {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        rentalEquipApplicativo.deleteItem(userBean);
+        MainApp app = new MainApp();
+        app.changeScene("cart1.fxml");
+
+    }
 }
 
 

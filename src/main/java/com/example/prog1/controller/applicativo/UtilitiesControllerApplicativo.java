@@ -18,11 +18,11 @@ public class UtilitiesControllerApplicativo {
         i = equipDAO.selectAvailability(index);
         return i;
     }
-    public void infoEquipCart(int selectedIndex, int quant) {
+    public void infoEquipCart(int selectedIndex, int quant, String email) {
         EquipDAO equipDAO = new EquipDAO();
         CartDAO cartDAO = new CartDAO();
         EquipBean equipBean = null;
         equipBean = equipDAO.selectEquipByOrder(selectedIndex);
-        cartDAO.insertIntoCart(equipBean, quant);
+        cartDAO.insertIntoCart(equipBean, quant, email);
     }
 }

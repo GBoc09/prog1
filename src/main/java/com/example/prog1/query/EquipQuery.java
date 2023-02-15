@@ -13,6 +13,10 @@ public class EquipQuery {
         String query = String.format("INSERT INTO Equipment(divingName)value('%s');", name);
         return stmt.execute(query);
     }
+    public static boolean deleteItem(Statement stmt, String email) throws SQLException {
+        String query = String.format("DELETE FROM Cart WHERE scuba = '%s';", email);
+        return stmt.execute(query);
+    }
     public static ResultSet loadAllProducts(Statement stmt) throws SQLException {
         String query = String.format("SELECT * FROM Equipment;");
         return stmt.executeQuery(query);
@@ -33,9 +37,12 @@ public class EquipQuery {
         String query = String.format("SELECT equipType, size, price FROM Equipment WHERE idEquipment = '%d' ORDER BY equipType;", index);
         return stmt.executeQuery(query);
     }
+    public static ResultSet loadEquipCart(Statement stmt, String mail ) throws SQLException {
+        String query = String.format("SELECT equipType, equipSize, equipPrice, equipQuantity FROM Cart WHERE scuba = '%s';", mail);
+        return stmt.executeQuery(query);
+    }
     public static ResultSet loadAvail(Statement stmt, int index) throws SQLException {
         String query = String.format("SELECT availability FROM Equipment WHERE idEquipment = '%d';", index);
         return stmt.executeQuery(query);
     }
-
 }

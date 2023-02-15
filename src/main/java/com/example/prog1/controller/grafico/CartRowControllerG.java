@@ -1,49 +1,37 @@
 package com.example.prog1.controller.grafico;
 
 import com.example.prog1.MainApp;
+import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.controller.applicativo.UtilitiesControllerApplicativo;
-import com.example.prog1.exception.InvalidInsertionEquipException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CartRowControllerG { // fxml per inserimento quantità
-    @FXML
-    private Button addToCart;
-    @FXML
-    private MenuItem cart;
-    @FXML
-    private Label equipType;
-    @FXML
-    private MenuItem home;
-    @FXML
-    private TextField insertQuantity;
-    @FXML
-    private MenuItem logbook;
-    @FXML
-    private MenuItem logout;
-    @FXML
-    private MenuBar menuBar;
-    @FXML
-    private Label priceLabel;
-    @FXML
-    private Label sizeLabel;
-    @FXML
-    private Label back;
+    @FXML private Button addToCart;
+    @FXML private Button addItems;
+    @FXML private Button goToCart;
+    @FXML private MenuItem cart;
+    @FXML private Label equipType;
+    @FXML private MenuItem home;
+    @FXML private TextField insertQuantity;
+    @FXML private MenuItem logbook;
+    @FXML private MenuItem logout;
+    @FXML private MenuBar menuBar;
+    @FXML private Label priceLabel;
+    @FXML private Label sizeLabel;
+    @FXML private Label back;
     Logger logger = Logger.getLogger(CartRowControllerG.class.getName());
-    private RentalEquipApplicativo rentalEquipApplicativo;
-    public CartRowControllerG() {
-        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-//        rentalEquipApplicativo = new RentalEquipApplicativo(userBean);
-    }
     @FXML
     void back(MouseEvent event) {
         try{
@@ -54,12 +42,23 @@ public class CartRowControllerG { // fxml per inserimento quantità
             logger.log(Level.INFO, "Exception Error");
         }
     }
-
     @FXML
-    void onButtonClicked(ActionEvent event) throws IOException, InvalidInsertionEquipException {
+    void onButtonClicked(ActionEvent event) throws IOException {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        Node source = (Node) event.getSource();
         checkQuantity();
+        if (source == addToCart){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion successful.");
+            alert.showAndWait();
+        } else if (source == addItems) {
+            MainApp app = new MainApp();
+            app.changeScene("rentEquip1.fxml");
+        } else if (source == goToCart) {
+            loadCart(userBean);
+            MainApp app = new MainApp();
+            app.changeScene("cart1.fxml");
+        }
     }
-
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
@@ -88,8 +87,11 @@ public class CartRowControllerG { // fxml per inserimento quantità
         val = selectionIndex+1;
         return val;
     }
+    private static String email;
     @FXML
     public void initialize (){
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        email = userBean.getUserEmail();
         EquipBean equipBean;
         UtilitiesControllerApplicativo utilities = new UtilitiesControllerApplicativo();
         equipBean = utilities.infoEquipGeneral(val);
@@ -98,7 +100,9 @@ public class CartRowControllerG { // fxml per inserimento quantità
         priceLabel.setText(String.valueOf(equipBean.getPrice()));
     }
     public static Integer quantity;
-    public Integer checkQuantity() throws IOException, InvalidInsertionEquipException {
+    private Integer checkQuantity()  {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        email = userBean.getUserEmail();
         if(insertQuantity.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please insert a valid quantity");
             alert.showAndWait();
@@ -108,18 +112,21 @@ public class CartRowControllerG { // fxml per inserimento quantità
             disp = utilities.infoDispEquip(val);
             quantity = Integer.valueOf(insertQuantity.getText());
             if(disp < quantity){
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Your request is bigger than our availabilities, please insert a valid quantitative.");
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Quantity is bigger than our availabilities, please insert a valid quantitative.");
                 alert.showAndWait();
                 insertQuantity.setText("");
             } else if (disp >= quantity) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Your request is accepted.");
-                alert.showAndWait();
-                utilities.infoEquipCart(val, quantity);
-                MainApp app = new MainApp();
-                app.changeScene("cart1.fxml");
+//                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Your request is accepted.");
+//                alert.showAndWait();
+                utilities.infoEquipCart(val, quantity, email);
             }
         }
         return quantity;
     }
-
+    public List<CartBean> loadCart(UserBean userBean){
+        email = userBean.getUserEmail();
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        List<CartBean> cartBeans = rentalEquipApplicativo.showCart(email);
+        return cartBeans;
+    }
 }

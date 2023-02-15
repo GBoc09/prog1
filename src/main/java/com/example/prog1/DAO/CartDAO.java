@@ -2,8 +2,6 @@ package com.example.prog1.DAO;
 
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.dbConnection.MyConnectionSingleton;
-import com.example.prog1.exception.DuplicatedUserException;
-import com.example.prog1.exception.InvalidInsertionEquipException;
 import com.example.prog1.model.CartRow;
 import com.example.prog1.model.Equipment;
 import com.example.prog1.query.RentalQuery;
@@ -19,12 +17,10 @@ public class CartDAO {
     private static final String EQUIP_PRICE_CART = "equipPrice";
     private static final String EQUIP_Q_CART = "equipQuantity";
 
-    /**
-     * data truncated for column equipPrice */
-    public void insertIntoCart(EquipBean equipBean, int quant)  {
+    public void insertIntoCart(EquipBean equipBean, int quant,String email)  {
         Connection con = MyConnectionSingleton.getConnection();
         try (Statement stmt = con.createStatement()) {
-            RentalQuery.insertIntoCart(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getPrice(), quant);
+            RentalQuery.insertIntoCart(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getPrice(), quant,email);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

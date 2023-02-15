@@ -40,7 +40,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </MenuBar>
-      <Label fx:id="back" layoutX="14.0" layoutY="49.0" onMouseClicked="#back" text="Select your choices">
+      <Label fx:id="back" layoutX="41.0" layoutY="48.0" onMouseClicked="#back" text="Select your choices">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
@@ -48,51 +48,61 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Label>
-      <Line endX="214.5999755859375" endY="0.20001220703125" layoutX="113.0" layoutY="100.0" startX="-100.0" strokeWidth="2.0" />
-      <Label layoutX="40.0" layoutY="120.0" text="Equipment type">
+      <Line endX="214.5999755859375" endY="0.20001220703125" layoutX="143.0" layoutY="100.0" startX="-100.0" strokeWidth="2.0" />
+      <Label layoutX="56.0" layoutY="120.0" text="Equipment type">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="200.0" text="Price">
+      <Label layoutX="56.0" layoutY="200.0" text="Price">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="240.0" text="Size ">
+      <Label layoutX="56.0" layoutY="240.0" text="Size ">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="equipType" layoutX="332.0" layoutY="120.0" prefHeight="18.0" prefWidth="200.0" text="select item">
+      <Label fx:id="equipType" layoutX="348.0" layoutY="120.0" prefHeight="18.0" prefWidth="200.0" text="select item">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="priceLabel" layoutX="332.0" layoutY="200.0" prefHeight="18.0" prefWidth="200.0" text="select item">
+      <Label fx:id="priceLabel" layoutX="348.0" layoutY="200.0" prefHeight="18.0" prefWidth="200.0" text="select item">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="sizeLabel" layoutX="332.0" layoutY="240.0" prefHeight="18.0" prefWidth="200.0" text="select item">
+      <Label fx:id="sizeLabel" layoutX="348.0" layoutY="240.0" prefHeight="18.0" prefWidth="200.0" text="select item">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="addToCart" layoutX="225.0" layoutY="314.0" mnemonicParsing="false" onAction="#onButtonClicked" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="AddToCart">
+      <Button fx:id="addToCart" layoutX="41.0" layoutY="303.0" mnemonicParsing="false" onAction="#onButtonClicked" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="Add To Cart">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label layoutX="40.0" layoutY="160.0" text="Quantity">
+      <Label layoutX="56.0" layoutY="160.0" text="Quantity">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="insertQuantity" layoutX="317.0" layoutY="153.0" prefHeight="18.0" prefWidth="200.0" promptText="select quanity" style="-fx-background-color: none;">
+      <TextField fx:id="insertQuantity" layoutX="333.0" layoutY="153.0" prefHeight="18.0" prefWidth="200.0" promptText="select quanity" style="-fx-background-color: none;">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
+      <Button fx:id="addItems" layoutX="210.0" layoutY="303.0" mnemonicParsing="false" onAction="#onButtonClicked" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="Add Items">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="goToCart" layoutX="380.0" layoutY="303.0" mnemonicParsing="false" onAction="#onButtonClicked" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="Go To Cart ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
