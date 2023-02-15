@@ -4,8 +4,6 @@ import com.example.prog1.MainApp;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerEquipApplicativo;
-import com.example.prog1.exception.DuplicatedEquipException;
-import com.example.prog1.exception.InvalidInsertionEquipException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,26 +17,14 @@ import java.util.logging.Logger;
 
 public class AddEquipManagerG {
 
-    @FXML
-    private TextField EquipType;
-
-    @FXML
-    private Button addProduct;
-
+    @FXML private TextField equipType;
+    @FXML private Button addProduct;
     @FXML
     private TextField availability;
-
-    @FXML
-    private Label errorLabel;
-
-    @FXML
-    private Label goHome;
-
-    @FXML
-    private TextField price;
-
-    @FXML
-    private ChoiceBox<String> size;
+    @FXML private Label errorLabel;
+    @FXML private Label goHome;
+    @FXML private TextField price;
+    @FXML private ChoiceBox<String> size;
     ObservableList<String> sizeList = FXCollections.observableArrayList("none", "XS", "S", "M","L", "XL");
     Logger logger = Logger.getLogger(AddEquipManagerG.class.getName());
     @FXML
@@ -55,10 +41,8 @@ public class AddEquipManagerG {
     void addNewProduct(ActionEvent event) throws IOException {
         ManagerEquipApplicativo managerEquipApplicativo = new ManagerEquipApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        String email  = userBean.getUserEmail();
-        System.out.println("add new product controller grafico -- verifica che prenda utente: "+email);
         checkFields();
-        EquipBean equipBean = new EquipBean(EquipType.getText(), size.getValue(), Integer.parseInt(availability.getText()), Integer.parseInt(price.getText()));
+        EquipBean equipBean = new EquipBean(equipType.getText(), size.getValue(), Integer.parseInt(availability.getText()), Integer.parseInt(price.getText()));
         managerEquipApplicativo.addProduct(equipBean,userBean);
         if (flag) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion Successful");
@@ -68,7 +52,7 @@ public class AddEquipManagerG {
         }
     }
     private void checkFields(){
-        if (EquipType.getText().isEmpty() || size.getValue().isEmpty()||price.getText().isEmpty()||availability.getText().isEmpty()) {
+        if (equipType.getText().isEmpty() || size.getValue().isEmpty()||price.getText().isEmpty()||availability.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Please fill all fields");
             alert.showAndWait();
         }

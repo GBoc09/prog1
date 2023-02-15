@@ -1,4 +1,4 @@
-package com.example.prog1.DAO;
+package com.example.prog1.dao;
 
 public class RentalDAO {
     private static final String ID_RENT = "idRental";

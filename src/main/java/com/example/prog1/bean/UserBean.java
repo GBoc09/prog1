@@ -1,7 +1,7 @@
 package com.example.prog1.bean;
 
 public class UserBean implements Bean{
-    private String UserEmail;
+    private String userEmail;
     private String name;
     private String surname;
     private String pass;
@@ -19,11 +19,11 @@ public class UserBean implements Bean{
     }
 
     public String getUserEmail() {
-        return UserEmail;
+        return userEmail;
     }
 
     public void setUserEmail(String userEmail) {
-        UserEmail = userEmail;
+        this.userEmail = userEmail;
     }
 
     public String getName() {

@@ -1,6 +1,6 @@
 package com.example.prog1.controller.applicativo;
 
-import com.example.prog1.DAO.EquipDAO;
+import com.example.prog1.dao.EquipDAO;
 import com.example.prog1.bean.*;
 import com.example.prog1.model.*;
 

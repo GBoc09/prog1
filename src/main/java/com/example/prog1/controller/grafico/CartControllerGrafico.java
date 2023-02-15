@@ -37,6 +37,9 @@ public class CartControllerGrafico implements Initializable {
             app.changeScene("rentEquip1.fxml");
         } else if (source == deleteItems) {
             deleteCart();
+        } else if (source == completeRental){
+            /** MANDARE EMAIL AL DIVING PER NOTIFICA ORDINE
+             * vedere possibile applicazione del pattern state */
         }
     }
     @FXML
@@ -65,14 +68,6 @@ public class CartControllerGrafico implements Initializable {
             Integer price = c.getPrice();
             cartView.getItems().add(type+"   "+size+"   "+quant+"   "+price);
         }
-////        List<EquipBean> equipmentBeanList = rentalEquipApplicativo.getEquipForCart(val);
-////        Integer q = quantity;
-////        for (EquipBean d : equipmentBeanList) {
-////            String type = d.getType();
-////            String size = d.getSize();
-////            Integer price = d.getPrice();
-//            cartView.getItems().add(type+ "   "+size+"   "+price+"   "+q+"\n\n");
-//        }
     }
     private static Integer val;
     public static int memoryIndex (Integer selectionIndex){

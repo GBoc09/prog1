@@ -12,21 +12,11 @@ import java.util.logging.Logger;
 
 public class ManagerHomeControllerG {
     Logger logger = Logger.getLogger(ManagerHomeControllerG.class.getName());
-    @FXML
-    private Button addCourse;
-
-    @FXML
-    private Button addDiving;
-
-    @FXML
-    private Button addEqup;
-
-    @FXML
-    private Label goToLogin;
-
-    @FXML
-    private Button yourDivingCenter;
-
+    @FXML private Button addCourse;
+    @FXML private Button addDiving;
+    @FXML private Button addEqup;
+    @FXML private Label goToLogin;
+    @FXML private Button yourDivingCenter;
     @FXML
     void aggiungiDiving(ActionEvent event) {
         // todo

@@ -1,8 +1,8 @@
 package com.example.prog1.controller.applicativo;
 
-import com.example.prog1.DAO.FreeDAO;
-import com.example.prog1.DAO.ManagerDAO;
-import com.example.prog1.DAO.ScubaDAO;
+import com.example.prog1.dao.FreeDAO;
+import com.example.prog1.dao.ManagerDAO;
+import com.example.prog1.dao.ScubaDAO;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.model.User;

@@ -9,10 +9,6 @@ public class EquipQuery {
         String query = String.format("INSERT INTO Equipment (EquipType, size, availability, price, divingName, manager)values ('%s', '%s', '%d', '%d', '%s','%s');", type, size, avail, price, divingName,manEmail);
         return stmt.execute(query);
     }
-    public static boolean insertDivingName(Statement stmt, String name) throws SQLException {
-        String query = String.format("INSERT INTO Equipment(divingName)value('%s');", name);
-        return stmt.execute(query);
-    }
     public static boolean deleteItem(Statement stmt, String email) throws SQLException {
         String query = String.format("DELETE FROM Cart WHERE scuba = '%s';", email);
         return stmt.execute(query);

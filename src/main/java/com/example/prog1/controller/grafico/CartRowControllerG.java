@@ -116,7 +116,7 @@ public class CartRowControllerG { // fxml per inserimento quantità
                 alert.showAndWait();
                 insertQuantity.setText("");
             } else if (disp >= quantity) {
-                utilities.infoEquipCart(val, quantity, email);
+               utilities.infoEquipCart(val, quantity, email);
             }
         }
         return quantity;

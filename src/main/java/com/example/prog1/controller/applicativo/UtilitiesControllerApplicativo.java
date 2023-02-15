@@ -1,7 +1,7 @@
 package com.example.prog1.controller.applicativo;
 
-import com.example.prog1.DAO.CartDAO;
-import com.example.prog1.DAO.EquipDAO;
+import com.example.prog1.dao.CartDAO;
+import com.example.prog1.dao.EquipDAO;
 import com.example.prog1.bean.EquipBean;
 
 public class UtilitiesControllerApplicativo {
