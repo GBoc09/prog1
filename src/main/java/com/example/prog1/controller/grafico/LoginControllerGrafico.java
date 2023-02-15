@@ -20,14 +20,9 @@ public class LoginControllerGrafico {
     private static final String MANAGER_SCREEN = "managerHome1.fxml";
 
     @FXML private Button createAccout;
-
     @FXML private TextField email;
-
     @FXML private Button entry;
-
-
-    @FXML
-    private PasswordField userPass;
+    @FXML private PasswordField userPass;
     private Integer type = -1;
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {

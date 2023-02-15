@@ -55,17 +55,11 @@ public class AddEquipManagerG {
     void addNewProduct(ActionEvent event) throws IOException {
         ManagerEquipApplicativo managerEquipApplicativo = new ManagerEquipApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        String email  = userBean.getUserEmail();
+        System.out.println("add new product controller grafico -- verifica che prenda utente: "+email);
         checkFields();
-        try {
-            EquipBean equipBean = new EquipBean(-1, EquipType.getText(), size.getValue(), Integer.parseInt(availability.getText()), Double.parseDouble(price.getText()));
-            managerEquipApplicativo.addProduct(equipBean,userBean);
-        } catch (DuplicatedEquipException e){
-            flag = false;
-            errorLabel.setText("Item already registered");
-        }catch (InvalidInsertionEquipException e) {
-            flag = false;
-            errorLabel.setText("Check the fields");
-        }
+        EquipBean equipBean = new EquipBean(EquipType.getText(), size.getValue(), Integer.parseInt(availability.getText()), Integer.parseInt(price.getText()));
+        managerEquipApplicativo.addProduct(equipBean,userBean);
         if (flag) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion Successful");
             alert.showAndWait();

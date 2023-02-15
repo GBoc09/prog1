@@ -78,7 +78,7 @@ public class CartControllerGrafico implements Initializable {
         for (EquipBean d : equipmentBeanList) {
             String type = d.getType();
             String size = d.getSize();
-            Double price = d.getPrice();
+            Integer price = d.getPrice();
             cartView.getItems().add(type+ "   "+size+"   "+price+"   "+q+"\n\n");
         }
         //viewCart();

@@ -18,7 +18,6 @@ public class RentalEquipApplicativo {
         List<Equipment> equip2 = equipmentDAO.getEquipInfo();
         for (Equipment d : equip2) {
             EquipBean equipmentBean = new EquipBean();
-            equipmentBean.setId(d.getEquipID());
             equipmentBean.setType(d.getEquipType());
             equipmentBean.setSize(d.getSize());
             equipmentBean.setAvail(d.getAvail());

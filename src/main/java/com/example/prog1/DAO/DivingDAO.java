@@ -12,7 +12,6 @@ import java.sql.Statement;
 
 public class DivingDAO {
     /* NOMI COLONNE SQL */
-    private static final String DIVING_ID = "idDiving";
     private static final String DIVING_NAME = "name";
     private static final String DIVING_LOCATION = "location";
     private static final String DIVING_TEL = "telephone";
@@ -41,13 +40,12 @@ public class DivingDAO {
         return diving;
     }
     public Diving createDiving(ResultSet rs) throws SQLException {
-        Integer id = rs.getInt(DIVING_ID);
         String name = rs.getString(DIVING_NAME);
         String location = rs.getString(DIVING_LOCATION);
         String tel = rs.getString(DIVING_TEL);
         ManagerDAO managerDAO = new ManagerDAO();
         Manager man = managerDAO.loadManager(managerLicense);
         String manager = man.getLicense();
-        return new Diving(id,name,location,tel,manager);
+        return new Diving(name,location,tel,manager);
     }
 }

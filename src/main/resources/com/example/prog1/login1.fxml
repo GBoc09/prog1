@@ -40,11 +40,6 @@
          </font>
       </Button>
       <Line endX="33.20001220703125" layoutX="250.0" layoutY="204.0" startX="-69.20001220703125" />
-      <Label fx:id="errorLabel" layoutX="180.0" layoutY="221.0" prefHeight="22.0" prefWidth="0.0" textFill="RED">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
       <Label layoutX="297.0" layoutY="256.0" text="or">
          <font>
             <Font size="15.0" />

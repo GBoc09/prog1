@@ -88,13 +88,12 @@ public class RentEquipScubaControllerG implements Initializable {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<EquipBean> equipmentBeanList = rentalEquipApplicativo.getEquips();
         for (EquipBean d : equipmentBeanList) {
-            Integer id = d.getId();
             String type = d.getType();
             String size = d.getSize();
             Integer avail = d.getAvail();
-            Double price = d.getPrice();
+            Integer price = d.getPrice();
 
-            listView.getItems().add(id+"   "+type+ "   "+size+ "   "+avail+"   "+price+"\n\n");
+            listView.getItems().add(type+ "   "+size+ "   "+avail+"   "+price+"\n\n");
             listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {

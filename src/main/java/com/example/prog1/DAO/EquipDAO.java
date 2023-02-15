@@ -3,11 +3,9 @@ package com.example.prog1.DAO;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.catalogue.EquipCatalogue;
 import com.example.prog1.dbConnection.MyConnectionSingleton;
-import com.example.prog1.model.Diving;
 import com.example.prog1.model.Equipment;
-import com.example.prog1.model.Manager;
+import com.example.prog1.query.DivingQuery;
 import com.example.prog1.query.EquipQuery;
-import com.example.prog1.query.RentalQuery;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,22 +19,34 @@ public class EquipDAO {
     private static final String SIZE = "size";
     private static final String AVAIL = "availability";
     private static final String MANAGER = "manager";
-    private static final String DIVING = "idDiving";
-    public boolean insertEquip( Equipment equipment, String license){
-        boolean flag = true;
+    private static final String DIVING = "DivingName";
+
+    /** inserimento diretto per tipo prezzo taglia e diponibilità
+     * inserimento diretto per license
+     * inserimento indiretto per diving: prendi diving name con query da diving se il numero di license corrisponde
+     * poi salvarlo in una stringa e passalo alla query di inserimento in equipment */
+    public String divingName (String manEmail){
+        String name = null;
         Connection con = MyConnectionSingleton.getConnection();
-        try(PreparedStatement ps = con.prepareStatement("INSERT Equipment(equipType, size, availability, price, manager) VALUES(?,?,?,?,?);"))
-        {
-            ps.setString(1,equipment.getEquipType());
-            ps.setString(2,equipment.getSize());
-            ps.setInt(3,equipment.getAvail());
-            ps.setDouble(4, equipment.getPrice());
-            ps.setString(5,equipment.getManLicense());
-            ps.executeUpdate();
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = DivingQuery.selectDivingName(stmt, manEmail);){
+             if (rs.next()){
+                 name = rs.getString(1);
+            }
+        } catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return name;
+    }
+    public void insertEquip( EquipBean equipBean, String manEmail){
+        Connection con = MyConnectionSingleton.getConnection();
+        try(Statement stmt = con.createStatement()){
+            String nomeDiving = divingName(manEmail);
+           EquipQuery.insertEquip(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getAvail(), equipBean.getPrice(), nomeDiving,manEmail);
+
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
-        return flag;
     }
     public EquipBean selectEquipByOrder (int index) {
         EquipBean equipBean= new EquipBean();
@@ -46,7 +56,7 @@ public class EquipDAO {
             while (rs.next()){
                 equipBean.setType(rs.getString(1));
                 equipBean.setSize(rs.getString(2));
-                equipBean.setPrice(rs.getDouble(3));
+                equipBean.setPrice(rs.getInt(3));
             }
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
@@ -81,16 +91,12 @@ public class EquipDAO {
         return new EquipCatalogue(equips);
     }
     private Equipment createProduct(ResultSet rs) throws SQLException {
-        Integer id = rs.getInt(ID_EQUIP);
         String type = rs.getString(TYPE_EQUIP);
         String size = rs.getString(SIZE);
-        Double price = rs.getDouble(PRICE);
+        Integer price = rs.getInt(PRICE);
         Integer avail = rs.getInt(AVAIL);
-        Integer idDiv = rs.getInt(DIVING);
         String idMan = rs.getString(MANAGER);
-        ManagerDAO managerDAO = new ManagerDAO();
-        Manager manager = managerDAO.loadManager(idMan);
-        return new Equipment(id,type,size,price,avail,manager);
+        return new Equipment(type,size,avail,price);
 
     }
     public Equipment loadEquipByID (Integer id) {
@@ -117,7 +123,7 @@ public class EquipDAO {
                 newEquip.setEquipType(rs.getString(2));
                 newEquip.setSize(rs.getString(3));
                 newEquip.setAvail(rs.getInt(4));
-                newEquip.setPrice(rs.getDouble(5));
+                newEquip.setPrice(rs.getInt(5));
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
@@ -134,7 +140,7 @@ public class EquipDAO {
                 Equipment newEquip = new Equipment();
                 newEquip.setEquipType(rs.getString(1));
                 newEquip.setSize(rs.getString(2));
-                newEquip.setPrice(rs.getDouble(3));
+                newEquip.setPrice(rs.getInt(3));
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){

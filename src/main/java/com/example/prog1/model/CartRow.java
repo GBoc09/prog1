@@ -1,6 +1,7 @@
 package com.example.prog1.model;
 
 import java.io.Serializable;
+import java.util.function.ToIntBiFunction;
 
 public class CartRow implements Serializable {
     private Equipment equipment;
@@ -9,7 +10,7 @@ public class CartRow implements Serializable {
     public CartRow(Equipment equipment, Integer avail){
 
     }
-    public Double getSubTotal (){
+    public Integer getSubTotal (){
         return equipment.getPrice() * quantity;
     }
     public Equipment getEquipment(){
@@ -35,7 +36,7 @@ public class CartRow implements Serializable {
     public String getEquipSize (){
         return equipment.getSize();
     }
-    public Double getPrice (){
+    public Integer getPrice (){
         return equipment.getPrice();
     }
     /* teniamo traccia della licensa del manager del diving dove prendiamo le cose */

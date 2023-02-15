@@ -1,37 +1,17 @@
 package com.example.prog1.bean;
 
 public class EquipBean {
-    private Integer id;
     private String type;
     private String size;
     private Integer avail;
-    private Double price;
+    private Integer price;
     public EquipBean(){}
-//    public EquipBean(){
-//        this(0, "", "", 0, 0.0);
-//    }
-
-//    public EquipBean(Integer id){
-//        this(id, "", "", 0, 0.0);
-//    }
-public EquipBean(Integer id){
-    this.id = id;
-}
-    public EquipBean(Integer id, String type, String size, Integer avail, Double price){
-        this.id = id;
+    public EquipBean(String type, String size, Integer avail, Integer price){
         this.type = type;
         this.size = size;
         this.avail = avail;
         this.price = price;
     }
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getType() {
         return type;
     }
@@ -56,11 +36,11 @@ public EquipBean(Integer id){
         this.avail = avail;
     }
 
-    public Double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 }
