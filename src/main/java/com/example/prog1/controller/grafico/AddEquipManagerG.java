@@ -3,7 +3,7 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.MainApp;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
-import com.example.prog1.controller.applicativo.ManagerEquipApplicativo;
+import com.example.prog1.controller.applicativo.ManagerApplicativo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,12 +19,19 @@ public class AddEquipManagerG {
 
     @FXML private TextField equipType;
     @FXML private Button addProduct;
-    @FXML
-    private TextField availability;
+    @FXML private TextField availability;
     @FXML private Label errorLabel;
     @FXML private Label goHome;
     @FXML private TextField price;
     @FXML private ChoiceBox<String> size;
+    @FXML private MenuItem courses;
+    @FXML private MenuItem diving;
+    @FXML private MenuItem equipment;
+    @FXML private MenuItem home;
+    @FXML private MenuItem logout;
+    @FXML private MenuBar menuBar;
+
+
     ObservableList<String> sizeList = FXCollections.observableArrayList("none", "XS", "S", "M","L", "XL");
     Logger logger = Logger.getLogger(AddEquipManagerG.class.getName());
     @FXML
@@ -39,11 +46,11 @@ public class AddEquipManagerG {
 
     @FXML
     void addNewProduct(ActionEvent event) throws IOException {
-        ManagerEquipApplicativo managerEquipApplicativo = new ManagerEquipApplicativo();
+        ManagerApplicativo managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         checkFields();
         EquipBean equipBean = new EquipBean(equipType.getText(), size.getValue(), Integer.parseInt(availability.getText()), Integer.parseInt(price.getText()));
-        managerEquipApplicativo.addProduct(equipBean,userBean);
+        managerApplicativo.addProduct(equipBean,userBean);
         if (flag) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion Successful");
             alert.showAndWait();
@@ -57,16 +64,23 @@ public class AddEquipManagerG {
             alert.showAndWait();
         }
     }
-
     @FXML
-    void goHome(MouseEvent event) {
-        try{
+    void onMenuItemSelected(ActionEvent event) throws IOException {
+        MenuItem sourceItem = (MenuItem) event.getSource();
+        if (sourceItem == home){
             MainApp app = new MainApp();
             app.changeScene("managerHome1.fxml");
+        } else if (sourceItem == logout){
+            MainApp app = new MainApp();
+            app.changeScene("login1.fxml");
+        } else if (sourceItem == equipment){
+//            MainApp app = new MainApp();
+//            app.changeScene(/*pagina che mostra la lista dell'equip*/);
+        }else if (sourceItem == diving){
+//            MainApp app = new MainApp();
+//            app.changeScene(/*pagina che mostra la lista dei diving associati ad un manager */);
         }
-        catch (Exception e){
-            logger.log(Level.INFO, "Exception Error");
-        }
+
     }
 
 }

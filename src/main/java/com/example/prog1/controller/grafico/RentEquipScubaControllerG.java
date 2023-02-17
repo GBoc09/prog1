@@ -32,9 +32,6 @@ public class RentEquipScubaControllerG implements Initializable {
     public RentEquipScubaControllerG (){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
     }
-/**
- * salvare in variabile statica publica le cose scritte nelle label della selezione qiantità per poi passarle e salvare
- * in una tabella db e poi scrivere tutto su file */
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
@@ -46,7 +43,6 @@ public class RentEquipScubaControllerG implements Initializable {
             app.changeScene("cartRow.fxml");
         }
     }
-
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();

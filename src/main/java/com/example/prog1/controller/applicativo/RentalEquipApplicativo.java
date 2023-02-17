@@ -27,19 +27,6 @@ public class RentalEquipApplicativo {
         }
         return equip;
     }
-//    public List<EquipBean> getEquipForCart (int i) {
-//        List<EquipBean> equip = new ArrayList<>();
-//        EquipDAO equipmentDAO = new EquipDAO();
-//        List<Equipment> equip2 = equipmentDAO.getEquipInfoForCart(i);
-//        for (Equipment d : equip2) {
-//            EquipBean equipmentBean = new EquipBean();
-//            equipmentBean.setType(d.getEquipType());
-//            equipmentBean.setSize(d.getSize());
-//            equipmentBean.setPrice(d.getPrice());
-//            equip.add(equipmentBean);
-//        }
-//        return equip;
-//    }
     public List<CartBean> showCart (String email) {
         List<CartBean> cart = new ArrayList<>();
         EquipDAO equipDAO = new EquipDAO();
