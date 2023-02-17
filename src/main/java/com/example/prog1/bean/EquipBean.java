@@ -1,6 +1,6 @@
 package com.example.prog1.bean;
 
-public class EquipBean {
+public class EquipBean implements Bean{
     private String type;
     private String size;
     private Integer avail;

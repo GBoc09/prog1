@@ -33,5 +33,9 @@ public class UserQuery {
         String query = String.format("SELECT * FROM Scuba WHERE email = '%s';", email);
         return stmt.executeQuery(query);
     }
+    public static ResultSet selectManager(Statement stmt) throws SQLException {
+        String query = String.format("SELECT email FROM Manager;");
+        return stmt.executeQuery(query);
+    }
 
 }

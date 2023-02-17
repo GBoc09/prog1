@@ -5,7 +5,6 @@ import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
-import com.example.prog1.controller.applicativo.UtilitiesControllerApplicativo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -93,8 +92,8 @@ public class CartRowControllerG { // fxml per inserimento quantità
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         email = userBean.getUserEmail();
         EquipBean equipBean;
-        UtilitiesControllerApplicativo utilities = new UtilitiesControllerApplicativo();
-        equipBean = utilities.infoEquipGeneral(val);
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        equipBean = rentalEquipApplicativo.infoEquipGeneral(val);
         equipType.setText(equipBean.getType());
         sizeLabel.setText(equipBean.getSize());
         priceLabel.setText(String.valueOf(equipBean.getPrice()));
@@ -108,15 +107,15 @@ public class CartRowControllerG { // fxml per inserimento quantità
             alert.showAndWait();
         }else{
             Integer disp;
-            UtilitiesControllerApplicativo utilities = new UtilitiesControllerApplicativo();
-            disp = utilities.infoDispEquip(val);
+            RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+            disp = rentalEquipApplicativo.infoDispEquip(val);
             quantity = Integer.valueOf(insertQuantity.getText());
             if(disp < quantity){
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Quantity is bigger than our availabilities, please insert a valid quantitative.");
                 alert.showAndWait();
                 insertQuantity.setText("");
             } else if (disp >= quantity) {
-               utilities.infoEquipCart(val, quantity, email);
+                rentalEquipApplicativo.infoEquipCart(val, quantity, email);
             }
         }
         return quantity;

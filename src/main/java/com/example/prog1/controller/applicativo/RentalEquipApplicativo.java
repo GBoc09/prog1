@@ -1,7 +1,11 @@
 package com.example.prog1.controller.applicativo;
 
+import com.example.prog1.controller.grafico.InternalControllerGrafico;
+import com.example.prog1.dao.CartDAO;
 import com.example.prog1.dao.EquipDAO;
 import com.example.prog1.bean.*;
+import com.example.prog1.dao.ManagerDAO;
+import com.example.prog1.dao.RentalDAO;
 import com.example.prog1.model.*;
 
 import java.util.ArrayList;
@@ -53,7 +57,47 @@ public class RentalEquipApplicativo {
         EquipDAO equipDAO = new EquipDAO();
         equipDAO.deleteItemsFromCart(userBean.getUserEmail());
     }
-    private VendorOrderBean createNotificationInfo(String vendor, Rental rental){
-        return new VendorOrderBean(vendor, rental.getOwnerEmail(), rental.getIdRent());
+    public void saveItem(List<CartBean> cartBeans, UserBean userBean){
+        RentalDAO rentalDAO = new RentalDAO();
+        rentalDAO.insertRent(cartBeans.get(0), cartBeans.get(3),userBean.getUserEmail());
+    }
+    public EquipBean infoEquipGeneral(int selectedIndex){
+        EquipDAO equipDAO = new EquipDAO();
+        EquipBean equipBean = null;
+        equipBean = equipDAO.selectEquipByOrder(selectedIndex);
+        return equipBean;
+    }
+    public Integer infoDispEquip(int index){
+        EquipDAO equipDAO = new EquipDAO();
+        Integer i;
+        i = equipDAO.selectAvailability(index);
+        return i;
+    }
+    public void infoEquipCart(int selectedIndex, int quant, String email) {
+        EquipDAO equipDAO = new EquipDAO();
+        CartDAO cartDAO = new CartDAO();
+        EquipBean equipBean = null;
+        equipBean = equipDAO.selectEquipByOrder(selectedIndex);
+        cartDAO.insertIntoCart(equipBean, quant, email);
+    }
+    /** trovare un modi di scegliere il diving e passare i dati del manager */
+    public void sendEmail(VendorOrderBean vendorOrderBean){
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        List<Manager> managers = getEmailManager();
+        ((VendorOrderBean)vendorOrderBean).setOrderOwnerEmail(userBean.getUserEmail());
+        for (Manager manger : managers){
+            ((VendorOrderBean)vendorOrderBean).addSubscribedEmail(manger.getEmail());
+        }
+//        super(sendEmail(vendorOrderBean));
+        vendorOrderBean.notifyRental();
+    }
+    private List<Manager> getEmailManager(){
+        ManagerDAO managerDAO = new ManagerDAO();
+        List<Manager> manger = new ArrayList<>();
+        Manager man;
+        man = managerDAO.selectEmailMan();
+        manger.add(man);
+        return manger;
     }
 }
+

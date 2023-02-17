@@ -50,4 +50,17 @@ public class ManagerDAO {
 
         return new Manager(email,"",name,surname,license);
     }
+    public Manager selectEmailMan(){
+        Connection con = MyConnectionSingleton.getConnection();
+        Manager emailMan = null;
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = UserQuery.selectManager(stmt);){
+            if (rs.next()){
+                emailMan.setEmail(rs.getString(1));
+            }
+        } catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return emailMan;
+    }
 }

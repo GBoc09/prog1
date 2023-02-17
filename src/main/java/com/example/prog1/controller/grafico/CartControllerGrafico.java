@@ -38,8 +38,8 @@ public class CartControllerGrafico implements Initializable {
         } else if (source == deleteItems) {
             deleteCart();
         } else if (source == completeRental){
-            /** MANDARE EMAIL AL DIVING PER NOTIFICA ORDINE
-             * vedere possibile applicazione del pattern state */
+            saveOrder();
+            /** MANDARE EMAIL AL DIVING PER NOTIFICA ORDINE */
         }
     }
     @FXML
@@ -80,7 +80,12 @@ public class CartControllerGrafico implements Initializable {
         rentalEquipApplicativo.deleteItem(userBean);
         MainApp app = new MainApp();
         app.changeScene("cart1.fxml");
-
+    }
+    private void saveOrder(){
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
+        rentalEquipApplicativo.saveItem(cartBeanList, userBean);
     }
 }
 
