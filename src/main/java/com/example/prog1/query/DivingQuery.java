@@ -13,4 +13,8 @@ public class DivingQuery {
         String query = String.format("INSERT INTO Diving values ('%s', '%s', '%s', '%s');",name, loc, tel, email);
         return stmt.execute(query);
     }
+    public static ResultSet loadDiv(Statement stmt) throws SQLException {
+        String query = String.format("SELECT name, location, telephone FROM Diving;");
+        return stmt.executeQuery(query);
+    }
 }

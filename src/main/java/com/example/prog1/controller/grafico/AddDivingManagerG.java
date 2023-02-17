@@ -31,11 +31,13 @@ public class AddDivingManagerG {
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
     @FXML
-    void goOn(ActionEvent event) { // button continue deve portare alla pagina che mostra l'elenco dei diving assogiati al manager;
+    void goOn(ActionEvent event) throws IOException { // button continue deve portare alla pagina che mostra l'elenco dei diving assogiati al manager;
         ManagerApplicativo managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         DivingBean divingBean = new DivingBean(divingName.getText(), divingLoc.getText(), divingPhone.getText());
         managerApplicativo.addDiving(userBean,divingBean);
+        MainApp app = new MainApp();
+        app.changeScene("showDivingMan.fxml");
     }
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {

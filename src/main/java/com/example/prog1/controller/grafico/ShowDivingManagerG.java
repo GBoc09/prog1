@@ -1,6 +1,11 @@
 package com.example.prog1.controller.grafico;
 
 import com.example.prog1.MainApp;
+import com.example.prog1.bean.DivingBean;
+import com.example.prog1.bean.EquipBean;
+import com.example.prog1.bean.UserBean;
+import com.example.prog1.controller.applicativo.ManagerApplicativo;
+import com.example.prog1.model.Diving;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +15,7 @@ import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ShowDivingManagerG implements Initializable {
@@ -33,14 +39,22 @@ public class ShowDivingManagerG implements Initializable {
 //            MainApp app = new MainApp();
 //            app.changeScene(/*pagina che mostra la lista dell'equip*/);
         }else if (sourceItem == diving){
-//            MainApp app = new MainApp();
-//            app.changeScene(/*pagina che mostra la lista dei diving associati ad un manager */);
+            MainApp app = new MainApp();
+            app.changeScene("showDivingMan.fxml");
         }
 
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ManagerApplicativo  managerApplicativo = new ManagerApplicativo();
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        List<DivingBean> divingBeanList = ManagerApplicativo.getDivings(userBean);
+        for (DivingBean d: divingBeanList){
+            String name = d.getName();
+            String loc = d.getLocation();
+            String tel = d.getTelephone();
+            listView.getItems().add(name+"   "+loc+"   "+tel+"\n\n");
+        }
     }
 }
 

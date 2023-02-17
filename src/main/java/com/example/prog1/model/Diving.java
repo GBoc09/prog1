@@ -11,6 +11,12 @@ public class Diving {
         this.telephone = tel;
         this.divingMan = man;
     }
+    public Diving (String name, String loc, String tel){
+        this.name = name;
+        this.location = loc;
+        this.telephone = tel;
+    }
+    public Diving (){}
     public String getName() {
         return name;
     }
