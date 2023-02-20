@@ -2,6 +2,7 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.MainApp;
 import com.example.prog1.bean.CartBean;
+import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
@@ -82,8 +83,10 @@ public class CartRowControllerG { // fxml per inserimento quantità
      *
      * posso valutare l'indice per andare a selezionare dal db le cose che mi servono*/
     private static Integer val;
-    public static int memoryIndex (Integer selectionIndex){
-        val = selectionIndex+1;
+    public static int memoryIndex (){
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
+        val = cominicationBean.getIndex()+1;
+        System.out.println(val);
         return val;
     }
     private String email;
@@ -93,6 +96,7 @@ public class CartRowControllerG { // fxml per inserimento quantità
         email = userBean.getUserEmail();
         EquipBean equipBean;
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        memoryIndex();
         equipBean = rentalEquipApplicativo.infoEquipGeneral(val);
         equipType.setText(equipBean.getType());
         sizeLabel.setText(equipBean.getSize());

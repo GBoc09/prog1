@@ -2,6 +2,7 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.MainApp;
 import com.example.prog1.bean.CartBean;
+import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import javafx.event.ActionEvent;
@@ -70,8 +71,9 @@ public class CartControllerGrafico implements Initializable {
         }
     }
     private static Integer val;
-    public static int memoryIndex (Integer selectionIndex){
-        val = selectionIndex+1;
+    public static int memoryIndex (){
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
+        val = cominicationBean.getIndex()+1;
         return val;
     }
     private void deleteCart() throws IOException {

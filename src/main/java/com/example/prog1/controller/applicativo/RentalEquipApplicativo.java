@@ -1,11 +1,8 @@
 package com.example.prog1.controller.applicativo;
 
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
-import com.example.prog1.dao.CartDAO;
-import com.example.prog1.dao.EquipDAO;
+import com.example.prog1.dao.*;
 import com.example.prog1.bean.*;
-import com.example.prog1.dao.ManagerDAO;
-import com.example.prog1.dao.RentalDAO;
 import com.example.prog1.model.*;
 
 import java.util.ArrayList;
@@ -26,6 +23,33 @@ public class RentalEquipApplicativo {
             equip.add(equipmentBean);
         }
         return equip;
+    }
+    public List<EquipBean> getEquipsName (String name) {
+        List<EquipBean> equip = new ArrayList<>();
+        EquipDAO equipmentDAO = new EquipDAO();
+        List<Equipment> equip2 = equipmentDAO.getEquipInfoName(name);
+        for (Equipment d : equip2) {
+            EquipBean equipmentBean = new EquipBean();
+            equipmentBean.setType(d.getEquipType());
+            equipmentBean.setSize(d.getSize());
+            equipmentBean.setAvail(d.getAvail());
+            equipmentBean.setPrice(d.getPrice());
+            equip.add(equipmentBean);
+        }
+        return equip;
+    }
+    public List<DivingBean> getDivingList() {
+        List<DivingBean> div = new ArrayList<>();
+        DivingDAO divingDAO = new DivingDAO();
+        List<Diving> div2 = divingDAO.getDivInfo();
+        for (Diving d : div2) {
+            DivingBean divingBean = new DivingBean();
+            divingBean.setName(d.getName());
+            divingBean.setLocation(d.getLocation());
+            divingBean.setTelephone(d.getTelephone());
+            div.add(divingBean);
+        }
+        return div;
     }
     public List<CartBean> showCart (String email) {
         List<CartBean> cart = new ArrayList<>();

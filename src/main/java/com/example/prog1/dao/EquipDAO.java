@@ -1,5 +1,6 @@
 package com.example.prog1.dao;
 
+import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.catalogue.EquipCatalogue;
 import com.example.prog1.dbConnection.MyConnectionSingleton;
@@ -117,6 +118,25 @@ public class EquipDAO {
         List<Equipment> equips = new ArrayList<>();
         try(Statement stmt = con.createStatement();
             ResultSet rs = EquipQuery.loadEquip(stmt)){
+            while (rs. next()){
+                Equipment newEquip = new Equipment();
+                newEquip.setEquipID(rs.getInt(1));
+                newEquip.setEquipType(rs.getString(2));
+                newEquip.setSize(rs.getString(3));
+                newEquip.setAvail(rs.getInt(4));
+                newEquip.setPrice(rs.getInt(5));
+                equips.add(newEquip);
+            }
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return equips;
+    }
+    public List<Equipment> getEquipInfoName(String name){
+        Connection con = MyConnectionSingleton.getConnection();
+        List<Equipment> equips = new ArrayList<>();
+        try(Statement stmt = con.createStatement();
+            ResultSet rs = EquipQuery.loadEquipName(stmt, name)){
             while (rs. next()){
                 Equipment newEquip = new Equipment();
                 newEquip.setEquipID(rs.getInt(1));

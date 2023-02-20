@@ -1,6 +1,7 @@
 package com.example.prog1.controller.grafico;
 
 import com.example.prog1.MainApp;
+import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
@@ -28,6 +29,7 @@ public class RentEquipScubaControllerG implements Initializable {
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
     public static final String CART_USER_SCREEN = "cart1.fxml";
+
     public Integer selectionIndex;
     public RentEquipScubaControllerG (){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
@@ -57,12 +59,19 @@ public class RentEquipScubaControllerG implements Initializable {
             app.changeScene(CART_USER_SCREEN);
         }
     }
+//    private static  String stringa;
+    private static Integer i;
+    public static CominicationBean cominicationBean1;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         quantity.setDisable(true);
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        List<EquipBean> equipmentBeanList = rentalEquipApplicativo.getEquips();
-        for (EquipBean d : equipmentBeanList) {
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
+        String str = cominicationBean.getStr();
+        System.out.println("rent equip grafico: "+cominicationBean.getStr());
+//        List<EquipBean> equipBeanList = rentalEquipApplicativo.getEquips();
+        List<EquipBean> equipBeanList = rentalEquipApplicativo.getEquipsName(str);
+        for (EquipBean d : equipBeanList) {
             String type = d.getType();
             String size = d.getSize();
             Integer avail = d.getAvail();
@@ -73,15 +82,32 @@ public class RentEquipScubaControllerG implements Initializable {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                     equipType.setText(listView.getSelectionModel().getSelectedItem());
+
+//                    String row = listView.getSelectionModel().getSelectedItem();
+//                    String[] column = row.split("   ");
+//                    equipType.setText(column[0]);
+//                    stringa = equipType.getText();
+//                    cominicationBean1 = new CominicationBean(stringa);
+//                    InternalControllerGrafico.getInternalControllerInstance().setBean(cominicationBean1);
+
                     selectionIndex = listView.getSelectionModel().getSelectedIndex();
-                    CartControllerGrafico cartControllerGrafico = new CartControllerGrafico();
-                    CartRowControllerG cartRowControllerG = new CartRowControllerG();
-                    cartControllerGrafico.memoryIndex(selectionIndex);
-                    cartRowControllerG.memoryIndex(selectionIndex);
+                    i = selectionIndex;
+                    System.out.println("rent equip scuba controller: "+i);
+                    cominicationBean1 = new CominicationBean(i);
+                    InternalControllerGrafico.getInternalControllerInstance().setBean(cominicationBean1);
+//                    CartControllerGrafico cartControllerGrafico = new CartControllerGrafico();
+//                    CartRowControllerG cartRowControllerG = new CartRowControllerG();
+//                    cartControllerGrafico.memoryIndex(selectionIndex);
+//                    cartRowControllerG.memoryIndex(selectionIndex);
                 }
             });
             quantity.setDisable(false);
         }
     }
+    /** IL PASSAGGIO DEI DATI NON PUO' AVVENIRE FRA DUE CONTROLLER GRAFICI DEVE AVVENIRE: GRAFICO -> BEAN -> APPLICATIVO
+     * -> BEAN -> GRAFICO.
+     * MODIFICARE getEquips PER INSEIRE ANCHE RICERCA NEL NOME DEL DIVING
+     * E POI STAMPARE LA LISTA
+     */
 }
 

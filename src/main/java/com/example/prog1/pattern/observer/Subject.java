@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Subject {
+public abstract class Subject { /** modificare per gestire le priorità */
     private List<Observer> observers;
     protected Subject(File file){
         super();
