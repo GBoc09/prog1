@@ -42,7 +42,7 @@ public class ShowDivingManagerG implements Initializable {
         }
 
     }
-    private static ManagerApplicativo managerApplicativo;
+    private ManagerApplicativo managerApplicativo;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         managerApplicativo = new ManagerApplicativo();

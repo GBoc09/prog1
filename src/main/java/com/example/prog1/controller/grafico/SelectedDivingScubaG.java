@@ -55,8 +55,8 @@ public class SelectedDivingScubaG implements Initializable {
         MainApp app = new MainApp();
         app.changeScene("rentEquip1.fxml");
     }
-    private static String str;
-    private static CominicationBean cominicationBean;
+    private String str;
+    private CominicationBean cominicationBean;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

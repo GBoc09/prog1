@@ -13,24 +13,16 @@ public class EquipQuery {
         String query = String.format("DELETE FROM Cart WHERE scuba = '%s';", email);
         return stmt.execute(query);
     }
-    public static ResultSet loadAllProducts(Statement stmt) throws SQLException {
-        String query = String.format("SELECT * FROM Equipment;");
-        return stmt.executeQuery(query);
-    }
-    public static ResultSet loadEquipByID(Statement stmt, Integer id) throws SQLException {
-        String query = String.format("SELECT * FROM Equipment WHERE idEquipment = '%d';", id);
-        return stmt.executeQuery(query);
-    }
     public static ResultSet loadEquip(Statement stmt) throws SQLException {
         String query = String.format("SELECT idEquipment, equipType, size, availability, price FROM Equipment;");
         return stmt.executeQuery(query);
     }
-    public static ResultSet loadEquipName(Statement stmt, String name) throws SQLException {
-        String query = String.format("SELECT idEquipment, equipType, size, availability, price FROM Equipment WHERE divingName = '%s';", name);
+    public static ResultSet loadEquipDivingManager(Statement stmt, String diving,String manager) throws SQLException {
+        String query = String.format("SELECT equipType, size, availability, price FROM Equipment WHERE divingName = '%s' AND manager = '%s';",diving, manager);
         return stmt.executeQuery(query);
     }
-    public static ResultSet loadEquipByManager(Statement stmt, String license) throws SQLException {
-        String query = String.format("SELECT idEquipment, equipType, size, availability, price, manager FROM Equipment manager = '%s';", license);
+    public static ResultSet loadEquipName(Statement stmt, String name) throws SQLException {
+        String query = String.format("SELECT idEquipment, equipType, size, availability, price FROM Equipment WHERE divingName = '%s';", name);
         return stmt.executeQuery(query);
     }
     public static ResultSet loadEquipByOrder(Statement stmt, int index) throws SQLException {

@@ -1,5 +1,6 @@
 package com.example.prog1.controller.applicativo;
 
+import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.dao.DivingDAO;
 import com.example.prog1.dao.EquipDAO;
@@ -33,10 +34,10 @@ public class ManagerApplicativo {
         }
         return div;
     }
-    public static List<EquipBean> getEquips(UserBean userBean) {
+    public static List<EquipBean> getEquips(UserBean userBean, CominicationBean cominicationBean) {
         List<EquipBean> equip = new ArrayList<>();
         EquipDAO equipDAO = new EquipDAO();
-        List<Equipment> equip2 = equipDAO.getEquipInfo();
+        List<Equipment> equip2 = equipDAO.getEquipInfoManEDiv(userBean, cominicationBean);
         for (Equipment d : equip2) {
             EquipBean equipBean = new EquipBean();
             equipBean.setType(d.getEquipType());

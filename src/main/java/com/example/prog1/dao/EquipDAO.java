@@ -1,7 +1,8 @@
 package com.example.prog1.dao;
 
+import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
-import com.example.prog1.catalogue.EquipCatalogue;
+import com.example.prog1.bean.UserBean;
 import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.model.Equipment;
 import com.example.prog1.query.DivingQuery;
@@ -17,7 +18,6 @@ public class EquipDAO {
     private static final String PRICE = "price";
     private static final String SIZE = "size";
     private static final String AVAIL = "availability";
-    private static final String MANAGER = "manager";
 
     /** inserimento diretto per tipo prezzo taglia e diponibilità
      * inserimento diretto per license
@@ -74,41 +74,6 @@ public class EquipDAO {
         }
         return i;
     }
-    public EquipCatalogue loadAllProducts(){
-        ArrayList<Equipment> equips = new ArrayList<>();
-        Connection con = MyConnectionSingleton.getConnection();
-        try(Statement stmt = con.createStatement();
-            ResultSet rs = EquipQuery.loadAllProducts(stmt);){
-            while (rs.next()){
-                Equipment equipment = createProduct(rs);
-                equips.add(equipment);
-            }
-        }catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
-        return new EquipCatalogue(equips);
-    }
-    private Equipment createProduct(ResultSet rs) throws SQLException {
-        String type = rs.getString(TYPE_EQUIP);
-        String size = rs.getString(SIZE);
-        Integer price = rs.getInt(PRICE);
-        Integer avail = rs.getInt(AVAIL);
-        return new Equipment(type,size,avail,price);
-
-    }
-    public Equipment loadEquipByID (Integer id) {
-        Equipment equipment = null;
-        Connection con = MyConnectionSingleton.getConnection();
-        try(Statement stmt = con.createStatement();
-        ResultSet rs = EquipQuery.loadEquipByID(stmt, id)){
-            if(rs.next()){
-                equipment = createProduct(rs);
-            }
-        }catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
-        return equipment;
-    }
     public List<Equipment> getEquipInfo(){
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();
@@ -128,6 +93,26 @@ public class EquipDAO {
         }
         return equips;
     }
+    public List<Equipment> getEquipInfoManEDiv(UserBean userBean, CominicationBean cominicationBean){
+        Connection con = MyConnectionSingleton.getConnection();
+        String user = userBean.getUserEmail();
+        String diving = cominicationBean.getStr();
+        List<Equipment> equips = new ArrayList<>();
+        try(Statement stmt = con.createStatement();
+            ResultSet rs = EquipQuery.loadEquipDivingManager(stmt, diving, user)){
+            while (rs. next()){
+                Equipment newEquip = new Equipment();
+                newEquip.setEquipType(rs.getString(1));
+                newEquip.setSize(rs.getString(2));
+                newEquip.setAvail(rs.getInt(3));
+                newEquip.setPrice(rs.getInt(4));
+                equips.add(newEquip);
+            }
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return equips;
+    }
     public List<Equipment> getEquipInfoName(String name){
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();
@@ -140,23 +125,6 @@ public class EquipDAO {
                 newEquip.setSize(rs.getString(3));
                 newEquip.setAvail(rs.getInt(4));
                 newEquip.setPrice(rs.getInt(5));
-                equips.add(newEquip);
-            }
-        }catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
-        return equips;
-    }
-    public List<Equipment> getEquipInfoForCart(int i){
-        Connection con = MyConnectionSingleton.getConnection();
-        List<Equipment> equips = new ArrayList<>();
-        try(Statement stmt = con.createStatement();
-            ResultSet rs = EquipQuery.loadEquipByOrder(stmt, i)){
-            while (rs. next()){
-                Equipment newEquip = new Equipment();
-                newEquip.setEquipType(rs.getString(1));
-                newEquip.setSize(rs.getString(2));
-                newEquip.setPrice(rs.getInt(3));
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
@@ -189,19 +157,5 @@ public class EquipDAO {
         } catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
-    }
-    public EquipCatalogue loadAllEquipByManager(String license){
-        ArrayList<Equipment> equipments = new ArrayList<>();
-        Connection con = MyConnectionSingleton.getConnection();
-        try(Statement stmt = con.createStatement();
-        ResultSet rs = EquipQuery.loadEquipByManager(stmt, license)){
-            while (rs.next()){
-                Equipment locEquip = createProduct(rs);
-                equipments.add(locEquip);
-            }
-        }catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
-        return new EquipCatalogue(equipments);
     }
 }

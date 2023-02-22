@@ -108,9 +108,9 @@ public class RentalEquipApplicativo {
     public void sendEmail(VendorOrderBean vendorOrderBean){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         List<Manager> managers = getEmailManager();
-        ((VendorOrderBean)vendorOrderBean).setOrderOwnerEmail(userBean.getUserEmail());
+        (vendorOrderBean).setOrderOwnerEmail(userBean.getUserEmail());
         for (Manager manger : managers){
-            ((VendorOrderBean)vendorOrderBean).addSubscribedEmail(manger.getEmail());
+            (vendorOrderBean).addSubscribedEmail(manger.getEmail());
         }
 //        super(sendEmail(vendorOrderBean));
         vendorOrderBean.notifyRental();

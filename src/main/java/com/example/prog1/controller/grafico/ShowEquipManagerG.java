@@ -62,7 +62,8 @@ public class ShowEquipManagerG implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        List<EquipBean> equipBeanList = managerApplicativo.getEquips(userBean);
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
+        List<EquipBean> equipBeanList = managerApplicativo.getEquips(userBean, cominicationBean);
         for (EquipBean d: equipBeanList){
             String type = d.getType();
             String size = d.getSize();

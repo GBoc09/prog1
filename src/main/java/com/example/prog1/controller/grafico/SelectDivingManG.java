@@ -47,8 +47,8 @@ public class SelectDivingManG implements Initializable {
             app.changeScene("showDivingMan.fxml");
         }
     }
-    private static String str;
-    private static CominicationBean cominicationBean;
+    private String str;
+    private CominicationBean cominicationBean;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
