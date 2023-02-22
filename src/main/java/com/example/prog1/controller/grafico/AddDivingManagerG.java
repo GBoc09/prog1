@@ -25,7 +25,6 @@ public class AddDivingManagerG {
     @FXML private TextField divingPhone;
     @FXML private MenuItem equipment;
     @FXML private Label errorLabel;
-    @FXML private Label goHome;
     @FXML private Button goOn;
     @FXML private MenuItem home;
     @FXML private MenuItem logout;

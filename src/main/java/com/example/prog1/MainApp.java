@@ -12,12 +12,9 @@ import java.io.IOException;
 
 public class MainApp extends Application {
     private static Stage stg;
-
     public static void setStg(Stage stage) {
         stg = stage;
     }
-
-
     @Override
     public void start(Stage primaryStage) throws IOException {
         setStg(primaryStage);

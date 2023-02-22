@@ -24,6 +24,7 @@ public class RentalEquipApplicativo {
         }
         return equip;
     }
+    /** diving name = name */
     public List<EquipBean> getEquipsName (String name) {
         List<EquipBean> equip = new ArrayList<>();
         EquipDAO equipmentDAO = new EquipDAO();

@@ -3,7 +3,6 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.MainApp;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
-import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -57,13 +56,20 @@ public class RentEquipScubaControllerG implements Initializable {
         }
     }
     private CominicationBean cominicationBean1;
+    /** settare la lista delle attrezzature disponibili in un diving scelto
+     * name = divingName */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         quantity.setDisable(true);
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
         String str = cominicationBean.getStr();
-        List<EquipBean> equipBeanList = rentalEquipApplicativo.getEquipsName(str);
+        List<EquipBean> equipBeanList = null;
+        if (str != null){
+            equipBeanList = rentalEquipApplicativo.getEquipsName(str);
+        } else {
+            equipBeanList = rentalEquipApplicativo.getEquips();
+        }
         for (EquipBean d : equipBeanList) {
             String type = d.getType();
             String size = d.getSize();
