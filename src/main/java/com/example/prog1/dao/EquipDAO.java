@@ -1,9 +1,8 @@
 package com.example.prog1.dao;
 
-import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.catalogue.EquipCatalogue;
-import com.example.prog1.dbConnection.MyConnectionSingleton;
+import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.model.Equipment;
 import com.example.prog1.query.DivingQuery;
 import com.example.prog1.query.EquipQuery;
@@ -14,13 +13,11 @@ import java.util.List;
 
 public class EquipDAO {
     /* SQL column*/
-    private static final String ID_EQUIP = "idEquipment";
     private static final String TYPE_EQUIP = "equipType";
     private static final String PRICE = "price";
     private static final String SIZE = "size";
     private static final String AVAIL = "availability";
     private static final String MANAGER = "manager";
-    private static final String DIVING = "DivingName";
 
     /** inserimento diretto per tipo prezzo taglia e diponibilità
      * inserimento diretto per license
@@ -96,7 +93,6 @@ public class EquipDAO {
         String size = rs.getString(SIZE);
         Integer price = rs.getInt(PRICE);
         Integer avail = rs.getInt(AVAIL);
-        String idMan = rs.getString(MANAGER);
         return new Equipment(type,size,avail,price);
 
     }

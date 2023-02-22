@@ -1,15 +1,10 @@
 package com.example.prog1.dao;
 
 import com.example.prog1.bean.DivingBean;
-import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
-import com.example.prog1.dbConnection.MyConnectionSingleton;
-import com.example.prog1.exception.DuplicatedUserException;
+import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.model.Diving;
-import com.example.prog1.model.Equipment;
-import com.example.prog1.model.Manager;
 import com.example.prog1.query.DivingQuery;
-import com.example.prog1.query.EquipQuery;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

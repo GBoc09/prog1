@@ -86,7 +86,6 @@ public class CartRowControllerG { // fxml per inserimento quantità
     public static int memoryIndex (){
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
         val = cominicationBean.getIndex()+1;
-        System.out.println(val);
         return val;
     }
     private String email;
@@ -102,7 +101,7 @@ public class CartRowControllerG { // fxml per inserimento quantità
         sizeLabel.setText(equipBean.getSize());
         priceLabel.setText(String.valueOf(equipBean.getPrice()));
     }
-    public Integer quantity;
+    private Integer quantity;
     private Integer checkQuantity()  {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         email = userBean.getUserEmail();

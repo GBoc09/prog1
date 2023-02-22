@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class selectDivingManG implements Initializable {
+public class SelectDivingManG implements Initializable {
     @FXML private MenuItem courses;
     @FXML private MenuItem diving;
     @FXML private MenuItem equipment;
@@ -48,7 +48,7 @@ public class selectDivingManG implements Initializable {
         }
     }
     private static String str;
-    public static CominicationBean cominicationBean;
+    private static CominicationBean cominicationBean;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();

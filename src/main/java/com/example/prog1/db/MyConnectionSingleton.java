@@ -1,4 +1,4 @@
-package com.example.prog1.dbConnection;
+package com.example.prog1.db;
 
 import java.io.FileInputStream;
 import java.io.IOException;

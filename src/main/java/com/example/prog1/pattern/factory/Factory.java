@@ -1,6 +1,5 @@
 package com.example.prog1.pattern.factory;
 
-import com.example.prog1.model.Equipment;
 import com.example.prog1.model.Scuba;
 import com.example.prog1.model.User;
 /**

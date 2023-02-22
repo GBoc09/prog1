@@ -57,12 +57,11 @@ public class ShowEquipManagerG implements Initializable {
             app.changeScene("selectDivingMan.fxml");
         }
     }
-
+    private static ManagerApplicativo managerApplicativo;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ManagerApplicativo managerApplicativo = new ManagerApplicativo();
+        managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
         List<EquipBean> equipBeanList = managerApplicativo.getEquips(userBean);
         for (EquipBean d: equipBeanList){
             String type = d.getType();

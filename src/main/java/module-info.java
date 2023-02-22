@@ -8,6 +8,6 @@ module com.example.prog1 {
     exports com.example.prog1;
     exports com.example.prog1.controller.grafico;
     opens com.example.prog1.controller.grafico to javafx.fxml;
-    exports com.example.prog1.dbConnection;
-    opens com.example.prog1.dbConnection to javafx.fxml;
+    exports com.example.prog1.db;
+    opens com.example.prog1.db to javafx.fxml;
 }

@@ -1,6 +1,6 @@
 package com.example.prog1.dao;
 
-import com.example.prog1.dbConnection.MyConnectionSingleton;
+import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.exception.NotExistentUserException;
 import com.example.prog1.query.UserQuery;
 

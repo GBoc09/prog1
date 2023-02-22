@@ -30,10 +30,7 @@ public class RentEquipScubaControllerG implements Initializable {
     @FXML private MenuBar menuBar;
     public static final String CART_USER_SCREEN = "cart1.fxml";
 
-    public Integer selectionIndex;
-    public RentEquipScubaControllerG (){
-        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-    }
+    private Integer selectionIndex;
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
@@ -66,7 +63,6 @@ public class RentEquipScubaControllerG implements Initializable {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
         String str = cominicationBean.getStr();
-//        List<EquipBean> equipBeanList = rentalEquipApplicativo.getEquips();
         List<EquipBean> equipBeanList = rentalEquipApplicativo.getEquipsName(str);
         for (EquipBean d : equipBeanList) {
             String type = d.getType();

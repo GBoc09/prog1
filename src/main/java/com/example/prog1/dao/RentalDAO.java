@@ -1,7 +1,7 @@
 package com.example.prog1.dao;
 
 import com.example.prog1.bean.CartBean;
-import com.example.prog1.dbConnection.MyConnectionSingleton;
+import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.query.RentalQuery;
 
 import java.sql.Connection;
