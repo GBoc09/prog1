@@ -59,16 +59,13 @@ public class RentEquipScubaControllerG implements Initializable {
             app.changeScene(CART_USER_SCREEN);
         }
     }
-//    private static  String stringa;
-    private static Integer i;
-    public static CominicationBean cominicationBean1;
+    private CominicationBean cominicationBean1;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         quantity.setDisable(true);
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
         String str = cominicationBean.getStr();
-        System.out.println("rent equip grafico: "+cominicationBean.getStr());
 //        List<EquipBean> equipBeanList = rentalEquipApplicativo.getEquips();
         List<EquipBean> equipBeanList = rentalEquipApplicativo.getEquipsName(str);
         for (EquipBean d : equipBeanList) {
@@ -82,23 +79,9 @@ public class RentEquipScubaControllerG implements Initializable {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                     equipType.setText(listView.getSelectionModel().getSelectedItem());
-
-//                    String row = listView.getSelectionModel().getSelectedItem();
-//                    String[] column = row.split("   ");
-//                    equipType.setText(column[0]);
-//                    stringa = equipType.getText();
-//                    cominicationBean1 = new CominicationBean(stringa);
-//                    InternalControllerGrafico.getInternalControllerInstance().setBean(cominicationBean1);
-
                     selectionIndex = listView.getSelectionModel().getSelectedIndex();
-                    i = selectionIndex;
-                    System.out.println("rent equip scuba controller: "+i);
-                    cominicationBean1 = new CominicationBean(i);
+                    cominicationBean1 = new CominicationBean(selectionIndex);
                     InternalControllerGrafico.getInternalControllerInstance().setBean(cominicationBean1);
-//                    CartControllerGrafico cartControllerGrafico = new CartControllerGrafico();
-//                    CartRowControllerG cartRowControllerG = new CartRowControllerG();
-//                    cartControllerGrafico.memoryIndex(selectionIndex);
-//                    cartRowControllerG.memoryIndex(selectionIndex);
                 }
             });
             quantity.setDisable(false);
@@ -106,8 +89,6 @@ public class RentEquipScubaControllerG implements Initializable {
     }
     /** IL PASSAGGIO DEI DATI NON PUO' AVVENIRE FRA DUE CONTROLLER GRAFICI DEVE AVVENIRE: GRAFICO -> BEAN -> APPLICATIVO
      * -> BEAN -> GRAFICO.
-     * MODIFICARE getEquips PER INSEIRE ANCHE RICERCA NEL NOME DEL DIVING
-     * E POI STAMPARE LA LISTA
      */
 }
 

@@ -70,12 +70,6 @@ public class CartControllerGrafico implements Initializable {
             cartView.getItems().add(type+"   "+size+"   "+quant+"   "+price);
         }
     }
-    private static Integer val;
-    public static int memoryIndex (){
-        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
-        val = cominicationBean.getIndex()+1;
-        return val;
-    }
     private void deleteCart() throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();

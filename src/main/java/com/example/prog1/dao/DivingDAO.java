@@ -2,6 +2,7 @@ package com.example.prog1.dao;
 
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.bean.EquipBean;
+import com.example.prog1.bean.UserBean;
 import com.example.prog1.dbConnection.MyConnectionSingleton;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.model.Diving;
@@ -32,6 +33,23 @@ public class DivingDAO {
         List<Diving> divs = new ArrayList<>();
         try(Statement stmt = con.createStatement();
             ResultSet rs = DivingQuery.loadDiv(stmt)){
+            while (rs. next()){
+                Diving newDiv = new Diving();
+                newDiv.setName(rs.getString(1));
+                newDiv.setLocation(rs.getString(2));
+                newDiv.setTelephone(rs.getString(3));
+                divs.add(newDiv);
+            }
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        return divs;
+    }
+    public List<Diving> getDivInfoMan(UserBean userBean){
+        Connection con = MyConnectionSingleton.getConnection();
+        List<Diving> divs = new ArrayList<>();
+        try(Statement stmt = con.createStatement();
+            ResultSet rs = DivingQuery.loadDivMan(stmt, userBean.getUserEmail())){
             while (rs. next()){
                 Diving newDiv = new Diving();
                 newDiv.setName(rs.getString(1));

@@ -3,22 +3,16 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class ManagerHomeControllerG {
-    Logger logger = Logger.getLogger(ManagerHomeControllerG.class.getName());
     @FXML private Button addCourse;
     @FXML private Button addDiving;
-    @FXML private Button addEqup;
-    @FXML private Label goToLogin;
+    @FXML private Button addEquip;
     @FXML private Button yourDivingCenter;
     @FXML private MenuItem courses;
     @FXML private MenuItem diving;
@@ -26,6 +20,8 @@ public class ManagerHomeControllerG {
     @FXML private MenuItem home;
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
+    @FXML private Button divingEquip;
+
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
@@ -36,39 +32,30 @@ public class ManagerHomeControllerG {
             MainApp app = new MainApp();
             app.changeScene("login1.fxml");
         } else if (sourceItem == equipment){
-//            MainApp app = new MainApp();
-//            app.changeScene(/*pagina che mostra la lista dell'equip*/);
+            MainApp app = new MainApp();
+            app.changeScene("showEquipManager.fxml");
         }else if (sourceItem == diving){
-//            MainApp app = new MainApp();
-//            app.changeScene(/*pagina che mostra la lista dei diving associati ad un manager */);
+            MainApp app = new MainApp();
+            app.changeScene("showDivingMan.fxml");
         }
 
     }
     @FXML
-    void aggiungiDiving(ActionEvent event) {
-        try{
+    void onSelectedButton(ActionEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        if (source == addDiving){
             MainApp app = new MainApp();
             app.changeScene("managerDivingInsert1.fxml");
-        }
-        catch (Exception e){
-            logger.log(Level.INFO, "Exception Error");
-        }
-    }
-
-    @FXML
-    void aggiungiEquip(ActionEvent event) {
-        try{
+        } else if (source == addEquip){
             MainApp app = new MainApp();
-            app.changeScene("addEquip1.fxml");
-        }
-        catch (Exception e){
-            logger.log(Level.INFO, "Exception Error");
+            app.changeScene("selectDivingMan.fxml");
+        } else if (source == divingEquip) {
+            MainApp app = new MainApp();
+            app.changeScene("showEquipManager.fxml");
+        } else if (source == yourDivingCenter) {
+            MainApp app = new MainApp();
+            app.changeScene("showDivingMan.fxml");
         }
     }
-    @FXML
-    void visualizzaDivingCenter(ActionEvent event) {
-        //todo
-    }
-
 }
 

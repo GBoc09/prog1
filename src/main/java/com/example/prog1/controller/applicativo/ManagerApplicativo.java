@@ -6,6 +6,7 @@ import com.example.prog1.dao.EquipDAO;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.model.Diving;
+import com.example.prog1.model.Equipment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,5 +33,18 @@ public class ManagerApplicativo {
         }
         return div;
     }
-
+    public static List<EquipBean> getEquips(UserBean userBean) {
+        List<EquipBean> equip = new ArrayList<>();
+        EquipDAO equipDAO = new EquipDAO();
+        List<Equipment> equip2 = equipDAO.getEquipInfo();
+        for (Equipment d : equip2) {
+            EquipBean equipBean = new EquipBean();
+            equipBean.setType(d.getEquipType());
+            equipBean.setSize(d.getSize());
+            equipBean.setAvail(d.getAvail());
+            equipBean.setPrice(d.getPrice());
+            equip.add(equipBean);
+        }
+        return equip;
+    }
 }

@@ -17,4 +17,8 @@ public class DivingQuery {
         String query = String.format("SELECT name, location, telephone FROM Diving;");
         return stmt.executeQuery(query);
     }
+    public static ResultSet loadDivMan(Statement stmt, String email) throws SQLException {
+        String query = String.format("SELECT name, location, telephone FROM Diving WHERE divingManager = '%s';", email);
+        return stmt.executeQuery(query);
+    }
 }

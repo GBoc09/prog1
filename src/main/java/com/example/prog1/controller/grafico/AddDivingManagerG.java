@@ -49,11 +49,11 @@ public class AddDivingManagerG {
             MainApp app = new MainApp();
             app.changeScene("login1.fxml");
         } else if (sourceItem == equipment){
-//            MainApp app = new MainApp();
-//            app.changeScene(/*pagina che mostra la lista dell'equip*/);
+            MainApp app = new MainApp();
+            app.changeScene("showEquipManager.fxml");
         }else if (sourceItem == diving){
-//            MainApp app = new MainApp();
-//            app.changeScene(/*pagina che mostra la lista dei diving associati ad un manager */);
+            MainApp app = new MainApp();
+            app.changeScene("showDivingMan.fxml");
         }
 
     }

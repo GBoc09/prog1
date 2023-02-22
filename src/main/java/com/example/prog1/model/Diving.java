@@ -16,7 +16,7 @@ public class Diving {
         this.location = loc;
         this.telephone = tel;
     }
-    public Diving (){}
+    public Diving () {}
     public String getName() {
         return name;
     }

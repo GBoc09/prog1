@@ -12,28 +12,28 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prog1.controller.grafico.ManagerHomeControllerG">
    <children>
-      <Label layoutX="209.0" layoutY="88.0" text="Welcome Manager!">
+      <Label layoutX="194.0" layoutY="54.0" text="Welcome Manager!">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Line endX="168.5999755859375" endY="0.9999847412109375" layoutX="270.0" layoutY="123.0" startX="-60.4000244140625" startY="0.9999847412109375" strokeWidth="2.0" />
-      <Button fx:id="addCourse" layoutX="215.0" layoutY="160.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="ADD COURSE ">
+      <Line endX="168.5999755859375" endY="0.9999847412109375" layoutX="255.0" layoutY="88.0" startX="-60.4000244140625" startY="0.9999847412109375" strokeWidth="2.0" />
+      <Button fx:id="addCourse" layoutX="215.0" layoutY="115.0" mnemonicParsing="false" onAction="#onSelectedButton" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="ADD COURSE ">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="addEqup" layoutX="215.0" layoutY="250.0" mnemonicParsing="false" onAction="#aggiungiEquip" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="ADD EQUIPMENT">
+      <Button fx:id="addEquip" layoutX="215.0" layoutY="205.0" mnemonicParsing="false" onAction="#onSelectedButton" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="ADD EQUIPMENT">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="addDiving" layoutX="215.0" layoutY="205.0" mnemonicParsing="false" onAction="#aggiungiDiving" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="ADD DIVING">
+      <Button fx:id="addDiving" layoutX="215.0" layoutY="160.0" mnemonicParsing="false" onAction="#onSelectedButton" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="ADD DIVING">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="yourDivingCenter" layoutX="215.0" layoutY="295.0" mnemonicParsing="false" onAction="#visualizzaDivingCenter" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="YOUR DIVING CENTER">
+      <Button fx:id="yourDivingCenter" layoutX="215.0" layoutY="250.0" mnemonicParsing="false" onAction="#onSelectedButton" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="YOUR DIVING CENTER">
          <font>
             <Font size="15.0" />
          </font>
@@ -70,5 +70,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </MenuBar>
+      <Button fx:id="divingEquip" layoutX="215.0" layoutY="295.0" mnemonicParsing="false" onAction="#onSelectedButton" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: white; -fx-border-color: #0AADF4; -fx-border-width: 1.5;" text="DIVING'S EQUIP">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

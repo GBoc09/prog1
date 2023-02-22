@@ -51,6 +51,19 @@ public class RentalEquipApplicativo {
         }
         return div;
     }
+    public List<DivingBean> getDivingListMan(UserBean userBean) {
+        List<DivingBean> div = new ArrayList<>();
+        DivingDAO divingDAO = new DivingDAO();
+        List<Diving> div2 = divingDAO.getDivInfoMan(userBean);
+        for (Diving d : div2) {
+            DivingBean divingBean = new DivingBean();
+            divingBean.setName(d.getName());
+            divingBean.setLocation(d.getLocation());
+            divingBean.setTelephone(d.getTelephone());
+            div.add(divingBean);
+        }
+        return div;
+    }
     public List<CartBean> showCart (String email) {
         List<CartBean> cart = new ArrayList<>();
         EquipDAO equipDAO = new EquipDAO();
