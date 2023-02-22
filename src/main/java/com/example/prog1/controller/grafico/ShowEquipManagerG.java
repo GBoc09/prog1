@@ -54,7 +54,7 @@ public class ShowEquipManagerG implements Initializable {
             app.changeScene("showDivingMan.fxml");
         } else if (sourceItem == equipment){
             MainApp app = new MainApp();
-            app.changeScene("showEquipManager.fxml");
+            app.changeScene("selectDivingMan.fxml");
         }
     }
 

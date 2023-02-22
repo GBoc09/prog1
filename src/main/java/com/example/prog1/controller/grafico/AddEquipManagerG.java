@@ -75,7 +75,7 @@ public class AddEquipManagerG {
             app.changeScene("login1.fxml");
         } else if (sourceItem == equipment){
             MainApp app = new MainApp();
-            app.changeScene("showEquipManager.fxml");
+            app.changeScene("selectDivingMan.fxml");
         }else if (sourceItem == diving){
             MainApp app = new MainApp();
             app.changeScene("showDivingMan.fxml");

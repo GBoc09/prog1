@@ -10,14 +10,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class selectDivingManG implements Initializable {
     @FXML private MenuItem courses;
@@ -29,7 +28,8 @@ public class selectDivingManG implements Initializable {
     @FXML private MenuBar menuBar;
     @FXML private ListView<String> listView;
     @FXML private Button addEquipButton;
-    Logger logger = Logger.getLogger(selectDivingManG.class.getName());
+    @FXML private Button showCatalogue;
+
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
@@ -41,7 +41,7 @@ public class selectDivingManG implements Initializable {
             app.changeScene("login1.fxml");
         } else if (sourceItem == equipment){
             MainApp app = new MainApp();
-            app.changeScene("showEquipManager.fxml");
+            app.changeScene("selectDivingMan.fxml");
         }else if (sourceItem == diving){
             MainApp app = new MainApp();
             app.changeScene("showDivingMan.fxml");
@@ -73,13 +73,14 @@ public class selectDivingManG implements Initializable {
         }
     }
     @FXML
-    void addEquipButton(ActionEvent event) {
-        try{
+    void onButtonClicked(ActionEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        if (source == addEquipButton){
             MainApp app = new MainApp();
             app.changeScene("addEquip1.fxml");
-        }
-        catch (Exception e){
-            logger.log(Level.INFO, "Exception Error");
+        } else if (source == showCatalogue){
+            MainApp app = new MainApp();
+            app.changeScene("showEquipManager.fxml");
         }
     }
 }

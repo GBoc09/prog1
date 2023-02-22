@@ -33,7 +33,7 @@ public class ManagerHomeControllerG {
             app.changeScene("login1.fxml");
         } else if (sourceItem == equipment){
             MainApp app = new MainApp();
-            app.changeScene("showEquipManager.fxml");
+            app.changeScene("selectDivingMan.fxml");
         }else if (sourceItem == diving){
             MainApp app = new MainApp();
             app.changeScene("showDivingMan.fxml");
@@ -46,12 +46,9 @@ public class ManagerHomeControllerG {
         if (source == addDiving){
             MainApp app = new MainApp();
             app.changeScene("managerDivingInsert1.fxml");
-        } else if (source == addEquip){
+        } else if (source == addEquip || source == divingEquip){
             MainApp app = new MainApp();
             app.changeScene("selectDivingMan.fxml");
-        } else if (source == divingEquip) {
-            MainApp app = new MainApp();
-            app.changeScene("showEquipManager.fxml");
         } else if (source == yourDivingCenter) {
             MainApp app = new MainApp();
             app.changeScene("showDivingMan.fxml");
