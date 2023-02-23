@@ -10,6 +10,7 @@ import java.util.List;
 
 public class RentalEquipApplicativo {
     public RentalEquipApplicativo(){/* costruttore */ }
+    /** seleziona tutte le attrezzature */
     public List<EquipBean> getEquips () {
         List<EquipBean> equip = new ArrayList<>();
         EquipDAO equipmentDAO = new EquipDAO();
@@ -24,7 +25,10 @@ public class RentalEquipApplicativo {
         }
         return equip;
     }
-    /** diving name = name */
+    /** diving name = name
+     *
+     * seleziona le equip con il diving name */
+
     public List<EquipBean> getEquipsName (String name) {
         List<EquipBean> equip = new ArrayList<>();
         EquipDAO equipmentDAO = new EquipDAO();
@@ -39,6 +43,7 @@ public class RentalEquipApplicativo {
         }
         return equip;
     }
+    /** lista di tutti i diving */
     public List<DivingBean> getDivingList() {
         List<DivingBean> div = new ArrayList<>();
         DivingDAO divingDAO = new DivingDAO();
@@ -52,6 +57,7 @@ public class RentalEquipApplicativo {
         }
         return div;
     }
+    /** lista dei diving associatiad un manager */
     public List<DivingBean> getDivingListMan(UserBean userBean) {
         List<DivingBean> div = new ArrayList<>();
         DivingDAO divingDAO = new DivingDAO();
@@ -65,6 +71,7 @@ public class RentalEquipApplicativo {
         }
         return div;
     }
+    /** mostra il carrello */
     public List<CartBean> showCart (String email) {
         List<CartBean> cart = new ArrayList<>();
         EquipDAO equipDAO = new EquipDAO();
@@ -84,7 +91,7 @@ public class RentalEquipApplicativo {
     }
     public void saveItem(List<CartBean> cartBeans, UserBean userBean){
         RentalDAO rentalDAO = new RentalDAO();
-        rentalDAO.insertRent(cartBeans.get(0), cartBeans.get(3),userBean.getUserEmail());
+        rentalDAO.insertRent(cartBeans.get(0), cartBeans.get(2),userBean.getUserEmail());
     }
     public EquipBean infoEquipGeneral(int selectedIndex){
         EquipDAO equipDAO = new EquipDAO();
@@ -105,7 +112,6 @@ public class RentalEquipApplicativo {
         equipBean = equipDAO.selectEquipByOrder(selectedIndex);
         cartDAO.insertIntoCart(equipBean, quant, email);
     }
-    /** trovare un modi di scegliere il diving e passare i dati del manager */
     public void sendEmail(VendorOrderBean vendorOrderBean){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         List<Manager> managers = getEmailManager();

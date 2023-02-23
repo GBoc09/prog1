@@ -5,6 +5,7 @@ import com.example.prog1.bean.AccessInfoBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.LoginApplicativo;
 import com.example.prog1.exception.NotExistentUserException;
+import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -40,25 +41,29 @@ public class LoginControllerGrafico {
                 switch(userType){
                     case 0:
                         InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
-                        MainApp app = new MainApp();
-                        app.changeScene(SCUBA_SCREEN);
+//                        MainApp app = new MainApp();
+//                        app.changeScene(SCUBA_SCREEN);
+                        SwapPage.getInstance().gotoPage(SCUBA_SCREEN);
                         break;
                     case 1:
                         InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
-                        MainApp app1 = new MainApp();
-                        app1.changeScene(FREE_SCREEN);
+//                        MainApp app1 = new MainApp();
+//                        app1.changeScene(FREE_SCREEN);
+                        SwapPage.getInstance().gotoPage(FREE_SCREEN);
                         break;
                     case 2:
                         InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
-                        MainApp app2 = new MainApp();
-                        app2.changeScene(MANAGER_SCREEN);
+//                        MainApp app2 = new MainApp();
+//                        app2.changeScene(MANAGER_SCREEN);
+                        SwapPage.getInstance().gotoPage(MANAGER_SCREEN);
                         break;
                     default: userType = type;
                 }
             }
          } else if (source == createAccout) {
-            MainApp app = new MainApp();
-            app.changeScene(REGISTER_SCREEN);
+//            MainApp app = new MainApp();
+//            app.changeScene(REGISTER_SCREEN);
+            SwapPage.getInstance().gotoPage(REGISTER_SCREEN);
         }
     }
     private UserBean login(){

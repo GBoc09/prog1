@@ -5,6 +5,7 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
+import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,11 +31,17 @@ public class ShowEquipManagerG implements Initializable {
     @FXML private MenuBar menuBar;
     @FXML private Button modify;
     Logger logger = Logger.getLogger(ShowEquipManagerG.class.getName());
+    private static final String ADD_EQUIP_MAN = "addEquip1.fxml";
+    private static final String MANAGER_HOME = "managerHome1.fxml";
+    private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String SELECT_EQUIP = "selectDivingMan.fxml";
+    private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
     @FXML
     void modify(ActionEvent event) {
         try{
-            MainApp app = new MainApp();
-            app.changeScene("addEquip1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("addEquip1.fxml");
+            SwapPage.getInstance().gotoPage(ADD_EQUIP_MAN);
         }
         catch (Exception e){
             logger.log(Level.INFO, "Exception Error");
@@ -44,20 +51,25 @@ public class ShowEquipManagerG implements Initializable {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            MainApp app = new MainApp();
-            app.changeScene("managerHome1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("managerHome1.fxml");
+            SwapPage.getInstance().gotoPage(MANAGER_HOME);
         } else if (sourceItem == logout){
-            MainApp app = new MainApp();
-            app.changeScene("login1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("login1.fxml");
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == diving){
-            MainApp app = new MainApp();
-            app.changeScene("showDivingMan.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("showDivingMan.fxml");
+            SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         } else if (sourceItem == equipment){
-            MainApp app = new MainApp();
-            app.changeScene("selectDivingMan.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("selectDivingMan.fxml");
+            SwapPage.getInstance().gotoPage(SELECT_EQUIP);
         }
     }
-    private static ManagerApplicativo managerApplicativo;
+    private ManagerApplicativo managerApplicativo;
+    /** mostra l'equip disponibile in un diving a seconda del diving e del manager selezionati */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         managerApplicativo = new ManagerApplicativo();

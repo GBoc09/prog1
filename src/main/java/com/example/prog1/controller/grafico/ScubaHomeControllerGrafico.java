@@ -1,6 +1,7 @@
 package com.example.prog1.controller.grafico;
 
 import com.example.prog1.MainApp;
+import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,11 +25,16 @@ public class ScubaHomeControllerGrafico {
     @FXML private MenuBar menuBar;
     @FXML private Button rentEqip;
     Logger logger = Logger.getLogger(ScubaHomeControllerGrafico.class.getName());
+    private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String SCUBA_HOME = "scubaHome1.fxml";
+    private static final String CART_SCREEN = "cart1.fxml";
+    private static final String CHOOSE_DIVING = "chooseDivingScuba.fxml";
     @FXML
     void goToLogin(MouseEvent event) {
         try{
-        MainApp app = new MainApp();
-        app.changeScene("login1.fxml");
+//        MainApp app = new MainApp();
+//        app.changeScene("login1.fxml");
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } catch (Exception e){
             logger.log(Level.INFO, "Exception Error");
         }
@@ -37,14 +43,17 @@ public class ScubaHomeControllerGrafico {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            MainApp app = new MainApp();
-            app.changeScene("scubaHome1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("scubaHome1.fxml");
+            SwapPage.getInstance().gotoPage(SCUBA_HOME);
         } else if (sourceItem == logout){
-            MainApp app = new MainApp();
-            app.changeScene("login1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("login1.fxml");
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart){
-            MainApp app = new MainApp();
-            app.changeScene("cart1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("cart1.fxml");
+            SwapPage.getInstance().gotoPage(CART_SCREEN);
         }
 
     }
@@ -54,8 +63,9 @@ public class ScubaHomeControllerGrafico {
     @FXML
     void rentEquip(ActionEvent event) {
         try{
-            MainApp app = new MainApp();
-            app.changeScene("chooseDivingScuba.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("chooseDivingScuba.fxml");
+            SwapPage.getInstance().gotoPage(CHOOSE_DIVING);
         } catch (Exception e){
             logger.log(Level.INFO, "Exception Error");
         }

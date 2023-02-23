@@ -1,6 +1,7 @@
 package com.example.prog1.controller.grafico;
 
 import com.example.prog1.MainApp;
+import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,8 +19,9 @@ public class CasaControllerGrafico {
    @FXML
     public void accessButtonClicked(ActionEvent event) throws IOException {
       try{
-        MainApp app = new MainApp();
-         app.changeScene(LOGIN_SCREEN);
+//        MainApp app = new MainApp();
+//         app.changeScene(LOGIN_SCREEN);
+          SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
       }
       catch (Exception e){
          logger.log(Level.INFO, "Exception Error");

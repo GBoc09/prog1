@@ -4,6 +4,7 @@ import com.example.prog1.MainApp;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -28,31 +29,39 @@ public class RentEquipScubaControllerG implements Initializable {
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
     public static final String CART_USER_SCREEN = "cart1.fxml";
+    private static final String CART_ROW = "cartRow.fxml";
+    private static final String SCUBA_HOME = "scubaHome1.fxml";
+    private static final String LOGIN_SCREEN = "login1.fxml";
 
     private Integer selectionIndex;
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
         if(source == goToCart) {
-            MainApp app = new MainApp();
-            app.changeScene(CART_USER_SCREEN);
+//            MainApp app = new MainApp();
+//            app.changeScene(CART_USER_SCREEN);
+            SwapPage.getInstance().gotoPage(CART_USER_SCREEN);
         }else {
-            MainApp app = new MainApp();
-            app.changeScene("cartRow.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("cartRow.fxml");
+            SwapPage.getInstance().gotoPage(CART_ROW);
         }
     }
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            MainApp app = new MainApp();
-            app.changeScene("scubaHome1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("scubaHome1.fxml");
+            SwapPage.getInstance().gotoPage(SCUBA_HOME);
         } else if (sourceItem == logout){
-            MainApp app = new MainApp();
-            app.changeScene("login1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("login1.fxml");
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart){
-            MainApp app = new MainApp();
-            app.changeScene(CART_USER_SCREEN);
+//            MainApp app = new MainApp();
+//            app.changeScene(CART_USER_SCREEN);
+            SwapPage.getInstance().gotoPage(CART_USER_SCREEN);
         }
     }
     private CominicationBean cominicationBean1;

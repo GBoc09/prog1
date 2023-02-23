@@ -3,8 +3,8 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.MainApp;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.DivingBean;
-import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -18,42 +18,42 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SelectedDivingScubaG implements Initializable {
-    @FXML
-    private MenuItem cart;
-    @FXML
-    private MenuItem home;
-    @FXML
-    private ListView<String> listView;
-    @FXML
-    private MenuItem logbook;
-    @FXML
-    private MenuItem logout;
-    @FXML
-    private MenuBar menuBar;
-    @FXML
-    private Button selectDiving;
-    @FXML
-    private Label label;
+    @FXML private MenuItem cart;
+    @FXML private MenuItem home;
+    @FXML private ListView<String> listView;
+    @FXML private MenuItem logbook;
+    @FXML private MenuItem logout;
+    @FXML private MenuBar menuBar;
+    @FXML private Button selectDiving;
+    @FXML private Label label;
 
+    private static final String SCUBA_HOME = "scubaHome1.fxml";
+    private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String CART_SCREEN = "cart1.fxml";
+    private static final String RENT_EQUIP = "rentEquip1.fxml";
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home) {
-            MainApp app = new MainApp();
-            app.changeScene("scubaHome1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("scubaHome1.fxml");
+            SwapPage.getInstance().gotoPage(SCUBA_HOME);
         } else if (sourceItem == logout) {
-            MainApp app = new MainApp();
-            app.changeScene("login1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("login1.fxml");
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart) {
-            MainApp app = new MainApp();
-            app.changeScene("cart1.fxml");
+//            MainApp app = new MainApp();
+//            app.changeScene("cart1.fxml");
+            SwapPage.getInstance().gotoPage(CART_SCREEN);
         }
     }
 
     @FXML
     void selectDiving(ActionEvent event) throws IOException {
-        MainApp app = new MainApp();
-        app.changeScene("rentEquip1.fxml");
+//        MainApp app = new MainApp();
+//        app.changeScene("rentEquip1.fxml");
+        SwapPage.getInstance().gotoPage(RENT_EQUIP);
     }
     private String str;
     private CominicationBean cominicationBean;

@@ -5,6 +5,7 @@ import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RegistrationApplicativo;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.exception.InvalidCredentialException;
+import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -38,8 +39,9 @@ public class RegistrationControllerGrafico {
     private static final String MAN_SCREEN = "managerHome1.fxml";
     @FXML
     void onBackClicked(MouseEvent event) throws IOException {
-        MainApp app = new MainApp();
-        app.changeScene(LOGIN_SCREEN);
+//        MainApp app = new MainApp();
+//        app.changeScene(LOGIN_SCREEN);
+        SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
     }
     @FXML
     void signUp(ActionEvent event) throws InvalidCredentialException {
@@ -51,16 +53,19 @@ public class RegistrationControllerGrafico {
             type = userBean.getUserType();
             switch (type) {
                 case 0:
-                    MainApp app = new MainApp();
-                    app.changeScene(SCUBA_SCREEN);
+//                    MainApp app = new MainApp();
+//                    app.changeScene(SCUBA_SCREEN);
+                    SwapPage.getInstance().gotoPage(SCUBA_SCREEN);
                     break;
                 case 1:
-                    MainApp app1 = new MainApp();
-                    app1.changeScene(FREE_SCREEN);
+//                    MainApp app1 = new MainApp();
+//                    app1.changeScene(FREE_SCREEN);
+                    SwapPage.getInstance().gotoPage(FREE_SCREEN);
                     break;
                 case 2:
-                    MainApp app2 = new MainApp();
-                    app2.changeScene(MAN_SCREEN);
+//                    MainApp app2 = new MainApp();
+//                    app2.changeScene(MAN_SCREEN);
+                    SwapPage.getInstance().gotoPage(MAN_SCREEN);
                     break;
                 default: type = NOT_LOG;
             }
