@@ -1,6 +1,5 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.MainApp;
 import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
@@ -20,7 +19,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CartControllerGrafico implements Initializable {
-
     @FXML private Button addItems;
     @FXML private MenuItem cart;
     @FXML private ListView<String> cartView;
@@ -39,8 +37,6 @@ public class CartControllerGrafico implements Initializable {
     void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
         if (source == addItems) {
-//            MainApp app = new MainApp();
-//            app.changeScene("rentEquip1.fxml");
             SwapPage.getInstance().gotoPage(RENT_EQUIP);
         } else if (source == deleteItems) {
             deleteCart();
@@ -53,16 +49,10 @@ public class CartControllerGrafico implements Initializable {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home) {
-//            MainApp app = new MainApp();
-//            app.changeScene("scubaHome1.fxml");
             SwapPage.getInstance().gotoPage(SCUBA_HOME);
         } else if (sourceItem == logout) {
-//            MainApp app = new MainApp();
-//            app.changeScene("login1.fxml");
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart) {
-//            MainApp app = new MainApp();
-//            app.changeScene("cart1.fxml");
             SwapPage.getInstance().gotoPage(CART_SCREEN);
         }
     }
@@ -84,8 +74,6 @@ public class CartControllerGrafico implements Initializable {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         rentalEquipApplicativo.deleteItem(userBean);
-//        MainApp app = new MainApp();
-//        app.changeScene("cart1.fxml");
         SwapPage.getInstance().gotoPage(CART_SCREEN);
     }
     /** salvataggio dell'ordine nella tabella RENTAL */

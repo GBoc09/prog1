@@ -1,6 +1,5 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.MainApp;
 import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CartRowControllerG { // fxml per inserimento quantità
+public class CartRowControllerG { /** FXML per inserimento di una quantita */
     @FXML private Button addToCart;
     @FXML private Button addItems;
     @FXML private Button goToCart;
@@ -41,8 +40,6 @@ public class CartRowControllerG { // fxml per inserimento quantità
     @FXML
     void back(MouseEvent event) {
         try{
-//            MainApp app = new MainApp();
-//            app.changeScene("rentEquip1.fxml");
             SwapPage.getInstance().gotoPage(RENT_EQUIP);
         }
         catch (Exception e){
@@ -58,13 +55,9 @@ public class CartRowControllerG { // fxml per inserimento quantità
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion successful.");
             alert.showAndWait();
         } else if (source == addItems) {
-//            MainApp app = new MainApp();
-//            app.changeScene("rentEquip1.fxml");
             SwapPage.getInstance().gotoPage(RENT_EQUIP);
         } else if (source == goToCart) {
             loadCart(userBean);
-//            MainApp app = new MainApp();
-//            app.changeScene("cart1.fxml");
             SwapPage.getInstance().gotoPage(CART_SCREEN);
         }
     }
@@ -72,16 +65,10 @@ public class CartRowControllerG { // fxml per inserimento quantità
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-//            MainApp app = new MainApp();
-//            app.changeScene("scubaHome1.fxml");
             SwapPage.getInstance().gotoPage(SCUBA_HOME);
         } else if (sourceItem == logout){
-//            MainApp app = new MainApp();
-//            app.changeScene("login1.fxml");
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart){
-//            MainApp app = new MainApp();
-//            app.changeScene("cart1.fxml");
             SwapPage.getInstance().gotoPage(CART_SCREEN);
         }
     }

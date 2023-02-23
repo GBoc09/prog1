@@ -1,6 +1,5 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.MainApp;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RegistrationApplicativo;
 import com.example.prog1.exception.DuplicatedUserException;
@@ -23,8 +22,7 @@ public class RegistrationControllerGrafico {
     @FXML private TextField name;
     @FXML private PasswordField password;
     @FXML private PasswordField password1;
-    @FXML
-    private RadioButton scubaCheck;
+    @FXML private RadioButton scubaCheck;
     @FXML private Button signUp;
 
     private int userType;
@@ -39,8 +37,6 @@ public class RegistrationControllerGrafico {
     private static final String MAN_SCREEN = "managerHome1.fxml";
     @FXML
     void onBackClicked(MouseEvent event) throws IOException {
-//        MainApp app = new MainApp();
-//        app.changeScene(LOGIN_SCREEN);
         SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
     }
     @FXML
@@ -53,18 +49,12 @@ public class RegistrationControllerGrafico {
             type = userBean.getUserType();
             switch (type) {
                 case 0:
-//                    MainApp app = new MainApp();
-//                    app.changeScene(SCUBA_SCREEN);
                     SwapPage.getInstance().gotoPage(SCUBA_SCREEN);
                     break;
                 case 1:
-//                    MainApp app1 = new MainApp();
-//                    app1.changeScene(FREE_SCREEN);
                     SwapPage.getInstance().gotoPage(FREE_SCREEN);
                     break;
                 case 2:
-//                    MainApp app2 = new MainApp();
-//                    app2.changeScene(MAN_SCREEN);
                     SwapPage.getInstance().gotoPage(MAN_SCREEN);
                     break;
                 default: type = NOT_LOG;

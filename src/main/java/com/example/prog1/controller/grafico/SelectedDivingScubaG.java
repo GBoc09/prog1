@@ -1,6 +1,5 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.MainApp;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
@@ -35,24 +34,16 @@ public class SelectedDivingScubaG implements Initializable {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home) {
-//            MainApp app = new MainApp();
-//            app.changeScene("scubaHome1.fxml");
             SwapPage.getInstance().gotoPage(SCUBA_HOME);
         } else if (sourceItem == logout) {
-//            MainApp app = new MainApp();
-//            app.changeScene("login1.fxml");
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart) {
-//            MainApp app = new MainApp();
-//            app.changeScene("cart1.fxml");
             SwapPage.getInstance().gotoPage(CART_SCREEN);
         }
     }
 
     @FXML
     void selectDiving(ActionEvent event) throws IOException {
-//        MainApp app = new MainApp();
-//        app.changeScene("rentEquip1.fxml");
         SwapPage.getInstance().gotoPage(RENT_EQUIP);
     }
     private String str;

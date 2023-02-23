@@ -1,6 +1,5 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.MainApp;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
@@ -39,8 +38,6 @@ public class ShowEquipManagerG implements Initializable {
     @FXML
     void modify(ActionEvent event) {
         try{
-//            MainApp app = new MainApp();
-//            app.changeScene("addEquip1.fxml");
             SwapPage.getInstance().gotoPage(ADD_EQUIP_MAN);
         }
         catch (Exception e){
@@ -51,20 +48,12 @@ public class ShowEquipManagerG implements Initializable {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-//            MainApp app = new MainApp();
-//            app.changeScene("managerHome1.fxml");
             SwapPage.getInstance().gotoPage(MANAGER_HOME);
         } else if (sourceItem == logout){
-//            MainApp app = new MainApp();
-//            app.changeScene("login1.fxml");
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == diving){
-//            MainApp app = new MainApp();
-//            app.changeScene("showDivingMan.fxml");
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         } else if (sourceItem == equipment){
-//            MainApp app = new MainApp();
-//            app.changeScene("selectDivingMan.fxml");
             SwapPage.getInstance().gotoPage(SELECT_EQUIP);
         }
     }

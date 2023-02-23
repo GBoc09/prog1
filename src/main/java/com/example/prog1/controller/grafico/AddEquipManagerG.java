@@ -1,6 +1,5 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.MainApp;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
@@ -12,8 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.util.logging.Logger;
-
 public class AddEquipManagerG {
 
     @FXML private TextField equipType;
@@ -35,7 +32,6 @@ public class AddEquipManagerG {
     private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
 
     ObservableList<String> sizeList = FXCollections.observableArrayList("none", "XS", "S", "M","L", "XL");
-    Logger logger = Logger.getLogger(AddEquipManagerG.class.getName());
     @FXML
     private void initialize(){
         size.setItems(sizeList);
@@ -56,8 +52,6 @@ public class AddEquipManagerG {
         if (flag) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion Successful");
             alert.showAndWait();
-//            MainApp app = new MainApp();
-//            app.changeScene("managerHome1.fxml");
             SwapPage.getInstance().gotoPage(MANAGER_HOME);
         }
     }
@@ -71,20 +65,12 @@ public class AddEquipManagerG {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-//            MainApp app = new MainApp();
-//            app.changeScene("managerHome1.fxml");
             SwapPage.getInstance().gotoPage(MANAGER_HOME);
         } else if (sourceItem == logout){
-//            MainApp app = new MainApp();
-//            app.changeScene("login1.fxml");
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == equipment){
-//            MainApp app = new MainApp();
-//            app.changeScene("selectDivingMan.fxml");
             SwapPage.getInstance().gotoPage(SELECT_DIV_MAN);
         }else if (sourceItem == diving){
-//            MainApp app = new MainApp();
-//            app.changeScene("showDivingMan.fxml");
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         }
 
