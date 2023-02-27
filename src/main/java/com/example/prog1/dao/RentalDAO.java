@@ -1,6 +1,5 @@
 package com.example.prog1.dao;
 
-import com.example.prog1.bean.CartBean;
 import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.model.Rental;
 import com.example.prog1.query.RentalQuery;
@@ -13,10 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentalDAO {
-    public void insertRent(CartBean type, CartBean price, String email ){
+    public void insertRent(String type, String email, String name, Integer price){
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
-            RentalQuery.insertIntoRent(stmt, type.getType(), price.getPrice(), email);
+            RentalQuery.insertIntoRent(stmt,type,email, name, price);
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+    }
+    public void insertRentPart(Integer total){
+        Connection con = MyConnectionSingleton.getConnection();
+        try(Statement stmt = con.createStatement()){
+            RentalQuery.insertIntoRentPart(stmt, total);
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
@@ -38,5 +45,13 @@ public class RentalDAO {
         sqlException.printStackTrace();
     }
         return rents;
+    }
+    public void deleteItemsFromRental(String email){
+        Connection con = MyConnectionSingleton.getConnection();
+        try(Statement stmt = con.createStatement();){
+           RentalQuery.deleteItem(stmt, email);
+        } catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
     }
 }

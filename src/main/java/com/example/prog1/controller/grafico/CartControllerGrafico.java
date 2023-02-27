@@ -85,9 +85,10 @@ public class CartControllerGrafico implements Initializable {
     /** salvataggio dell'ordine nella tabella RENTAL */
     private void saveOrder(){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
-        rentalEquipApplicativo.saveItem(cartBeanList, userBean);
+        rentalEquipApplicativo.saveItem(cartBeanList, userBean, cominicationBean);
     }
 }
 

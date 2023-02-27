@@ -80,6 +80,7 @@ public class RentalEquipApplicativo {
             CartBean cartBean1 = new CartBean();
             cartBean1.setType(d.getEquipType());
             cartBean1.setSize(d.getSize());
+            cartBean1.setQuant(d.getAvail());
             cartBean1.setPrice(d.getPrice());
             cart.add(cartBean1);
         }
@@ -89,12 +90,27 @@ public class RentalEquipApplicativo {
         EquipDAO equipDAO = new EquipDAO();
         equipDAO.deleteItemsFromCart(userBean.getUserEmail());
     }
-    public void saveItem(List<CartBean> cartBeans, UserBean userBean){
+    public void deleteRent(UserBean userBean){
         RentalDAO rentalDAO = new RentalDAO();
-        String cart0 = String.valueOf(cartBeans.get(0));
-        String cart2 = String.valueOf(cartBeans.get(1));
-        System.out.println(cart0+ " "+ cart2);
-        rentalDAO.insertRent(cartBeans.get(0), cartBeans.get(1),userBean.getUserEmail());
+        rentalDAO.deleteItemsFromRental(userBean.getUserEmail());
+    }
+    /** errori nell'inserzione dei dati nella bd
+     * e communication bean non ritorna il valore corretto se riprendiamo il processo di comprare cose dopo aver
+     * chiuso l'applicazione */
+    public void saveItem(List<CartBean> cartBeans, UserBean userBean, CominicationBean cominicationBean){
+        RentalDAO rentalDAO = new RentalDAO();
+        String type = null;
+        Integer price = 0;
+        Integer total = 0;
+        for (CartBean d : cartBeans){
+            type = d.getType();
+            price = d.getPrice();
+            total = total+price;
+            System.out.println(total);
+            rentalDAO.insertRent(type, userBean.getUserEmail(), cominicationBean.getStr(), price);
+        }
+        System.out.println(total);
+        rentalDAO.insertRentPart(total);
     }
     public EquipBean infoEquipGeneral(int selectedIndex){
         EquipDAO equipDAO = new EquipDAO();

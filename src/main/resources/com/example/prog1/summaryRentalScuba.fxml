@@ -23,6 +23,7 @@
                <items>
                   <MenuItem fx:id="cart" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Cart" />
                   <MenuItem fx:id="rent" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Rental " />
+                  <MenuItem fx:id="deleteRent" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Delete rental" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="LogBook">

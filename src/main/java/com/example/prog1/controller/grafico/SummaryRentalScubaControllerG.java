@@ -29,6 +29,7 @@ public class SummaryRentalScubaControllerG implements Initializable {
     @FXML private Label divingLabel;
     @FXML private Label rentLabel;
     @FXML private Label totalLabel;
+    @FXML private MenuItem deleteRent;
 
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String SCUBA_HOME = "scubaHome1.fxml";
@@ -46,15 +47,20 @@ public class SummaryRentalScubaControllerG implements Initializable {
             SwapPage.getInstance().gotoPage(CART_SCREEN);
         } else if (sourceItem == rent) {
             SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
+        } else if (sourceItem == deleteRent){
+            deleteRental();
         }
+    }
+    private void deleteRental() throws IOException {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        rentalEquipApplicativo.deleteRent(userBean);
+        SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
-        String str = cominicationBean.getStr();
-        System.out.println(str);
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<RentalBean> rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
         for (RentalBean r : rentalBeans){

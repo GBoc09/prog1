@@ -9,12 +9,20 @@ public class RentalQuery implements Query{
         String query = String.format("INSERT INTO Cart (equipType, equipSize, equipPrice, equipQuantity, scuba)values ('%s', '%s', '%d', '%d', '%s');", type, size, price, quant, email);
         return stmt.execute(query);
     }
-    public static boolean insertIntoRent (Statement stmt, String type, Integer price, String email) throws SQLException {
-        String query = String.format("INSERT INTO Rental (equipType, equipPrice, scuba)values ('%s', '%d', '%s');", type, price, email);
+    public static boolean insertIntoRent (Statement stmt, String type,String email, String name, Integer price) throws SQLException {
+        String query = String.format("INSERT INTO Rental (equipType, scuba, diving, equipPrice)values ('%s', '%s','%s','%d');", type,email,name,price);
+        return stmt.execute(query);
+    }
+    public static boolean insertIntoRentPart (Statement stmt, Integer total) throws SQLException {
+        String query = String.format("INSERT INTO Rental (total)value ('%d');", total);
         return stmt.execute(query);
     }
     public static ResultSet loadRent(Statement stmt, String email ) throws SQLException {
         String query = String.format("SELECT idRental ,equipType, diving, total FROM Rental WHERE scuba = '%s';", email);
         return stmt.executeQuery(query);
+    }
+    public static boolean deleteItem(Statement stmt, String email) throws SQLException {
+        String query = String.format("DELETE FROM Rental WHERE scuba = '%s';", email);
+        return stmt.execute(query);
     }
 }

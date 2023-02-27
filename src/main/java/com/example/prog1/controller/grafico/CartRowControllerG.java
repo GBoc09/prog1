@@ -102,9 +102,7 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
         priceLabel.setText(String.valueOf(equipBean.getPrice()));
     }
     private Integer quantity;
-    /** LA FUNZIONE CHECK QUANTITY VIENE CHIAMATA DUE VOLTE IN QULCHE MODO, CREDO CHE SIA L'ORIGINE DEL PROBLEMA DELLA
-     * DUPLICAZIONE DEGLI ITEM NEL CARRRELLO
-     *
+    /**
      * LA COMUNICATION BEAN MANTIENE IL NOME DEL DIVING QUINDI E' POSSIBILE PASSARLO ALLA RENTAL MA VIENE STAMPATO DUE VOLTE
      * RICONDUCIBILE AL PROBLEMA SCRITTO SOPRA.
      *
@@ -113,8 +111,6 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
      */
     private Integer checkQuantity()  {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
-        System.out.println(cominicationBean.getStr());
         email = userBean.getUserEmail();
         if(insertQuantity.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please insert a valid quantity");
