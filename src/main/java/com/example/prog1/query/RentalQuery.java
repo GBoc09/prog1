@@ -1,5 +1,6 @@
 package com.example.prog1.query;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -11,5 +12,9 @@ public class RentalQuery implements Query{
     public static boolean insertIntoRent (Statement stmt, String type, Integer price, String email) throws SQLException {
         String query = String.format("INSERT INTO Rental (equipType, equipPrice, scuba)values ('%s', '%d', '%s');", type, price, email);
         return stmt.execute(query);
+    }
+    public static ResultSet loadRent(Statement stmt, String email ) throws SQLException {
+        String query = String.format("SELECT idRental ,equipType, diving, total FROM Rental WHERE scuba = '%s';", email);
+        return stmt.executeQuery(query);
     }
 }

@@ -1,9 +1,6 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.bean.CartBean;
-import com.example.prog1.bean.CominicationBean;
-import com.example.prog1.bean.EquipBean;
-import com.example.prog1.bean.UserBean;
+import com.example.prog1.bean.*;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
@@ -52,8 +49,8 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
     void onButtonClicked(ActionEvent event) throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         Node source = (Node) event.getSource();
-        checkQuantity();
         if (source == addToCart){
+            checkQuantity();
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion successful.");
             alert.showAndWait();
         } else if (source == addItems) {
@@ -87,7 +84,7 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
      * posso valutare l'indice per andare a selezionare dal db le cose che mi servono*/
     private static Integer val;
     public static int memoryIndex (){
-        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
+        IntegerComunicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getIntBean();
         val = cominicationBean.getIndex()+1;
         return val;
     }
@@ -105,8 +102,19 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
         priceLabel.setText(String.valueOf(equipBean.getPrice()));
     }
     private Integer quantity;
+    /** LA FUNZIONE CHECK QUANTITY VIENE CHIAMATA DUE VOLTE IN QULCHE MODO, CREDO CHE SIA L'ORIGINE DEL PROBLEMA DELLA
+     * DUPLICAZIONE DEGLI ITEM NEL CARRRELLO
+     *
+     * LA COMUNICATION BEAN MANTIENE IL NOME DEL DIVING QUINDI E' POSSIBILE PASSARLO ALLA RENTAL MA VIENE STAMPATO DUE VOLTE
+     * RICONDUCIBILE AL PROBLEMA SCRITTO SOPRA.
+     *
+     * IL NOME DEL DIVING LO POSSO PASSARE COME LA MAIL DELL'UTENTE COME UNA STRINGA DA AGGIUNGERE AL DB E POI RIPRENDERLO
+     * SUCCESSIVAMENTE PER STAMPARLO A SCHERMO
+     */
     private Integer checkQuantity()  {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
+        System.out.println(cominicationBean.getStr());
         email = userBean.getUserEmail();
         if(insertQuantity.getText().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please insert a valid quantity");

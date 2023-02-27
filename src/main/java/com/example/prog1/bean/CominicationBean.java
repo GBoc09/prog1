@@ -5,15 +5,6 @@ public class CominicationBean implements Bean{
     private String str;
     public CominicationBean(){}
     public CominicationBean(String str){setStr(str);}
-    public CominicationBean(Integer i){setIndex(i);}
-
-    public Integer getIndex() {
-        return index;
-    }
-
-    public void setIndex(Integer index) {
-        this.index = index;
-    }
 
     public String getStr() {
         return str;

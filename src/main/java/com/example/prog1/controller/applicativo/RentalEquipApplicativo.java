@@ -91,7 +91,10 @@ public class RentalEquipApplicativo {
     }
     public void saveItem(List<CartBean> cartBeans, UserBean userBean){
         RentalDAO rentalDAO = new RentalDAO();
-        rentalDAO.insertRent(cartBeans.get(0), cartBeans.get(2),userBean.getUserEmail());
+        String cart0 = String.valueOf(cartBeans.get(0));
+        String cart2 = String.valueOf(cartBeans.get(1));
+        System.out.println(cart0+ " "+ cart2);
+        rentalDAO.insertRent(cartBeans.get(0), cartBeans.get(1),userBean.getUserEmail());
     }
     public EquipBean infoEquipGeneral(int selectedIndex){
         EquipDAO equipDAO = new EquipDAO();
@@ -129,6 +132,20 @@ public class RentalEquipApplicativo {
         man = managerDAO.selectEmailMan();
         manger.add(man);
         return manger;
+    }
+    public List<RentalBean> summaryRental (String user){
+        List<RentalBean> equip = new ArrayList<>();
+        RentalDAO rentalDAO = new RentalDAO();
+        List<Rental> equip2 = rentalDAO.getRentInfo(user);
+        for (Rental d : equip2) {
+            RentalBean rentalBean = new RentalBean();
+            rentalBean.setIdRental(d.getIdRent());
+            rentalBean.setEquipType(d.getEquipType());
+            rentalBean.setDiv(d.getDiving());
+            rentalBean.setTotal(d.getTotal());
+            equip.add(rentalBean);
+        }
+        return equip;
     }
 }
 

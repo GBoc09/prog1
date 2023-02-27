@@ -2,19 +2,17 @@ package com.example.prog1.bean;
 
 public class RentalBean implements Bean{
     private Integer idRental;
-    private Integer idEquip;
     private String equipType;
     private String scuba;
-    private String divMan;
+    private String div;
     private Integer total;
 
     public RentalBean (){}
-    public RentalBean(Integer idR, Integer idE, String eqT, String s, String m){
+    public RentalBean(Integer idR, String eqT, String s, String m){
         this.idRental = idR;
-        this.idEquip = idE;
         this.equipType = eqT;
         this.scuba = s;
-        this.divMan = m;
+        this.div = m;
     }
     public Integer getIdRental() {
         return idRental;
@@ -22,14 +20,6 @@ public class RentalBean implements Bean{
 
     public void setIdRental(Integer idRental) {
         this.idRental = idRental;
-    }
-
-    public Integer getIdEquip() {
-        return idEquip;
-    }
-
-    public void setIdEquip(Integer idEquip) {
-        this.idEquip = idEquip;
     }
 
     public String getEquipType() {
@@ -48,12 +38,12 @@ public class RentalBean implements Bean{
         this.scuba = scuba;
     }
 
-    public String getDivMan() {
-        return divMan;
+    public String getDiv() {
+        return div;
     }
 
-    public void setDivMan(String divMan) {
-        this.divMan = divMan;
+    public void setDiv(String divMan) {
+        this.div = div;
     }
 
     public Integer getTotal() {

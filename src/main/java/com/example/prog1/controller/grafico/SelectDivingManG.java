@@ -70,7 +70,7 @@ public class SelectDivingManG implements Initializable {
                     label.setText(column[0]);
                     str = label.getText();
                     cominicationBean = new CominicationBean(str);
-                    InternalControllerGrafico.getInternalControllerInstance().setBean(cominicationBean);
+                    InternalControllerGrafico.getInternalControllerInstance().setBeanString(cominicationBean);
                 }
             });
         }

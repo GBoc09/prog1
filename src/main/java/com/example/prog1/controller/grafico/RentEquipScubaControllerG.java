@@ -2,6 +2,7 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
+import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
@@ -57,14 +58,14 @@ public class RentEquipScubaControllerG implements Initializable {
             SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
         }
     }
-    private CominicationBean cominicationBean1;
+    private IntegerComunicationBean cominicationBean1;
     /** settare la lista delle attrezzature disponibili in un diving scelto
      * name = divingName */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         quantity.setDisable(true);
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBean();
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         String str = cominicationBean.getStr();
         List<EquipBean> equipBeanList = null;
         if (str != null){
@@ -84,8 +85,8 @@ public class RentEquipScubaControllerG implements Initializable {
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                     equipType.setText(listView.getSelectionModel().getSelectedItem());
                     selectionIndex = listView.getSelectionModel().getSelectedIndex();
-                    cominicationBean1 = new CominicationBean(selectionIndex);
-                    InternalControllerGrafico.getInternalControllerInstance().setBean(cominicationBean1);
+                    cominicationBean1 = new IntegerComunicationBean(selectionIndex);
+                    InternalControllerGrafico.getInternalControllerInstance().setBeanInt(cominicationBean1);
                 }
             });
             quantity.setDisable(false);

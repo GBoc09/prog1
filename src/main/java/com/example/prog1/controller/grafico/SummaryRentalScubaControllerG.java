@@ -1,16 +1,24 @@
 package com.example.prog1.controller.grafico;
 
+import com.example.prog1.bean.CominicationBean;
+import com.example.prog1.bean.RentalBean;
+import com.example.prog1.bean.UserBean;
+import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class SummaryRentalScubaControllerG {
+public class SummaryRentalScubaControllerG implements Initializable {
     @FXML private MenuItem cart;
     @FXML private MenuItem home;
     @FXML private ListView<String> listView;
@@ -40,6 +48,24 @@ public class SummaryRentalScubaControllerG {
             SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
         }
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
+        String str = cominicationBean.getStr();
+        System.out.println(str);
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        List<RentalBean> rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
+        for (RentalBean r : rentalBeans){
+            String type = r.getEquipType();
+            listView.getItems().add(type+"   "+"\n\n");
+            rentLabel.setText(String.valueOf(r.getIdRental()));
+            divingLabel.setText(r.getDiv());
+            totalLabel.setText(String.valueOf(r.getTotal()));
+        }
+    }
+
 
 }
 
