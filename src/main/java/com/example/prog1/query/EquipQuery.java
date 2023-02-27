@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class EquipQuery implements Query{
+public class EquipQuery{
     public static boolean insertEquip (Statement stmt, String type, String size, Integer avail, Integer price, String divingName, String manEmail) throws SQLException {
         String query = String.format("INSERT INTO Equipment (EquipType, size, availability, price, divingName, manager)values ('%s', '%s', '%d', '%d', '%s','%s');", type, size, avail, price, divingName,manEmail);
         return stmt.execute(query);

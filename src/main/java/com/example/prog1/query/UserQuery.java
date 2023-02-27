@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UserQuery implements Query{
+public class UserQuery {
     public static ResultSet selectUserByCredentials(Statement stmt, String email, String pass) throws SQLException {
         String query = String.format("SELECT * FROM user WHERE email = '%s' AND password = '%s';", email, pass);
         return stmt.executeQuery(query);

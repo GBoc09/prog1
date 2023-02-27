@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DivingQuery implements Query{
+public class DivingQuery{
     public static ResultSet selectDivingName(Statement stmt, String divingMan) throws SQLException {
         String query = String.format("SELECT name FROM Diving WHERE divingManager = '%s';", divingMan);
         return stmt.executeQuery(query);
