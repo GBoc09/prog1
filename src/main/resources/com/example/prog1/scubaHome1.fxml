@@ -58,9 +58,10 @@
               <MenuItem fx:id="home" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Home" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Cart">
+          <Menu mnemonicParsing="false" text="Shopping">
             <items>
               <MenuItem fx:id="cart" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Cart" />
+                  <MenuItem fx:id="rent" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Rental " />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="LogBook">

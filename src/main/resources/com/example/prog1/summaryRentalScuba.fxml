@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prog1.controller.grafico.SummaryRentalScubaControllerG">
+   <children>
+      <MenuBar fx:id="menuBar" layoutX="1.0" layoutY="1.0" prefHeight="26.0" prefWidth="600.0" style="-fx-background-color: white;">
+         <menus>
+            <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem fx:id="home" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Home" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Shopping">
+               <items>
+                  <MenuItem fx:id="cart" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Cart" />
+                  <MenuItem fx:id="rent" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Rental " />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="LogBook">
+               <items>
+                  <MenuItem fx:id="logbook" mnemonicParsing="false" onAction="#onMenuItemSelected" text="LogBook" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="LogOut">
+               <items>
+                  <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#onMenuItemSelected" text="LogOut" />
+               </items>
+            </Menu>
+         </menus>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </MenuBar>
+      <Label layoutX="165.0" layoutY="40.0" text="Rental Summary">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Line endX="163.79998779296875" endY="-1.52587890625E-5" layoutX="271.0" layoutY="88.0" startX="-105.99998474121094" startY="-1.52587890625E-5" strokeWidth="2.0" />
+      <Label layoutX="76.0" layoutY="94.0" text="ID Rent ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="76.0" layoutY="158.0" text="Items ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listView" layoutX="76.0" layoutY="179.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" />
+      <Label layoutX="303.0" layoutY="214.0" text="Total ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="303.0" layoutY="271.0" text="Diving">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="rentLabel" layoutX="76.0" layoutY="116.0" text="...">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalLabel" layoutX="303.0" layoutY="236.0" text="...">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="divingLabel" layoutX="303.0" layoutY="293.0" text="...">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -25,11 +25,13 @@ public class SelectedDivingScubaG implements Initializable {
     @FXML private MenuBar menuBar;
     @FXML private Button selectDiving;
     @FXML private Label label;
+    @FXML private MenuItem rent;
 
     private static final String SCUBA_HOME = "scubaHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String CART_SCREEN = "cart1.fxml";
     private static final String RENT_EQUIP = "rentEquip1.fxml";
+    private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
@@ -39,6 +41,8 @@ public class SelectedDivingScubaG implements Initializable {
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart) {
             SwapPage.getInstance().gotoPage(CART_SCREEN);
+        } else if (sourceItem == rent) {
+            SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
         }
     }
 

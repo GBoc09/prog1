@@ -66,7 +66,7 @@ public class SelectDivingManG implements Initializable {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                     String row = listView.getSelectionModel().getSelectedItem();
-                    String[] column = row.split("   ");
+                    String[] column = row.split("\s\s\s");
                     label.setText(column[0]);
                     str = label.getText();
                     cominicationBean = new CominicationBean(str);

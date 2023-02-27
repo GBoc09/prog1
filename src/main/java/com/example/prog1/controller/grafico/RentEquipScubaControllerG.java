@@ -27,10 +27,12 @@ public class RentEquipScubaControllerG implements Initializable {
     @FXML private MenuItem logbook;
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
+    @FXML private MenuItem rent;
     public static final String CART_USER_SCREEN = "cart1.fxml";
     private static final String CART_ROW = "cartRow.fxml";
     private static final String SCUBA_HOME = "scubaHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
 
     private Integer selectionIndex;
     @FXML
@@ -51,6 +53,8 @@ public class RentEquipScubaControllerG implements Initializable {
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart){
             SwapPage.getInstance().gotoPage(CART_USER_SCREEN);
+        } else if (sourceItem == rent) {
+            SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
         }
     }
     private CominicationBean cominicationBean1;

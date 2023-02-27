@@ -27,12 +27,14 @@ public class CartControllerGrafico implements Initializable {
     @FXML private MenuItem home;
     @FXML private MenuItem logbook;
     @FXML private MenuItem logout;
+    @FXML private MenuItem rent;
     @FXML private MenuBar menuBar;
 
     private static final String RENT_EQUIP = "rentEquip1.fxml";
     private static final String SCUBA_HOME = "scubaHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String CART_SCREEN = "cart1.fxml";
+    private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
@@ -42,6 +44,7 @@ public class CartControllerGrafico implements Initializable {
             deleteCart();
         } else if (source == completeRental){
             saveOrder();
+            SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
             /** MANDARE EMAIL AL DIVING PER NOTIFICA ORDINE */
         }
     }
@@ -54,6 +57,8 @@ public class CartControllerGrafico implements Initializable {
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart) {
             SwapPage.getInstance().gotoPage(CART_SCREEN);
+        } else if (sourceItem == rent) {
+            SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
         }
     }
     @Override

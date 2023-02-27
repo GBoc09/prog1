@@ -31,12 +31,14 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
     @FXML private Label priceLabel;
     @FXML private Label sizeLabel;
     @FXML private Label back;
+    @FXML private MenuItem rent;
     Logger logger = Logger.getLogger(CartRowControllerG.class.getName());
 
     private static final String RENT_EQUIP = "rentEquip1.fxml";
     private static final String CART_SCREEN = "cart1.fxml";
     private static final String SCUBA_HOME  = "scubaHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
     @FXML
     void back(MouseEvent event) {
         try{
@@ -70,6 +72,8 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == cart){
             SwapPage.getInstance().gotoPage(CART_SCREEN);
+        } else if (sourceItem == rent){
+            SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
         }
     }
     /**

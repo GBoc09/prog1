@@ -13,33 +13,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #D8F1FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prog1.controller.grafico.RentEquipScubaControllerG">
    <children>
-      <MenuBar fx:id="menuBar" prefHeight="26.0" prefWidth="600.0" style="-fx-background-color: white;">
-         <menus>
-            <Menu mnemonicParsing="false" text="Home">
-               <items>
-                  <MenuItem fx:id="home" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Home" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Cart">
-               <items>
-                  <MenuItem fx:id="cart" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Cart" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="LogBook">
-               <items>
-                  <MenuItem fx:id="logbook" mnemonicParsing="false" onAction="#onMenuItemSelected" text="LogBook" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="LogOut">
-               <items>
-                  <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#onMenuItemSelected" text="LogOut" />
-               </items>
-            </Menu>
-         </menus>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </MenuBar>
       <Label layoutX="14.0" layoutY="35.0" text="Our products!">
          <font>
             <Font name="System Bold" size="35.0" />
@@ -70,5 +43,33 @@
             <Font size="15.0" />
          </font>
       </Button>
+      <MenuBar fx:id="menuBar" layoutX="1.0" prefHeight="26.0" prefWidth="600.0" style="-fx-background-color: white;">
+         <menus>
+            <Menu mnemonicParsing="false" text="Home">
+               <items>
+                  <MenuItem fx:id="home" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Home" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Shopping">
+               <items>
+                  <MenuItem fx:id="cart" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Cart" />
+                  <MenuItem fx:id="rent" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Rental " />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="LogBook">
+               <items>
+                  <MenuItem fx:id="logbook" mnemonicParsing="false" onAction="#onMenuItemSelected" text="LogBook" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="LogOut">
+               <items>
+                  <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#onMenuItemSelected" text="LogOut" />
+               </items>
+            </Menu>
+         </menus>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </MenuBar>
    </children>
 </AnchorPane>
