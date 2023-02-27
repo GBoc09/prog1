@@ -44,10 +44,9 @@ public class ShowDivingManagerG implements Initializable {
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         }
     }
-    private ManagerApplicativo managerApplicativo;
+    private ManagerApplicativo managerApplicativo = new ManagerApplicativo();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         List<DivingBean> divingBeanList = managerApplicativo.getDivings(userBean);
         for (DivingBean d: divingBeanList){
