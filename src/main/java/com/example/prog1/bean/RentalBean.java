@@ -42,7 +42,7 @@ public class RentalBean implements Bean{
         return div;
     }
 
-    public void setDiv(String divMan) {
+    public void setDiv(String div) {
         this.div = div;
     }
 
