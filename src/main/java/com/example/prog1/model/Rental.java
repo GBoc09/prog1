@@ -1,7 +1,6 @@
 package com.example.prog1.model;
 
 import com.example.prog1.pattern.state.State;
-import com.example.prog1.pattern.state.StatoNuovo;
 
 public class Rental {
     private Integer idRent;

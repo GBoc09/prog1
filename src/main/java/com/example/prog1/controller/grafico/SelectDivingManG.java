@@ -4,6 +4,7 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.utilities.MenuBarManegerManagement;
 import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -30,28 +31,22 @@ public class SelectDivingManG implements Initializable {
     @FXML private Button addEquipButton;
     @FXML private Button showCatalogue;
     @FXML private MenuItem rental;
-
-    private static final String MANAGER_HOME = "managerHome1.fxml";
-    private static final String LOGIN_SCREEN = "login1.fxml";
-    private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
-    private static final String SELECT_DIV_MAN = "selectDivingMan.fxml";
     private static final String ADD_EQUIP_MAN = "addEquip1.fxml";
     private static final String SHOW_EQUIP_MAN = "showEquipManager.fxml";
-    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
 
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            SwapPage.getInstance().gotoPage(MANAGER_HOME);
+            MenuBarManegerManagement.getMenuBarManagerInstance().homeMan(sourceItem);
         } else if (sourceItem == logout){
-            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
+            MenuBarManegerManagement.getMenuBarManagerInstance().logOut(sourceItem);
         } else if (sourceItem == equipment){
-            SwapPage.getInstance().gotoPage(SELECT_DIV_MAN);
-        } else if (sourceItem == diving){
-            SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
-        } else if (sourceItem == rental) {
-            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
+            MenuBarManegerManagement.getMenuBarManagerInstance().selectDivingMan(sourceItem);
+        }else if (sourceItem == diving){
+            MenuBarManegerManagement.getMenuBarManagerInstance().showDivingMan(sourceItem);
+        } else if (sourceItem == rental){
+            MenuBarManegerManagement.getMenuBarManagerInstance().acceptReject(sourceItem);
         }
     }
     private String str;

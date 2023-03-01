@@ -3,6 +3,7 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
+import com.example.prog1.utilities.MenuBarManegerManagement;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,25 +28,19 @@ public class ShowDivingManagerG implements Initializable {
     @FXML private MenuBar menuBar;
     @FXML private MenuItem rental;
 
-    private static final String MANAGER_HOME = "managerHome1.fxml";
-    private static final String LOGIN_SCREEN = "login1.fxml";
-    private static final String SHOW_EQUIP_MAN = "showEquipManager.fxml";
-    private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
-    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
-
     /** mostra tutti i diving associati ad un manager */
     @FXML void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            SwapPage.getInstance().gotoPage(MANAGER_HOME);
+            MenuBarManegerManagement.getMenuBarManagerInstance().homeMan(sourceItem);
         } else if (sourceItem == logout){
-            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
-
-            SwapPage.getInstance().gotoPage(SHOW_EQUIP_MAN);
-        } else if (sourceItem == diving){
-            SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
-        } else if (sourceItem == rental) {
-            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
+            MenuBarManegerManagement.getMenuBarManagerInstance().logOut(sourceItem);
+        } else if (sourceItem == equipment){
+            MenuBarManegerManagement.getMenuBarManagerInstance().selectDivingMan(sourceItem);
+        }else if (sourceItem == diving){
+            MenuBarManegerManagement.getMenuBarManagerInstance().showDivingMan(sourceItem);
+        } else if (sourceItem == rental){
+            MenuBarManegerManagement.getMenuBarManagerInstance().acceptReject(sourceItem);
         }
     }
     private ManagerApplicativo managerApplicativo = new ManagerApplicativo();
