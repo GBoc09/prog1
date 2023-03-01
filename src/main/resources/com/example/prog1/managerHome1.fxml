@@ -53,6 +53,7 @@
             <Menu mnemonicParsing="false" text="Diving">
                <items>
                   <MenuItem fx:id="diving" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Diving" />
+                  <MenuItem fx:id="rental" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Rental " />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Equipment">

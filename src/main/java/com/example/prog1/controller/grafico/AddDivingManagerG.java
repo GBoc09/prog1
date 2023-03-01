@@ -15,7 +15,6 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class AddDivingManagerG {
-
     @FXML private MenuItem courses;
     @FXML private MenuItem diving;
     @FXML private TextField divingLoc;
@@ -27,11 +26,13 @@ public class AddDivingManagerG {
     @FXML private MenuItem home;
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
+    @FXML private MenuItem rental;
 
     private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
     private static final String MANAGER_HOME = "managerHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String SHOW_EQUIP_MAN = "showEquipManager.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
     /**
      * button continue deve portare alla pagina che mostra l'elenco dei diving assegiati al manager; */
     @FXML
@@ -53,6 +54,8 @@ public class AddDivingManagerG {
             SwapPage.getInstance().gotoPage(SHOW_EQUIP_MAN);
         }else if (sourceItem == diving){
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
+        } else if (sourceItem == rental){
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
 
     }

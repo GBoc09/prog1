@@ -21,12 +21,14 @@ public class ManagerHomeControllerG {
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
     @FXML private Button divingEquip;
+    @FXML private MenuItem rental;
 
     private static final String MANAGER_HOME = "managerHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
     private static final String SELECT_DIV_MAN = "selectDivingMan.fxml";
     private static final String INSERT_DIV_MAN = "managerDivingInsert1.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
@@ -39,8 +41,9 @@ public class ManagerHomeControllerG {
 
         }else if (sourceItem == diving){
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
+        } else if (sourceItem == rental) {
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
-
     }
     @FXML
     void onSelectedButton(ActionEvent event) throws IOException {

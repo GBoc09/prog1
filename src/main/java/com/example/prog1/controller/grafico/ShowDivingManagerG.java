@@ -25,11 +25,13 @@ public class ShowDivingManagerG implements Initializable {
     @FXML private ListView<String> listView;
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
+    @FXML private MenuItem rental;
 
     private static final String MANAGER_HOME = "managerHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String SHOW_EQUIP_MAN = "showEquipManager.fxml";
     private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
 
     /** mostra tutti i diving associati ad un manager */
     @FXML void onMenuItemSelected(ActionEvent event) throws IOException {
@@ -40,8 +42,10 @@ public class ShowDivingManagerG implements Initializable {
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
 
             SwapPage.getInstance().gotoPage(SHOW_EQUIP_MAN);
-        }else if (sourceItem == diving){
+        } else if (sourceItem == diving){
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
+        } else if (sourceItem == rental) {
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
     private ManagerApplicativo managerApplicativo = new ManagerApplicativo();

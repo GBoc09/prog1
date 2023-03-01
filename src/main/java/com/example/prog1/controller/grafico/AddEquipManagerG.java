@@ -25,11 +25,13 @@ public class AddEquipManagerG {
     @FXML private MenuItem home;
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
+    @FXML private MenuItem rental;
 
     private static final String MANAGER_HOME = "managerHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String SELECT_DIV_MAN = "selectDivingMan.fxml";
     private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
 
     ObservableList<String> sizeList = FXCollections.observableArrayList("none", "XS", "S", "M","L", "XL");
     @FXML
@@ -72,6 +74,8 @@ public class AddEquipManagerG {
             SwapPage.getInstance().gotoPage(SELECT_DIV_MAN);
         }else if (sourceItem == diving){
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
+        } else if (sourceItem == rental){
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
 
     }

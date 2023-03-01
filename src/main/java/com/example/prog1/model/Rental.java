@@ -1,5 +1,8 @@
 package com.example.prog1.model;
 
+import com.example.prog1.pattern.state.State;
+import com.example.prog1.pattern.state.StatoNuovo;
+
 public class Rental {
     private Integer idRent;
     private String equipType;
@@ -13,6 +16,24 @@ public class Rental {
         this.equipType = type;
         this.total = tot;
         this.diving = diving;
+    }
+    /** applicazione del pattern state all'interno dello stato dell'ordine di un cliente:
+     * IL MANAGER DI UN DIVING PUò ACCETTARE O RIFIUTARE L'ORDINE FATTO, SE LO ACCETTA VIENE MANDATA UNA MAIL DI NOTIFICA
+     * AL CLIENTE, ANALOGAMENTE SE LO RIFIUTA
+     *
+     * lo stato è un oggetto di tipo RENTAL */
+    private State  statoRental;
+    /**public Rental (){
+        this.statoRental = new StatoNuovo();
+    }
+     da errore in dao cercare di capire come risolvere  */
+
+    public State getStatoRental() {
+        return statoRental;
+    }
+
+    public void setStatoRental(State statoRental) {
+        this.statoRental = statoRental;
     }
 
     public Integer getIdRent() {

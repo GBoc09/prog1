@@ -29,6 +29,7 @@ public class SelectDivingManG implements Initializable {
     @FXML private ListView<String> listView;
     @FXML private Button addEquipButton;
     @FXML private Button showCatalogue;
+    @FXML private MenuItem rental;
 
     private static final String MANAGER_HOME = "managerHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
@@ -36,6 +37,7 @@ public class SelectDivingManG implements Initializable {
     private static final String SELECT_DIV_MAN = "selectDivingMan.fxml";
     private static final String ADD_EQUIP_MAN = "addEquip1.fxml";
     private static final String SHOW_EQUIP_MAN = "showEquipManager.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
 
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
@@ -46,8 +48,10 @@ public class SelectDivingManG implements Initializable {
             SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == equipment){
             SwapPage.getInstance().gotoPage(SELECT_DIV_MAN);
-        }else if (sourceItem == diving){
+        } else if (sourceItem == diving){
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
+        } else if (sourceItem == rental) {
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
     private String str;

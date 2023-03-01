@@ -29,12 +29,16 @@ public class ShowEquipManagerG implements Initializable {
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
     @FXML private Button modify;
+    @FXML private MenuItem rental;
+
     Logger logger = Logger.getLogger(ShowEquipManagerG.class.getName());
     private static final String ADD_EQUIP_MAN = "addEquip1.fxml";
     private static final String MANAGER_HOME = "managerHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String SELECT_EQUIP = "selectDivingMan.fxml";
     private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
+
     @FXML
     void modify(ActionEvent event) {
         try{
@@ -55,6 +59,8 @@ public class ShowEquipManagerG implements Initializable {
             SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         } else if (sourceItem == equipment){
             SwapPage.getInstance().gotoPage(SELECT_EQUIP);
+        } else if (sourceItem == rental) {
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
     private ManagerApplicativo managerApplicativo;
