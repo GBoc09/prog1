@@ -34,8 +34,7 @@ public class SelectDivingManG implements Initializable {
     private static final String ADD_EQUIP_MAN = "addEquip1.fxml";
     private static final String SHOW_EQUIP_MAN = "showEquipManager.fxml";
 
-    @FXML
-    void onMenuItemSelected(ActionEvent event) throws IOException {
+    @FXML void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
             MenuBarManegerManagement.getMenuBarManagerInstance().homeMan(sourceItem);
