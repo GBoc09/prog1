@@ -33,7 +33,7 @@ public class HomeFreeCLIGrafico extends ControllerGraficoManagementCli{
     @Override
     public int showMenu() throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        PrinterCli.printMessage("*** What shoul I do for you "+userBean.getUserEmail());
+        PrinterCli.printMessage("*** What should I do for you ***"+userBean.getUserEmail());
         PrinterCli.printMessage("1) Select Diving Course\n");
         PrinterCli.printMessage("2) Add diving to your LogBook\n");
         PrinterCli.printMessage("3) LogOut\n");

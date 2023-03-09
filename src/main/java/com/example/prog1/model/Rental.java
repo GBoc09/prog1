@@ -1,6 +1,7 @@
 package com.example.prog1.model;
 
-import com.example.prog1.pattern.state.State;
+import com.example.prog1.pattern.state.RentalState;
+
 
 public class Rental {
     private Integer idRent;
@@ -9,6 +10,7 @@ public class Rental {
     private String diving;
     private Integer total;
     private Integer equipPrice;
+    private RentalState statoRental;
     public Rental(){}
     public Rental (Integer id, String type, String diving, Integer tot){
         this.idRent =id;
@@ -17,23 +19,26 @@ public class Rental {
         this.diving = diving;
     }
     /** applicazione del pattern state all'interno dello stato dell'ordine di un cliente:
-     * IL MANAGER DI UN DIVING PUò ACCETTARE O RIFIUTARE L'ORDINE FATTO, SE LO ACCETTA VIENE MANDATA UNA MAIL DI NOTIFICA
-     * AL CLIENTE, ANALOGAMENTE SE LO RIFIUTA
      *
      * lo stato è un oggetto di tipo RENTAL */
-    private State  statoRental;
-    /**public Rental (){
-        this.statoRental = new StatoNuovo();
-    }
-     da errore in dao cercare di capire come risolvere  */
 
-    public State getStatoRental() {
+    public RentalState getStatoRental() {
         return statoRental;
     }
 
-    public void setStatoRental(State statoRental) {
+    public void setStatoRental(RentalState statoRental) {
         this.statoRental = statoRental;
     }
+
+    /**public Rental (){
+        this.statoRental = new StatoNuovo();
+    }
+     da errore in dao cercare di capire come risolvere
+
+     CREARE INTERFACCIA CHE INTERAGISCE CON TUTTO IL RESTO DELL'APPLICAZIONI
+     E LA CLASSE CONCRETA INTERAGISCE CON STATE PATTERN
+     AGGIUNGERE CAMPO STATO ALL'INTERNO DEL DB
+     */
 
     public Integer getIdRent() {
         return idRent;

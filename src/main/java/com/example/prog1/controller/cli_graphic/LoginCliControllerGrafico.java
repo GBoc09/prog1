@@ -1,8 +1,10 @@
 package com.example.prog1.controller.cli_graphic;
 
 import com.example.prog1.bean.AccessInfoBean;
+import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.LoginApplicativo;
 import com.example.prog1.controller.grafico.CasaControllerGrafico;
+import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.InvalidCredentialException;
 import com.example.prog1.exception.InvalidFormatException;
 import com.example.prog1.exception.NotExistentUserException;
@@ -16,6 +18,10 @@ import java.util.logging.Logger;
 
 public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
     Logger logger = Logger.getLogger(LoginCliControllerGrafico.class.getName());
+    public static final int SCUBA_TYPE = 0;
+    public static final int FREE_TYPE = 1;
+    public static final int MANAGER_TYPE = 2;
+    public static final int NOT_LOG = -1;
     @Override
     public void start(){
         while (true){
@@ -57,7 +63,26 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
             PrinterCli.printMessage("Password: ");
             String password = reader.readLine();
             AccessInfoBean accessInfoBean = new AccessInfoBean(username, password);
-            loginApplicativo.verifyUser(accessInfoBean);
+            UserBean userBean = new UserBean();
+            userBean.setUserEmail(accessInfoBean.getUserEmail());
+            userBean = loginApplicativo.verifyUser(accessInfoBean);
+            Integer type = userBean.getUserType();
+            switch (type) {
+                case 0 :
+                    InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
+                    new HomeScubaCLIGrafico().start();
+                    break;
+                case 1:
+                    InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
+                    new HomeFreeCLIGrafico().start();
+                    break;
+                case 2:
+                    InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
+                    new HomeManagerCLIGrafico().start();
+                    break;
+                default: type = NOT_LOG;
+            }
+
         } catch (IOException e){
             logger.log(Level.INFO, e.getMessage());
         } catch (NotExistentUserException e) {

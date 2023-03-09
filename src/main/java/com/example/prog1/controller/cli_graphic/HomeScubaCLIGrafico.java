@@ -6,7 +6,6 @@ import com.example.prog1.exception.InvalidFormatException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.IOException;
-import java.util.logging.Level;
 
 public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
     @Override
@@ -25,17 +24,16 @@ public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
                     default -> throw new InvalidFormatException("invalid choice");
                 }
             } catch (InvalidFormatException e){
-                logger.log(Level.INFO, e.getMessage());
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
-
     @Override
     public int showMenu() throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        PrinterCli.printMessage("*** What shoul I do for you "+userBean.getUserEmail());
+        PrinterCli.printMessage("*** SCUBA DASHBOARD *** \n  *** What do "+userBean.getUserEmail()+" want to do? ***  \n");
         PrinterCli.printMessage("1) Rent Equipment\n");
         PrinterCli.printMessage("2) Select Diving Course\n");
         PrinterCli.printMessage("3) Add dive to your LogBook\n");
@@ -44,7 +42,9 @@ public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
         PrinterCli.printMessage("6) Quit\n");
         return getMenuChoice(1,6);
     }
-    private void rentEquip(){/** creare il controller grafico per questo */}
+    private void rentEquip(){/** creare il controller grafico per questo */
+        new ChooseDivingCLIGrafico().start();
+    }
     private void selectCourse() throws InvalidFormatException {
         PrinterCli.printMessage("Not implemented\n");
         throw new InvalidFormatException("Function not implemented");

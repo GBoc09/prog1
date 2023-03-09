@@ -2,7 +2,7 @@ package com.example.prog1.pattern.state;
 
 import com.example.prog1.model.Rental;
 
-public class StatoNuovo implements State{
+public class StatoNuovo implements RentalState{
     /** gestisce le transizioni di stato da in corso */
     @Override
     public void gestioneStatoRental (Rental rental, String stato){

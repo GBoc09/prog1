@@ -1,9 +1,8 @@
 package com.example.prog1.controller.grafico;
 
 import com.example.prog1.model.Rental;
-import com.example.prog1.pattern.state.State;
+import com.example.prog1.pattern.state.RentalState;
 import com.example.prog1.utilities.MenuBarManegerManagement;
-import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -38,7 +37,7 @@ public class AccettazioneRentalManagerG {
     void onButtonClicked(ActionEvent event) {
         Node source = (Node) event.getSource();
         Rental rental1 = new Rental();
-        State stateRental = rental1.getStatoRental();
+        RentalState stateRental = rental1.getStatoRental();
         if (acceptButt.isSelected() && source == sendEmail){
             decisione = ACCEPT;
             stateRental.gestioneStatoRental(rental1, decisione);
