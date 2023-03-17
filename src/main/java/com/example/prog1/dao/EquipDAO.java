@@ -13,12 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EquipDAO {
-    /* SQL column*/
-    private static final String TYPE_EQUIP = "equipType";
-    private static final String PRICE = "price";
-    private static final String SIZE = "size";
-    private static final String AVAIL = "availability";
-
     /** inserimento diretto per tipo prezzo taglia e diponibilità
      * inserimento diretto per license
      * inserimento indiretto per diving: prendi diving name con query da diving se il numero di license corrisponde

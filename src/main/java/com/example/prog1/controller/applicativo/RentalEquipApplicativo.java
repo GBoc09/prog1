@@ -106,10 +106,8 @@ public class RentalEquipApplicativo {
             type = d.getType();
             price = d.getPrice();
             total = total+price;
-            System.out.println(total);
             rentalDAO.insertRent(type, userBean.getUserEmail(), cominicationBean.getStr(), price);
         }
-        System.out.println(total);
         rentalDAO.insertRentPart(total);
     }
     public EquipBean infoEquipGeneral(int selectedIndex){
@@ -130,6 +128,14 @@ public class RentalEquipApplicativo {
         EquipBean equipBean = null;
         equipBean = equipDAO.selectEquipByOrder(selectedIndex);
         cartDAO.insertIntoCart(equipBean, quant, email);
+    }
+    public void infoEquipCartCLI(PassStringsBean passStringsBean, UserBean userBean){
+        String item = passStringsBean.getItem();
+        String size = passStringsBean.getSize();
+        Integer quant = passStringsBean.getQuant();
+        String user = userBean.getUserEmail();
+        CartDAO cartDAO = new CartDAO();
+        cartDAO.insertIntoCartCLI(item,size,quant,user);
     }
     public void sendEmail(VendorOrderBean vendorOrderBean){
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();

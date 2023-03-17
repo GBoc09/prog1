@@ -17,6 +17,10 @@ public class EquipQuery{
         String query = String.format("SELECT idEquipment, equipType, size, availability, price FROM Equipment;");
         return stmt.executeQuery(query);
     }
+    public static ResultSet loadPriceByName(Statement stmt, String item) throws SQLException {
+        String query = String.format("SELECT price FROM Equipment WHERE equipType = '%s';", item);
+        return stmt.executeQuery(query);
+    }
     public static ResultSet loadEquipDivingManager(Statement stmt, String diving,String manager) throws SQLException {
         String query = String.format("SELECT equipType, size, availability, price FROM Equipment WHERE divingName = '%s' AND manager = '%s';",diving, manager);
         return stmt.executeQuery(query);

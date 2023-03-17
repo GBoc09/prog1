@@ -11,7 +11,7 @@ public abstract class ControllerGraficoManagementCli implements ControllerGrafic
         Scanner input = new Scanner(System.in);
         int choice = 0;
         while (true){
-            PrinterCli.printMessage("Please enter a chioce: ");
+            PrinterCli.printMessage("Please enter a choice: ");
             choice = input.nextInt();
             if (choice >= a && choice <= b){
                 break;
