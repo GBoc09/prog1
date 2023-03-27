@@ -4,6 +4,7 @@ import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +38,7 @@ public class CartControllerGrafico implements Initializable {
     private static final String CART_SCREEN = "cart1.fxml";
     private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
     @FXML
-    void onButtonClicked(ActionEvent event) throws IOException {
+    void onButtonClicked(ActionEvent event) throws IOException, SqlException {
         Node source = (Node) event.getSource();
         if (source == addItems) {
             SwapPage.getInstance().gotoPage(RENT_EQUIP);
@@ -66,7 +67,12 @@ public class CartControllerGrafico implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
+        List<CartBean> cartBeanList = null;
+        try {
+            cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
+        } catch (SqlException e) {
+            throw new RuntimeException(e);
+        }
         for (CartBean c : cartBeanList){
             String type = c.getType();
             String size = c.getSize();
@@ -76,14 +82,14 @@ public class CartControllerGrafico implements Initializable {
         }
     }
     /** cancella il carrello completo */
-    private void deleteCart() throws IOException {
+    private void deleteCart() throws IOException, SqlException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         rentalEquipApplicativo.deleteItem(userBean);
         SwapPage.getInstance().gotoPage(CART_SCREEN);
     }
     /** salvataggio dell'ordine nella tabella RENTAL */
-    private void saveOrder(){
+    private void saveOrder() throws SqlException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();

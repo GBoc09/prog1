@@ -2,6 +2,7 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.bean.*;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,7 +47,7 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
         }
     }
     @FXML
-    void onButtonClicked(ActionEvent event) throws IOException {
+    void onButtonClicked(ActionEvent event) throws IOException, SqlException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         Node source = (Node) event.getSource();
         if (source == addToCart){
@@ -90,7 +91,7 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
     }
     private String email;
     @FXML
-    public void initialize (){
+    public void initialize () throws SqlException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         email = userBean.getUserEmail();
         EquipBean equipBean;
@@ -109,7 +110,7 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
      * IL NOME DEL DIVING LO POSSO PASSARE COME LA MAIL DELL'UTENTE COME UNA STRINGA DA AGGIUNGERE AL DB E POI RIPRENDERLO
      * SUCCESSIVAMENTE PER STAMPARLO A SCHERMO
      */
-    private Integer checkQuantity()  {
+    private Integer checkQuantity() throws SqlException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         email = userBean.getUserEmail();
         if(insertQuantity.getText().isEmpty()){
@@ -130,7 +131,7 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
         }
         return quantity;
     }
-    public List<CartBean> loadCart(UserBean userBean){
+    public List<CartBean> loadCart(UserBean userBean) throws SqlException {
         email = userBean.getUserEmail();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeans = rentalEquipApplicativo.showCart(email);

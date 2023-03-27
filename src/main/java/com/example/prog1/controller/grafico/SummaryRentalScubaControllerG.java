@@ -4,6 +4,7 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +38,7 @@ public class SummaryRentalScubaControllerG implements Initializable {
     private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
 
     @FXML
-    void onMenuItemSelected(ActionEvent event) throws IOException {
+    void onMenuItemSelected(ActionEvent event) throws IOException, SqlException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
             SwapPage.getInstance().gotoPage(SCUBA_HOME);
@@ -51,7 +52,7 @@ public class SummaryRentalScubaControllerG implements Initializable {
             deleteRental();
         }
     }
-    private void deleteRental() throws IOException {
+    private void deleteRental() throws IOException, SqlException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         rentalEquipApplicativo.deleteRent(userBean);
@@ -62,7 +63,12 @@ public class SummaryRentalScubaControllerG implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        List<RentalBean> rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
+        List<RentalBean> rentalBeans = null;
+        try {
+            rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
+        } catch (SqlException e) {
+            throw new RuntimeException(e);
+        }
         for (RentalBean r : rentalBeans){
             String type = r.getEquipType();
             listView.getItems().add(type+"   "+"\n\n");

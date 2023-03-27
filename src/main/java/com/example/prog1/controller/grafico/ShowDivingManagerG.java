@@ -3,6 +3,7 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.MenuBarManegerManagement;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
@@ -47,7 +48,12 @@ public class ShowDivingManagerG implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        List<DivingBean> divingBeanList = managerApplicativo.getDivings(userBean);
+        List<DivingBean> divingBeanList = null;
+        try {
+            divingBeanList = managerApplicativo.getDivings(userBean);
+        } catch (SqlException e) {
+            throw new RuntimeException(e);
+        }
         for (DivingBean d: divingBeanList){
             String name = d.getName();
             String loc = d.getLocation();

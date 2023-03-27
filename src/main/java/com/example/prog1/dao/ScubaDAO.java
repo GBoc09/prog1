@@ -3,6 +3,7 @@ package com.example.prog1.dao;
 import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.exception.NotExistentUserException;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.Scuba;
 import com.example.prog1.model.User;
 import com.example.prog1.query.UserQuery;
@@ -10,6 +11,7 @@ import com.example.prog1.query.UserQuery;
 import java.sql.*;
 
 public class ScubaDAO {
+    private String error_msg = "SQL ERROR";
     private static final String SCUBA = "scuba";
     /* SQL column */
     private static final String SCUBA_EMAIL = "email";
@@ -17,7 +19,7 @@ public class ScubaDAO {
     private static final String SCUBA_SURNAME = "lastname";
     private static final String SCUBA_LICENSE = "license";
 
-    public void insertScuba (User scuba) throws DuplicatedUserException {
+    public void insertScuba (User scuba) throws DuplicatedUserException, SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement())
         {
@@ -27,17 +29,17 @@ public class ScubaDAO {
             throw new DuplicatedUserException("User already registered");
         }
         catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
     }
-    public Scuba loadScubaByEmail(String email) throws NotExistentUserException {
+    public Scuba loadScubaByEmail(String email) throws NotExistentUserException, SqlException {
         Scuba scuba = takeInfo(email);
         if(scuba == null){
             throw new NotExistentUserException("User not found");
         }
         return scuba;
     }
-    public Scuba takeInfo(String email){
+    public Scuba takeInfo(String email) throws SqlException {
         Scuba scuba = null;
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();
@@ -46,7 +48,7 @@ public class ScubaDAO {
                 scuba = createScuba(rs);
             }
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
         return scuba;
     }

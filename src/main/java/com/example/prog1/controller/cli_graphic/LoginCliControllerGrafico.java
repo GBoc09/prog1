@@ -8,6 +8,7 @@ import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.InvalidCredentialException;
 import com.example.prog1.exception.InvalidFormatException;
 import com.example.prog1.exception.NotExistentUserException;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.BufferedReader;
@@ -86,6 +87,8 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
         } catch (IOException e){
             logger.log(Level.INFO, e.getMessage());
         } catch (NotExistentUserException e) {
+            throw new RuntimeException(e);
+        } catch (SqlException e) {
             throw new RuntimeException(e);
         }
     }

@@ -6,6 +6,7 @@ import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.InvalidFormatException;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.BufferedReader;
@@ -63,7 +64,7 @@ public class ChooseDivingCLIGrafico extends ControllerGraficoManagementCli {
             String name = reader.readLine();
             CominicationBean cominicationBean = new CominicationBean(name);
             InternalControllerGrafico.getInternalControllerInstance().setBeanString(cominicationBean);
-        } catch (IOException e) {
+        } catch (IOException | SqlException e) {
             throw new RuntimeException(e);
         }
 

@@ -1,6 +1,7 @@
 package com.example.prog1.dao;
 
 import com.example.prog1.db.MyConnectionSingleton;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.Rental;
 import com.example.prog1.query.RentalQuery;
 
@@ -12,23 +13,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentalDAO {
-    public void insertRent(String type, String email, String name, Integer price){
+    private String error_msg = "SQL ERROR";
+    public void insertRent(String type, String email, String name, Integer price) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
             RentalQuery.insertIntoRent(stmt,type,email, name, price);
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
     }
-    public void insertRentPart(Integer total){
+    public void insertRentPart(Integer total) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
             RentalQuery.insertIntoRentPart(stmt, total);
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
     }
-    public List<Rental> getRentInfo (String email) {
+    public List<Rental> getRentInfo (String email) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         List<Rental> rents = new ArrayList<>();
         try(Statement stmt = con.createStatement();
@@ -42,16 +44,16 @@ public class RentalDAO {
                 rents.add(newEquip);
             }
         }catch (SQLException sqlException){
-        sqlException.printStackTrace();
+            throw new SqlException(error_msg);
     }
         return rents;
     }
-    public void deleteItemsFromRental(String email){
+    public void deleteItemsFromRental(String email) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();){
            RentalQuery.deleteItem(stmt, email);
         } catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
     }
 }

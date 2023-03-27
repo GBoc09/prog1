@@ -4,6 +4,7 @@ import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RegistrationApplicativo;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.exception.InvalidCredentialException;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,6 +69,8 @@ public class RegistrationControllerGrafico {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please check credentials");
             alert.showAndWait();
             throw new InvalidCredentialException();
+        } catch (SqlException e) {
+            throw new RuntimeException(e);
         }
     }
     private UserBean insertInfo() throws InvalidCredentialException {

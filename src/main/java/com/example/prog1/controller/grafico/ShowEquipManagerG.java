@@ -4,6 +4,7 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.MenuBarManegerManagement;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
@@ -66,7 +67,12 @@ public class ShowEquipManagerG implements Initializable {
         managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
-        List<EquipBean> equipBeanList = managerApplicativo.getEquips(userBean, cominicationBean);
+        List<EquipBean> equipBeanList = null;
+        try {
+            equipBeanList = managerApplicativo.getEquips(userBean, cominicationBean);
+        } catch (SqlException e) {
+            throw new RuntimeException(e);
+        }
         for (EquipBean d: equipBeanList){
             String type = d.getType();
             String size = d.getSize();

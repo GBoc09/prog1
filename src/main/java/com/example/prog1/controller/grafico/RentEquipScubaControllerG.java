@@ -4,6 +4,7 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,6 +16,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -69,9 +71,17 @@ public class RentEquipScubaControllerG implements Initializable {
         String str = cominicationBean.getStr();
         List<EquipBean> equipBeanList = null;
         if (str != null){
-            equipBeanList = rentalEquipApplicativo.getEquipsName(str);
+            try {
+                equipBeanList = rentalEquipApplicativo.getEquipsName(str);
+            } catch (SqlException e) {
+                throw new RuntimeException(e);
+            }
         } else {
-            equipBeanList = rentalEquipApplicativo.getEquips();
+            try {
+                equipBeanList = rentalEquipApplicativo.getEquips();
+            } catch (SqlException e) {
+                throw new RuntimeException(e);
+            }
         }
         for (EquipBean d : equipBeanList) {
             String type = d.getType();

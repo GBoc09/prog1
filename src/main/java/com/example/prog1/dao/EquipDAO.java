@@ -4,6 +4,7 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.db.MyConnectionSingleton;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.Equipment;
 import com.example.prog1.query.DivingQuery;
 import com.example.prog1.query.EquipQuery;
@@ -13,11 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EquipDAO {
+    private String error_msg = "SQL ERROR";
     /** inserimento diretto per tipo prezzo taglia e diponibilità
      * inserimento diretto per license
      * inserimento indiretto per diving: prendi diving name con query da diving se il numero di license corrisponde
      * poi salvarlo in una stringa e passalo alla query di inserimento in equipment */
-    public String divingName (String manEmail){
+    public String divingName (String manEmail) throws SqlException {
         String name = null;
         Connection con = MyConnectionSingleton.getConnection();
         try (Statement stmt = con.createStatement();
@@ -26,21 +28,21 @@ public class EquipDAO {
                  name = rs.getString(1);
             }
         } catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
         return name;
     }
-    public void insertEquip( EquipBean equipBean, String manEmail){
+    public void insertEquip( EquipBean equipBean, String manEmail) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
             String nomeDiving = divingName(manEmail);
            EquipQuery.insertEquip(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getAvail(), equipBean.getPrice(), nomeDiving,manEmail);
 
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
     }
-    public EquipBean selectEquipByOrder (int index) {
+    public EquipBean selectEquipByOrder (int index) throws SqlException {
         EquipBean equipBean= new EquipBean();
         Connection con = MyConnectionSingleton.getConnection();
         try (Statement stmt = con.createStatement();
@@ -51,11 +53,11 @@ public class EquipDAO {
                 equipBean.setPrice(rs.getInt(3));
             }
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
         return equipBean;
     }
-    public Integer selectAvailability(int index){
+    public Integer selectAvailability(int index) throws SqlException {
         Integer i=0;
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();
@@ -64,11 +66,11 @@ public class EquipDAO {
                 i = rs.getInt(1);
             }
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
         return i;
     }
-    public List<Equipment> getEquipInfo(){
+    public List<Equipment> getEquipInfo() throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();
         try(Statement stmt = con.createStatement();
@@ -83,11 +85,12 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
+
         }
         return equips;
     }
-    public List<Equipment> getEquipInfoManEDiv(UserBean userBean, CominicationBean cominicationBean){
+    public List<Equipment> getEquipInfoManEDiv(UserBean userBean, CominicationBean cominicationBean) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         String user = userBean.getUserEmail();
         String diving = cominicationBean.getStr();
@@ -103,11 +106,12 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
+
         }
         return equips;
     }
-    public List<Equipment> getEquipInfoName(String name){
+    public List<Equipment> getEquipInfoName(String name) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();
         try(Statement stmt = con.createStatement();
@@ -122,11 +126,11 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
         }
         return equips;
     }
-    public List<Equipment> getCart(String email){
+    public List<Equipment> getCart(String email) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();
         try(Statement stmt = con.createStatement();
@@ -140,16 +144,18 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
+
         }
         return equips;
     }
-    public void deleteItemsFromCart(String email){
+    public void deleteItemsFromCart(String email) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();){
             EquipQuery.deleteItem(stmt, email);
         } catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException(error_msg);
+
         }
     }
 }

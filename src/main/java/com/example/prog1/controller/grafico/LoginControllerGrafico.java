@@ -4,6 +4,7 @@ import com.example.prog1.bean.AccessInfoBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.LoginApplicativo;
 import com.example.prog1.exception.NotExistentUserException;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,6 +70,8 @@ public class LoginControllerGrafico {
         }catch (NotExistentUserException e){
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             alert.showAndWait();
+        } catch (SqlException e) {
+            throw new RuntimeException(e);
         }
         return loggedUser;
     }

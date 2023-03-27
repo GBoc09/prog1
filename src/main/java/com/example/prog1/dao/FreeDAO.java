@@ -2,6 +2,7 @@ package com.example.prog1.dao;
 
 import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.exception.DuplicatedUserException;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.User;
 import com.example.prog1.query.UserQuery;
 
@@ -17,7 +18,7 @@ public class FreeDAO {
     private static final String FREE_SURNAME = "lastname";
     private static final String FREE_LICENSE = "license";
 
-    public void insertFree (User free) throws DuplicatedUserException {
+    public void insertFree (User free) throws DuplicatedUserException, SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement())
         {
@@ -27,7 +28,7 @@ public class FreeDAO {
             throw new DuplicatedUserException("User already registered");
         }
         catch (SQLException sqlException){
-            sqlException.printStackTrace();
+            throw new SqlException("SQL ERROR");
         }
 
     }

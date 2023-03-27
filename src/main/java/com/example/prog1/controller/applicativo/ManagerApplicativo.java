@@ -6,6 +6,7 @@ import com.example.prog1.dao.DivingDAO;
 import com.example.prog1.dao.EquipDAO;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.Diving;
 import com.example.prog1.model.Equipment;
 
@@ -13,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerApplicativo {
-    public void addProduct (EquipBean equipBean, UserBean userBean) {
+    public void addProduct (EquipBean equipBean, UserBean userBean) throws SqlException {
         EquipDAO equipDAO = new EquipDAO();
         equipDAO.insertEquip(equipBean, userBean.getUserEmail());
     }
-    public void addDiving(UserBean userBean, DivingBean divingBean){
+    public void addDiving(UserBean userBean, DivingBean divingBean) throws SqlException {
         DivingDAO divingDAO = new DivingDAO();
         divingDAO.insertDiving(divingBean, userBean.getUserEmail());
     }
-    public static List<DivingBean> getDivings(UserBean userBean) {
+    public static List<DivingBean> getDivings(UserBean userBean) throws SqlException {
         List<DivingBean> div = new ArrayList<>();
         DivingDAO divingDAO = new DivingDAO();
         List<Diving> div2 = divingDAO.getDivInfo();
@@ -34,7 +35,7 @@ public class ManagerApplicativo {
         }
         return div;
     }
-    public static List<EquipBean> getEquips(UserBean userBean, CominicationBean cominicationBean) {
+    public static List<EquipBean> getEquips(UserBean userBean, CominicationBean cominicationBean) throws SqlException {
         List<EquipBean> equip = new ArrayList<>();
         EquipDAO equipDAO = new EquipDAO();
         List<Equipment> equip2 = equipDAO.getEquipInfoManEDiv(userBean, cominicationBean);

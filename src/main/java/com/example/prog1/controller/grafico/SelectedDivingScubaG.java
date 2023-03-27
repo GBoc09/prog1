@@ -3,6 +3,7 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -57,7 +58,12 @@ public class SelectedDivingScubaG implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectDiving.setDisable(true);
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        List<DivingBean> divingBeanList = rentalEquipApplicativo.getDivingList();
+        List<DivingBean> divingBeanList = null;
+        try {
+            divingBeanList = rentalEquipApplicativo.getDivingList();
+        } catch (SqlException e) {
+            throw new RuntimeException(e);
+        }
         for (DivingBean d : divingBeanList) {
             String name = d.getName();
             String loc = d.getLocation();
