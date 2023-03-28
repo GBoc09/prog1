@@ -3,13 +3,14 @@ package com.example.prog1.controller.cli_graphic;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.InvalidFormatException;
+import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.IOException;
 
 public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
     @Override
-    public void start() {
+    public void start() throws StartException {
         while (true){
             int choice;
             try {
@@ -42,7 +43,7 @@ public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
         PrinterCli.printMessage("6) Quit\n");
         return getMenuChoice(1,6);
     }
-    private void rentEquip(){/** creare il controller grafico per questo */
+    private void rentEquip() throws StartException {/** creare il controller grafico per questo */
         new ChooseDivingCLIGrafico().start();
     }
     private void selectCourse() throws InvalidFormatException {
@@ -54,5 +55,5 @@ public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
         throw new InvalidFormatException("Function not implemented");
     }
     private void goToCart(){/** creare il controller grafico per questo */}
-    private void logOut(){new LoginCliControllerGrafico().start();}
+    private void logOut() throws StartException {new LoginCliControllerGrafico().start();}
 }

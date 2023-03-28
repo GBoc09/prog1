@@ -3,6 +3,7 @@ package com.example.prog1.controller.cli_graphic;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.InvalidFormatException;
+import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.logging.Level;
 
 public class HomeManagerCLIGrafico extends ControllerGraficoManagementCli{
     @Override
-    public void start() {
+    public void start() throws StartException {
         while (true){
             int choice;
             try {
@@ -54,5 +55,5 @@ public class HomeManagerCLIGrafico extends ControllerGraficoManagementCli{
     }
     private void showEquip(){/** crea controller */}
     private void showDiving(){/** crea controller */}
-    private void logOut(){new LoginCliControllerGrafico().start();}
+    private void logOut() throws StartException {new LoginCliControllerGrafico().start();}
 }

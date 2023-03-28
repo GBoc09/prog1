@@ -5,6 +5,8 @@ import com.example.prog1.controller.applicativo.RegistrationApplicativo;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.exception.InvalidFormatException;
+import com.example.prog1.exception.SqlException;
+import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.BufferedReader;
@@ -89,7 +91,7 @@ public class SignUpCliControllerG extends ControllerGraficoManagementCli{
                 default -> type = NOT_LOG;
 
             }
-        } catch (IOException | DuplicatedUserException e) {
+        } catch (IOException | DuplicatedUserException | SqlException | StartException e) {
             throw new RuntimeException(e);
         }
     }

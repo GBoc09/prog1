@@ -5,10 +5,7 @@ import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.LoginApplicativo;
 import com.example.prog1.controller.grafico.CasaControllerGrafico;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
-import com.example.prog1.exception.InvalidCredentialException;
-import com.example.prog1.exception.InvalidFormatException;
-import com.example.prog1.exception.NotExistentUserException;
-import com.example.prog1.exception.SqlException;
+import com.example.prog1.exception.*;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.BufferedReader;
@@ -18,13 +15,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
-    Logger logger = Logger.getLogger(LoginCliControllerGrafico.class.getName());
+    Logger logger1 = Logger.getLogger(LoginCliControllerGrafico.class.getName());
     public static final int SCUBA_TYPE = 0;
     public static final int FREE_TYPE = 1;
     public static final int MANAGER_TYPE = 2;
     public static final int NOT_LOG = -1;
     @Override
-    public void start(){
+    public void start() throws StartException {
         while (true){
             int choice;
             try{
@@ -38,11 +35,12 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
                         break;
                     case 3:
                         System.exit(0);
+                        break;
                     default:
                         throw new InvalidFormatException("Invalid choice");
                 }
             } catch (InvalidFormatException e){
-                logger.log(Level.INFO, e.getMessage());
+                logger1.log(Level.INFO, e.getMessage());
             }
         }
     }
@@ -55,7 +53,7 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
 
         return getMenuChoice(1,3);
     }
-    private void login(){
+    private void login() throws StartException {
         LoginApplicativo loginApplicativo = new LoginApplicativo();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try{
@@ -85,7 +83,7 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
             }
 
         } catch (IOException e){
-            logger.log(Level.INFO, e.getMessage());
+            logger1.log(Level.INFO, e.getMessage());
         } catch (NotExistentUserException e) {
             throw new RuntimeException(e);
         } catch (SqlException e) {

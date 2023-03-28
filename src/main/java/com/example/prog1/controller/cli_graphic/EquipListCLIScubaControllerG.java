@@ -5,6 +5,7 @@ import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.InvalidFormatException;
 import com.example.prog1.exception.SqlException;
+import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.BufferedReader;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli{
     @Override
-    public void start() {
+    public void start() throws StartException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         while (true){
             int choice;
@@ -39,11 +40,11 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
         }
     }
 
-    private void logOut(){
+    private void logOut() throws StartException {
         new LoginCliControllerGrafico().start();
     }
 
-    private void back() {
+    private void back() throws StartException {
         new HomeScubaCLIGrafico().start();
     }
 
