@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
 
 public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli{
     @Override
@@ -33,9 +34,9 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
                 }
 
             } catch (IOException | SqlException e) {
-                PrinterCli.printMessage("Exception occurred");
+                logger.log(Level.INFO, e.getMessage());
             } catch (InvalidFormatException e) {
-                PrinterCli.printMessage("Exception occurred");
+               logger.log(Level.INFO, e.getMessage());
             }
         }
     }

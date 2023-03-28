@@ -4,6 +4,7 @@ import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
+import com.example.prog1.controller.cli_graphic.LoginCliControllerGrafico;
 import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
@@ -19,6 +20,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CartControllerGrafico implements Initializable {
     @FXML private Button addItems;
@@ -31,6 +34,8 @@ public class CartControllerGrafico implements Initializable {
     @FXML private MenuItem logout;
     @FXML private MenuItem rent;
     @FXML private MenuBar menuBar;
+
+    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
 
     private static final String RENT_EQUIP = "rentEquip1.fxml";
     private static final String SCUBA_HOME = "scubaHome1.fxml";
@@ -71,7 +76,7 @@ public class CartControllerGrafico implements Initializable {
         try {
             cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
         } catch (SqlException e) {
-            throw new RuntimeException(e);
+           logger.log(Level.INFO, e.getMessage());
         }
         for (CartBean c : cartBeanList){
             String type = c.getType();

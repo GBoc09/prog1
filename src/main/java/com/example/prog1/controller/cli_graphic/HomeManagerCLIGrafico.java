@@ -29,7 +29,7 @@ public class HomeManagerCLIGrafico extends ControllerGraficoManagementCli{
             } catch (InvalidFormatException e){
                 logger.log(Level.INFO, e.getMessage());
             } catch (IOException e) {
-                PrinterCli.printMessage("IOException occurred");
+                logger.log(Level.INFO, e.getMessage());
             }
         }
     }

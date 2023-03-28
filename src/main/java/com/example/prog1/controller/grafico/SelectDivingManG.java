@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SelectDivingManG implements Initializable {
     @FXML private MenuItem courses;
@@ -51,6 +53,7 @@ public class SelectDivingManG implements Initializable {
     }
     private String str;
     private CominicationBean cominicationBean;
+    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
@@ -59,7 +62,7 @@ public class SelectDivingManG implements Initializable {
         try {
             divingBeanList = rentalEquipApplicativo.getDivingListMan(userBean);
         } catch (SqlException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
         for (DivingBean d : divingBeanList) {
             String name = d.getName();

@@ -75,8 +75,6 @@ u
 Esrc/main/java/com/example/prog1/exception/InvalidFormatException.java,6\5\652b5913115a0c28ae885cee7e4e63f67c7f24fe
 i
 9src/main/java/com/example/prog1/utilities/PrinterCli.java,6\a\6a8d74f653893956647ef6fd777378e985b9193f
-‚
-Rsrc/main/java/com/example/prog1/controller/grafico/AccettazioneRentalManagerG.java,e\a\eabff646d464a0b86f34005044da150a024334f3
 j
 :src/main/java/com/example/prog1/model/InterfaceRental.java,b\1\b1a27a48835cf30c6389300d855b32664896222c
 a

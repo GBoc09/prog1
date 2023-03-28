@@ -13,6 +13,8 @@ import javafx.scene.control.*;
 
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginControllerGrafico {
     private static final String REGISTER_SCREEN = "registration1.fxml";
@@ -58,6 +60,7 @@ public class LoginControllerGrafico {
             SwapPage.getInstance().gotoPage(REGISTER_SCREEN);
         }
     }
+    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
     private UserBean login(){
         String userEmail = email.getText();
         String pass = userPass.getText();
@@ -71,7 +74,7 @@ public class LoginControllerGrafico {
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             alert.showAndWait();
         } catch (SqlException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
         return loggedUser;
     }

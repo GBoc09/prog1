@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RegistrationControllerGrafico {
     @FXML private ToggleGroup attivita;
@@ -40,6 +42,7 @@ public class RegistrationControllerGrafico {
     void onBackClicked(MouseEvent event) throws IOException {
         SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
     }
+    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
     @FXML
     void signUp(ActionEvent event) throws InvalidCredentialException {
         UserBean userBean;
@@ -70,7 +73,7 @@ public class RegistrationControllerGrafico {
             alert.showAndWait();
             throw new InvalidCredentialException();
         } catch (SqlException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
     }
     private UserBean insertInfo() throws InvalidCredentialException {

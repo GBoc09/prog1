@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ShowDivingManagerG implements Initializable {
 
@@ -45,6 +47,7 @@ public class ShowDivingManagerG implements Initializable {
         }
     }
     private ManagerApplicativo managerApplicativo = new ManagerApplicativo();
+    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
@@ -52,7 +55,7 @@ public class ShowDivingManagerG implements Initializable {
         try {
             divingBeanList = managerApplicativo.getDivings(userBean);
         } catch (SqlException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
         for (DivingBean d: divingBeanList){
             String name = d.getName();

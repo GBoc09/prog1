@@ -41,14 +41,10 @@ public class AccettazioneRentalManagerG {
         if (acceptButt.isSelected() && source == sendEmail){
             decisione = ACCEPT;
             stateRental.gestioneStatoRental(rental1, decisione);
-            stateRental = rental1.getStatoRental();
-            System.out.println("stato ordine"+stateRental);
             /** comunicazione con un controller applicativo che inivia la mail */
         } else if (rejectButt.isSelected() && source == sendEmail) {
             decisione = REJECT;
             stateRental.gestioneStatoRental(rental1, decisione);
-            stateRental = rental1.getStatoRental();
-            System.out.println("stato ordine"+stateRental);
             /** comunicazione con controller applicativo che invia la mail */
         }
     }

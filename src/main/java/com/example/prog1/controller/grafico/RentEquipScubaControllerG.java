@@ -19,6 +19,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RentEquipScubaControllerG implements Initializable {
     @FXML private Button quantity;
@@ -61,6 +63,7 @@ public class RentEquipScubaControllerG implements Initializable {
         }
     }
     private IntegerComunicationBean cominicationBean1;
+    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
     /** settare la lista delle attrezzature disponibili in un diving scelto
      * name = divingName */
     @Override
@@ -74,13 +77,13 @@ public class RentEquipScubaControllerG implements Initializable {
             try {
                 equipBeanList = rentalEquipApplicativo.getEquipsName(str);
             } catch (SqlException e) {
-                throw new RuntimeException(e);
+                logger.log(Level.INFO, e.getMessage());
             }
         } else {
             try {
                 equipBeanList = rentalEquipApplicativo.getEquips();
             } catch (SqlException e) {
-                throw new RuntimeException(e);
+               logger.log(Level.INFO, e.getMessage());
             }
         }
         for (EquipBean d : equipBeanList) {

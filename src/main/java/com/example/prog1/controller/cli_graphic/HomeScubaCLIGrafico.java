@@ -7,6 +7,7 @@ import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
     @Override
@@ -25,10 +26,9 @@ public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
                     default -> throw new InvalidFormatException("invalid choice");
                 }
             } catch (InvalidFormatException e){
-                PrinterCli.printMessage("Invalid Format Exception");
-
+                logger.log(Level.INFO, e.getMessage());
             } catch (IOException e) {
-                PrinterCli.printMessage("IOException occurred");
+                logger.log(Level.INFO, e.getMessage());
             }
         }
     }

@@ -92,7 +92,7 @@ public class SignUpCliControllerG extends ControllerGraficoManagementCli{
 
             }
         } catch (IOException | DuplicatedUserException | SqlException | StartException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
     }
 
