@@ -66,7 +66,7 @@ public class ChooseDivingCLIGrafico extends ControllerGraficoManagementCli {
             CominicationBean cominicationBean = new CominicationBean(name);
             InternalControllerGrafico.getInternalControllerInstance().setBeanString(cominicationBean);
         } catch (IOException | SqlException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
 
         new EquipListCLIScubaControllerG().start();

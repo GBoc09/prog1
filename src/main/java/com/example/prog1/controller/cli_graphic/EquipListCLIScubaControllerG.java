@@ -33,9 +33,9 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
                 }
 
             } catch (IOException | SqlException e) {
-                throw new RuntimeException(e);
+                PrinterCli.printMessage("Exception occurred");
             } catch (InvalidFormatException e) {
-                throw new RuntimeException(e);
+                PrinterCli.printMessage("Exception occurred");
             }
         }
     }

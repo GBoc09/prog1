@@ -26,7 +26,7 @@ public class HomeFreeCLIGrafico extends ControllerGraficoManagementCli{
             } catch (InvalidFormatException e){
                 logger.log(Level.INFO, e.getMessage());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            PrinterCli.printMessage("IOException occurred");
         }
     }
 }
@@ -42,6 +42,7 @@ public class HomeFreeCLIGrafico extends ControllerGraficoManagementCli{
         return getMenuChoice(1,4);
     }
     private void selectCourse() throws InvalidFormatException {
+        PrinterCli.printMessage("***");
         PrinterCli.printMessage("Not implemented\n");
         throw new InvalidFormatException("Function not implemented");
     }

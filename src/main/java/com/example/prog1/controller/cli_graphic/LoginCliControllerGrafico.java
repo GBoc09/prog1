@@ -3,7 +3,6 @@ package com.example.prog1.controller.cli_graphic;
 import com.example.prog1.bean.AccessInfoBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.LoginApplicativo;
-import com.example.prog1.controller.grafico.CasaControllerGrafico;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.*;
 import com.example.prog1.utilities.PrinterCli;
@@ -16,9 +15,6 @@ import java.util.logging.Logger;
 
 public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
     Logger logger1 = Logger.getLogger(LoginCliControllerGrafico.class.getName());
-    public static final int SCUBA_TYPE = 0;
-    public static final int FREE_TYPE = 1;
-    public static final int MANAGER_TYPE = 2;
     public static final int NOT_LOG = -1;
     @Override
     public void start() throws StartException {
@@ -85,9 +81,9 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
         } catch (IOException e){
             logger1.log(Level.INFO, e.getMessage());
         } catch (NotExistentUserException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         } catch (SqlException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
     }
 }

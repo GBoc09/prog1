@@ -25,9 +25,10 @@ public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
                     default -> throw new InvalidFormatException("invalid choice");
                 }
             } catch (InvalidFormatException e){
+                PrinterCli.printMessage("Invalid Format Exception");
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                PrinterCli.printMessage("IOException occurred");
             }
         }
     }
@@ -47,6 +48,7 @@ public class HomeScubaCLIGrafico extends ControllerGraficoManagementCli{
         new ChooseDivingCLIGrafico().start();
     }
     private void selectCourse() throws InvalidFormatException {
+        PrinterCli.printMessage("***");
         PrinterCli.printMessage("Not implemented\n");
         throw new InvalidFormatException("Function not implemented");
     }
