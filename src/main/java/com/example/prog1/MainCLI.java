@@ -2,6 +2,7 @@ package com.example.prog1;
 
 import com.example.prog1.controller.cli_graphic.LoginCliControllerGrafico;
 import com.example.prog1.exception.StartException;
+import com.example.prog1.utilities.PrinterCli;
 
 public class MainCLI {
     public static void main (String[] args){
@@ -9,7 +10,7 @@ public class MainCLI {
         try {
             loginCliControllerGrafico.start();
         } catch (StartException e) {
-            throw new RuntimeException(e);
+            PrinterCli.printMessage("Start Exception");
         }
     }
 }
