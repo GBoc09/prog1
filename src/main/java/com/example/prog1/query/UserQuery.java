@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserQuery {
+    private UserQuery(){}
     public static ResultSet selectUserByCredentials(Statement stmt, String email, String pass) throws SQLException {
         String query = String.format("SELECT * FROM user WHERE email = '%s' AND password = '%s';", email, pass);
         return stmt.executeQuery(query);
@@ -34,7 +35,7 @@ public class UserQuery {
         return stmt.executeQuery(query);
     }
     public static ResultSet selectManager(Statement stmt) throws SQLException {
-        String query = String.format("SELECT email FROM Manager;");
+        String query = "SELECT email FROM Manager";
         return stmt.executeQuery(query);
     }
 

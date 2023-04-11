@@ -47,10 +47,6 @@ d
 4src/main/java/com/example/prog1/bean/RentalBean.java,9\3\93ee93a73cb6a1f8264c16c3c694095912db3c8f
 b
 2src/main/java/com/example/prog1/bean/CartBean.java,6\9\69f04a3c0791b678227f1a0041fb85910e4822b5
-d
-4src/main/java/com/example/prog1/query/UserQuery.java,6\3\634d1813cc8c7dd6de256749f3e83bf3677862db
-f
-6src/main/java/com/example/prog1/query/DivingQuery.java,8\0\80f23869274028cdf3275e43d6ed44419c1a99cd
 g
 7src/main/java/com/example/prog1/utilities/SwapPage.java,8\5\859e38fdea8ebe5b80038fc0060c96168770ff74
 ~
@@ -89,14 +85,10 @@ q
 Asrc/main/java/com/example/prog1/pattern/state/StatoRifiutato.java,6\4\6436e40d7179317cde39ef6751fbdb4b6efa8e3d
 ä
 Zsrc/main/java/com/example/prog1/controller/cli_graphic/ControllerGraficoManagementCli.java,8\5\85166e21b7b9cc892f3a78ac9be049a2ef3d07e7
-e
-5src/main/java/com/example/prog1/query/EquipQuery.java,b\f\bfb341e13c3acf4340c2521cca5c653add65fded
 Å
 Qsrc/main/java/com/example/prog1/controller/grafico/InternalControllerGrafico.java,2\7\27979a854e1a341575e78dd1e63ac5690b66cf8d
 i
 9src/main/java/com/example/prog1/bean/PassStringsBean.java,f\2\f20843b1e91fe34e593e9ad2b15604ceb88dcf1c
-f
-6src/main/java/com/example/prog1/query/RentalQuery.java,d\f\dfc6c3e4b18e57855d73341fc3532d61a03a54ea
 \
 ,src/main/java/com/example/prog1/MainApp.java,2\1\21c8f303caf6472d633dc08d39e27e62b9b92940
 j

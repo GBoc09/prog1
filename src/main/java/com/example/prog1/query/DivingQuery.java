@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DivingQuery{
+    private DivingQuery(){}
     public static ResultSet selectDivingName(Statement stmt, String divingMan) throws SQLException {
         String query = String.format("SELECT name FROM Diving WHERE divingManager = '%s';", divingMan);
         return stmt.executeQuery(query);
@@ -14,7 +15,7 @@ public class DivingQuery{
         return stmt.execute(query);
     }
     public static ResultSet loadDiv(Statement stmt) throws SQLException {
-        String query = String.format("SELECT name, location, telephone FROM Diving;");
+        String query = "SELECT name, location, telephone FROM Diving";
         return stmt.executeQuery(query);
     }
     public static ResultSet loadDivMan(Statement stmt, String email) throws SQLException {
