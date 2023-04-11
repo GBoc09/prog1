@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentalDAO {
-    private String error_msg = "SQL ERROR";
+    private String ERROR_MSG = "SQL ERROR";
     public void insertRent(String type, String email, String name, Integer price) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
             RentalQuery.insertIntoRent(stmt,type,email, name, price);
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
     }
     public void insertRentPart(Integer total) throws SqlException {
@@ -27,7 +27,7 @@ public class RentalDAO {
         try(Statement stmt = con.createStatement()){
             RentalQuery.insertIntoRentPart(stmt, total);
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
     }
     public List<Rental> getRentInfo (String email) throws SqlException {
@@ -44,7 +44,7 @@ public class RentalDAO {
                 rents.add(newEquip);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
     }
         return rents;
     }
@@ -53,7 +53,7 @@ public class RentalDAO {
         try(Statement stmt = con.createStatement();){
            RentalQuery.deleteItem(stmt, email);
         } catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
     }
 }

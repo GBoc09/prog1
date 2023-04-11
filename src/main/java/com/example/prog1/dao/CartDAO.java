@@ -9,13 +9,13 @@ import com.example.prog1.query.RentalQuery;
 import java.sql.*;
 
 public class CartDAO {
-    private String error_msg = "SQL ERROR";
+    private String ERROR_MSG = "SQL ERROR";
     public void insertIntoCart(EquipBean equipBean, int quant,String email) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try (Statement stmt = con.createStatement()) {
             RentalQuery.insertIntoCart(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getPrice(), quant, email);
         } catch (SQLException e) {
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
     }
     public void insertIntoCartCLI(String item, String size, Integer quant,String email) throws SqlException {
@@ -24,7 +24,7 @@ public class CartDAO {
         try (Statement stmt = con.createStatement()) {
             RentalQuery.insertIntoCartCLI(stmt, item, size, price, quant, email);
         } catch (SQLException e) {
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
     }
     public Integer takePrice(String item) throws SqlException {
@@ -36,7 +36,7 @@ public class CartDAO {
                 price = rs.getInt(1);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
         return price;
     }

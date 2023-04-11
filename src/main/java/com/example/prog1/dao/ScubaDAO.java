@@ -11,7 +11,7 @@ import com.example.prog1.query.UserQuery;
 import java.sql.*;
 
 public class ScubaDAO {
-    private String error_msg = "SQL ERROR";
+    private String ERROR_MSG = "SQL ERROR";
     private static final String SCUBA = "scuba";
     /* SQL column */
     private static final String SCUBA_EMAIL = "email";
@@ -29,7 +29,7 @@ public class ScubaDAO {
             throw new DuplicatedUserException("User already registered");
         }
         catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
     }
     public Scuba loadScubaByEmail(String email) throws NotExistentUserException, SqlException {
@@ -48,7 +48,7 @@ public class ScubaDAO {
                 scuba = createScuba(rs);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
         return scuba;
     }

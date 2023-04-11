@@ -15,14 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DivingDAO {
-    private String error_msg = "SQL ERROR";
+    private String ERROR_MSG = "SQL ERROR";
     public void insertDiving(DivingBean divingBean, String manEmail) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
             DivingQuery.insertDiving(stmt, divingBean.getName(), divingBean.getLocation(), divingBean.getTelephone(), manEmail);
 
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
     }
     public List<Diving> getDivInfo() throws SqlException {
@@ -38,7 +38,7 @@ public class DivingDAO {
                 divs.add(newDiv);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
         return divs;
     }
@@ -55,7 +55,7 @@ public class DivingDAO {
                 divs.add(newDiv);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
         return divs;
     }

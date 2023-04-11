@@ -10,7 +10,7 @@ import com.example.prog1.query.UserQuery;
 import java.sql.*;
 
 public class ManagerDAO {
-    private String error_msg = "SQL ERROR";
+    private String ERROR_MSG = "SQL ERROR";
     private static final String MANAGER = "manager";
     /* colonne SQL */
     private static final String MANAGER_EMAIL = "email";
@@ -28,7 +28,7 @@ public class ManagerDAO {
             throw new DuplicatedUserException("User already registered");
         }
         catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
     }
     public Manager loadManager(String manLic) throws SqlException {
@@ -40,7 +40,7 @@ public class ManagerDAO {
                 manager = createManager(rs);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
         return manager;
     }
@@ -61,7 +61,7 @@ public class ManagerDAO {
                 emailMan.setEmail(rs.getString(1));
             }
         } catch (SQLException sqlException){
-            throw new SqlException(error_msg);
+            throw new SqlException(ERROR_MSG);
         }
         return emailMan;
     }

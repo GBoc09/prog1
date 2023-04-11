@@ -13,10 +13,6 @@ import java.sql.Statement;
 
 public class FreeDAO {
     private static final String FREE = "free";
-    private static final String FREE_EMAIL = "emailUser";
-    private static final String FREE_NAME = "name";
-    private static final String FREE_SURNAME = "lastname";
-    private static final String FREE_LICENSE = "license";
 
     public void insertFree (User free) throws DuplicatedUserException, SqlException {
         Connection con = MyConnectionSingleton.getConnection();
