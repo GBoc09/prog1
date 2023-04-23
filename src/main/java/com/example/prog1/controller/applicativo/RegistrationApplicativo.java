@@ -5,7 +5,6 @@ import com.example.prog1.dao.ManagerDAO;
 import com.example.prog1.dao.ScubaDAO;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.exception.DuplicatedUserException;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.User;
 import com.example.prog1.pattern.factory.Factory;
 
@@ -14,7 +13,7 @@ public class RegistrationApplicativo {
     public RegistrationApplicativo(){
         factory = new Factory();
     }
-    public void registration (UserBean userBean) throws DuplicatedUserException, SqlException {
+    public void registration (UserBean userBean) throws DuplicatedUserException {
         User scuba;
         User free;
         User manager;

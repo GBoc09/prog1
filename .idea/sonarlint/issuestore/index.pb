@@ -79,14 +79,6 @@ j
 :src/main/java/com/example/prog1/bean/CominicationBean.java,4\b\4b73998c432a4de1840d17349b08fc21b9a50be7
 w
 Gsrc/main/java/com/example/prog1/exception/NotExistentUserException.java,4\3\435c5e66c7ca6ad14751a36f963525fab2ab9fc1
-|
-Lsrc/main/java/com/example/prog1/controller/applicativo/LoginApplicativo.java,0\8\087a6ac431f321c277a678de875225e3db13b408
-É
-Ssrc/main/java/com/example/prog1/controller/applicativo/RegistrationApplicativo.java,a\b\ab65067dcf94d7990d2b46a6bea2d833cff2f2bf
-Ç
-Rsrc/main/java/com/example/prog1/controller/applicativo/RentalEquipApplicativo.java,6\b\6bc6be77ba2ab80c32d81efe4faedd6bcd24867e
-~
-Nsrc/main/java/com/example/prog1/controller/applicativo/ManagerApplicativo.java,8\8\88d93cde407d671e39f674f861813ea504752d9f
 ~
 Nsrc/main/java/com/example/prog1/controller/cli_graphic/HomeFreeCLIGrafico.java,7\e\7eb2f94d36e609d1ca040bcdeff6ec94914c100c
 Å
