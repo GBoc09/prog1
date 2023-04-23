@@ -2,7 +2,6 @@ package com.example.prog1.controller.cli_graphic;
 
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.DivingBean;
-import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.InvalidFormatException;

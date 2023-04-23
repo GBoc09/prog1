@@ -13,16 +13,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DivingDAO {
-    private String ERROR_MSG = "SQL ERROR";
+    Logger logger = Logger.getLogger(DivingDAO.class.getName());
     public void insertDiving(DivingBean divingBean, String manEmail) throws SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
             DivingQuery.insertDiving(stmt, divingBean.getName(), divingBean.getLocation(), divingBean.getTelephone(), manEmail);
 
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
     }
     public List<Diving> getDivInfo() throws SqlException {
@@ -38,7 +40,7 @@ public class DivingDAO {
                 divs.add(newDiv);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return divs;
     }
@@ -55,7 +57,7 @@ public class DivingDAO {
                 divs.add(newDiv);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return divs;
     }

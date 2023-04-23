@@ -10,10 +10,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FreeDAO {
     private static final String FREE = "free";
-
+    Logger logger = Logger.getLogger(FreeDAO.class.getName());
     public void insertFree (User free) throws DuplicatedUserException, SqlException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement())
@@ -24,7 +26,7 @@ public class FreeDAO {
             throw new DuplicatedUserException("User already registered");
         }
         catch (SQLException sqlException){
-            throw new SqlException("SQL ERROR");
+            logger.log(Level.INFO, "SQLException Error");
         }
 
     }

@@ -8,9 +8,11 @@ import com.example.prog1.model.User;
 import com.example.prog1.query.UserQuery;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ManagerDAO {
-    private String ERROR_MSG = "SQL ERROR";
+    Logger logger = Logger.getLogger(ManagerDAO.class.getName());
     private static final String MANAGER = "manager";
     /* colonne SQL */
     private static final String MANAGER_EMAIL = "email";
@@ -28,7 +30,7 @@ public class ManagerDAO {
             throw new DuplicatedUserException("User already registered");
         }
         catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
     }
     public Manager loadManager(String manLic) throws SqlException {
@@ -40,7 +42,7 @@ public class ManagerDAO {
                 manager = createManager(rs);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return manager;
     }
@@ -61,7 +63,7 @@ public class ManagerDAO {
                 emailMan.setEmail(rs.getString(1));
             }
         } catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return emailMan;
     }

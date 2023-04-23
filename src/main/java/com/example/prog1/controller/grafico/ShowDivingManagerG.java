@@ -4,7 +4,6 @@ import com.example.prog1.bean.DivingBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
 import com.example.prog1.exception.SqlException;
-import com.example.prog1.utilities.MenuBarManegerManagement;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,30 +29,35 @@ public class ShowDivingManagerG implements Initializable {
     @FXML private MenuItem logout;
     @FXML private MenuBar menuBar;
     @FXML private MenuItem rental;
+    private static final String MANAGER_HOME = "managerHome1.fxml";
+    private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String SELECT_EQUIP = "selectDivingMan.fxml";
+    private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
 
     /** mostra tutti i diving associati ad un manager */
-    @FXML void onMenuItemSelected(ActionEvent event) throws IOException {
+    @FXML
+    void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            MenuBarManegerManagement.getMenuBarManagerInstance().homeMan(sourceItem);
+            SwapPage.getInstance().gotoPage(MANAGER_HOME);
         } else if (sourceItem == logout){
-            MenuBarManegerManagement.getMenuBarManagerInstance().logOut(sourceItem);
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == equipment){
-            MenuBarManegerManagement.getMenuBarManagerInstance().selectDivingMan(sourceItem);
+            SwapPage.getInstance().gotoPage(SELECT_EQUIP);
         }else if (sourceItem == diving){
-            MenuBarManegerManagement.getMenuBarManagerInstance().showDivingMan(sourceItem);
+            SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         } else if (sourceItem == rental){
-            MenuBarManegerManagement.getMenuBarManagerInstance().acceptReject(sourceItem);
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
-    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
+    Logger logger = Logger.getLogger(ShowDivingManagerG.class.getName());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ManagerApplicativo managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         List<DivingBean> divingBeanList = null;
         try {
-            divingBeanList = managerApplicativo.getDivings(userBean);
+            divingBeanList = ManagerApplicativo.getDivings(userBean);
         } catch (SqlException e) {
             logger.log(Level.INFO, e.getMessage());
         }

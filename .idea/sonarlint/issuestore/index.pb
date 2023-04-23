@@ -43,10 +43,6 @@ d
 4src/main/java/com/example/prog1/bean/RentalBean.java,9\3\93ee93a73cb6a1f8264c16c3c694095912db3c8f
 b
 2src/main/java/com/example/prog1/bean/CartBean.java,6\9\69f04a3c0791b678227f1a0041fb85910e4822b5
-g
-7src/main/java/com/example/prog1/utilities/SwapPage.java,8\5\859e38fdea8ebe5b80038fc0060c96168770ff74
-w
-Gsrc/main/java/com/example/prog1/utilities/MenuBarManegerManagement.java,f\b\fb0e5bb18f5056432bc0ef741deedd6d5eb4792b
 n
 >src/main/java/com/example/prog1/pattern/observer/Observer.java,e\e\ee6a9243133593a8d8232c155f4e1ca6a58c9c42
 m
@@ -91,10 +87,6 @@ Ssrc/main/java/com/example/prog1/controller/applicativo/RegistrationApplicativo.
 Rsrc/main/java/com/example/prog1/controller/applicativo/RentalEquipApplicativo.java,6\b\6bc6be77ba2ab80c32d81efe4faedd6bcd24867e
 ~
 Nsrc/main/java/com/example/prog1/controller/applicativo/ManagerApplicativo.java,8\8\88d93cde407d671e39f674f861813ea504752d9f
-Ç
-Rsrc/main/java/com/example/prog1/controller/cli_graphic/ChooseDivingCLIGrafico.java,3\7\3729fad8554ba61aab996fd1ce710f5cf6307bf9
-à
-Xsrc/main/java/com/example/prog1/controller/cli_graphic/EquipListCLIScubaControllerG.java,3\f\3f349201e3d3b7d602040301617822d9a855f68c
 ~
 Nsrc/main/java/com/example/prog1/controller/cli_graphic/HomeFreeCLIGrafico.java,7\e\7eb2f94d36e609d1ca040bcdeff6ec94914c100c
 Å

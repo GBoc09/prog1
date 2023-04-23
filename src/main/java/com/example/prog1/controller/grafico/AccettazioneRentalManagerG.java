@@ -2,7 +2,7 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.model.Rental;
 import com.example.prog1.pattern.state.RentalState;
-import com.example.prog1.utilities.MenuBarManegerManagement;
+import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -28,6 +28,11 @@ public class AccettazioneRentalManagerG {
     @FXML private RadioButton rejectButt;
     @FXML private MenuItem rental;
     @FXML private Button sendEmail;
+    private static final String MANAGER_HOME = "managerHome1.fxml";
+    private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String SELECT_EQUIP = "selectDivingMan.fxml";
+    private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
     private static final String ACCEPT = "accept";
     private static final String REJECT = "reject";
     private String decisione;
@@ -53,15 +58,15 @@ public class AccettazioneRentalManagerG {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            MenuBarManegerManagement.getMenuBarManagerInstance().homeMan(sourceItem);
+            SwapPage.getInstance().gotoPage(MANAGER_HOME);
         } else if (sourceItem == logout){
-            MenuBarManegerManagement.getMenuBarManagerInstance().logOut(sourceItem);
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == equipment){
-            MenuBarManegerManagement.getMenuBarManagerInstance().selectDivingMan(sourceItem);
+            SwapPage.getInstance().gotoPage(SELECT_EQUIP);
         }else if (sourceItem == diving){
-            MenuBarManegerManagement.getMenuBarManagerInstance().showDivingMan(sourceItem);
+            SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         } else if (sourceItem == rental){
-            MenuBarManegerManagement.getMenuBarManagerInstance().acceptReject(sourceItem);
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
 

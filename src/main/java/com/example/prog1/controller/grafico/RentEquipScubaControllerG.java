@@ -63,7 +63,7 @@ public class RentEquipScubaControllerG implements Initializable {
         }
     }
     private IntegerComunicationBean cominicationBean1;
-    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
+    Logger logger = Logger.getLogger(RentEquipScubaControllerG.class.getName());
     /** settare la lista delle attrezzature disponibili in un diving scelto
      * name = divingName */
     @Override

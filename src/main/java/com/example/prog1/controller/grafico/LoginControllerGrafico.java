@@ -60,7 +60,7 @@ public class LoginControllerGrafico {
             SwapPage.getInstance().gotoPage(REGISTER_SCREEN);
         }
     }
-    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
+    Logger logger = Logger.getLogger(LoginControllerGrafico.class.getName());
     private UserBean login(){
         String userEmail = email.getText();
         String pass = userPass.getText();

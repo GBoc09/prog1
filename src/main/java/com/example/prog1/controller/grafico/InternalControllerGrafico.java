@@ -2,10 +2,7 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.IntegerComunicationBean;
-import com.example.prog1.bean.PassStringsBean;
 import com.example.prog1.bean.UserBean;
-
-import java.util.List;
 
 public class InternalControllerGrafico {
     private static InternalControllerGrafico internalControllerGrafico;

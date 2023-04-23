@@ -7,11 +7,9 @@ import com.example.prog1.exception.InvalidFormatException;
 import com.example.prog1.exception.SqlException;
 import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 

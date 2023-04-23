@@ -55,7 +55,7 @@ public class SelectedDivingScubaG implements Initializable {
     }
     private String str;
     private CominicationBean cominicationBean;
-    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
+    Logger logger = Logger.getLogger(SelectedDivingScubaG.class.getName());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

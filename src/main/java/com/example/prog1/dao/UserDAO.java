@@ -9,9 +9,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserDAO {
-    private String ERROR_MSG = "SQL ERROR";
+    Logger logger = Logger.getLogger(UserDAO.class.getName());
     private static final String SCUBA_TYPE = "scuba";
     private static final String FREE_TYPE = "free";
     private static final String MANAGER_TYPE = "manager";
@@ -39,7 +41,7 @@ public class UserDAO {
                 throw new NotExistentUserException("Not existent user");
             }
         } catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return userType;
     }

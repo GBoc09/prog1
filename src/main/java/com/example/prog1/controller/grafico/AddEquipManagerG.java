@@ -4,7 +4,6 @@ import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
 import com.example.prog1.exception.SqlException;
-import com.example.prog1.utilities.MenuBarManegerManagement;
 import com.example.prog1.utilities.SwapPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +29,10 @@ public class AddEquipManagerG {
     @FXML private MenuItem rental;
 
     private static final String MANAGER_HOME = "managerHome1.fxml";
+    private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String SELECT_EQUIP = "selectDivingMan.fxml";
+    private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
 
     ObservableList<String> sizeList = FXCollections.observableArrayList("none", "XS", "S", "M","L", "XL");
     @FXML
@@ -65,15 +68,15 @@ public class AddEquipManagerG {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            MenuBarManegerManagement.getMenuBarManagerInstance().homeMan(sourceItem);
+            SwapPage.getInstance().gotoPage(MANAGER_HOME);
         } else if (sourceItem == logout){
-            MenuBarManegerManagement.getMenuBarManagerInstance().logOut(sourceItem);
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == equipment){
-            MenuBarManegerManagement.getMenuBarManagerInstance().selectDivingMan(sourceItem);
+            SwapPage.getInstance().gotoPage(SELECT_EQUIP);
         }else if (sourceItem == diving){
-            MenuBarManegerManagement.getMenuBarManagerInstance().showDivingMan(sourceItem);
+            SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         } else if (sourceItem == rental){
-            MenuBarManegerManagement.getMenuBarManagerInstance().acceptReject(sourceItem);
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
 }

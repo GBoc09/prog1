@@ -5,7 +5,6 @@ import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
 import com.example.prog1.exception.SqlException;
-import com.example.prog1.utilities.MenuBarManegerManagement;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,6 +34,11 @@ public class ShowEquipManagerG implements Initializable {
 
     Logger logger = Logger.getLogger(ShowEquipManagerG.class.getName());
     private static final String ADD_EQUIP_MAN = "addEquip1.fxml";
+    private static final String MANAGER_HOME = "managerHome1.fxml";
+    private static final String LOGIN_SCREEN = "login1.fxml";
+    private static final String SELECT_EQUIP = "selectDivingMan.fxml";
+    private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
+    private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
 
     @FXML
     void modify(ActionEvent event) {
@@ -49,27 +53,25 @@ public class ShowEquipManagerG implements Initializable {
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
-            MenuBarManegerManagement.getMenuBarManagerInstance().homeMan(sourceItem);
+            SwapPage.getInstance().gotoPage(MANAGER_HOME);
         } else if (sourceItem == logout){
-            MenuBarManegerManagement.getMenuBarManagerInstance().logOut(sourceItem);
+            SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
         } else if (sourceItem == equipment){
-            MenuBarManegerManagement.getMenuBarManagerInstance().selectDivingMan(sourceItem);
+            SwapPage.getInstance().gotoPage(SELECT_EQUIP);
         }else if (sourceItem == diving){
-            MenuBarManegerManagement.getMenuBarManagerInstance().showDivingMan(sourceItem);
+            SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
         } else if (sourceItem == rental){
-            MenuBarManegerManagement.getMenuBarManagerInstance().acceptReject(sourceItem);
+            SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
-    private ManagerApplicativo managerApplicativo;
     /** mostra l'equip disponibile in un diving a seconda del diving e del manager selezionati */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         List<EquipBean> equipBeanList = null;
         try {
-            equipBeanList = managerApplicativo.getEquips(userBean, cominicationBean);
+            equipBeanList = ManagerApplicativo.getEquips(userBean, cominicationBean);
         } catch (SqlException e) {
             logger.log(Level.INFO, e.getMessage());
         }

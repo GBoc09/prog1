@@ -12,9 +12,11 @@ import com.example.prog1.query.EquipQuery;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EquipDAO {
-    private String ERROR_MSG = "SQL ERROR";
+    Logger logger = Logger.getLogger(EquipDAO.class.getName());
     /** inserimento diretto per tipo prezzo taglia e diponibilità
      * inserimento diretto per license
      * inserimento indiretto per diving: prendi diving name con query da diving se il numero di license corrisponde
@@ -28,7 +30,7 @@ public class EquipDAO {
                  name = rs.getString(1);
             }
         } catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return name;
     }
@@ -39,7 +41,7 @@ public class EquipDAO {
            EquipQuery.insertEquip(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getAvail(), equipBean.getPrice(), nomeDiving,manEmail);
 
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
     }
     public EquipBean selectEquipByOrder (int index) throws SqlException {
@@ -53,7 +55,7 @@ public class EquipDAO {
                 equipBean.setPrice(rs.getInt(3));
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return equipBean;
     }
@@ -66,7 +68,7 @@ public class EquipDAO {
                 i = rs.getInt(1);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return i;
     }
@@ -85,7 +87,7 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
 
         }
         return equips;
@@ -106,7 +108,7 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
 
         }
         return equips;
@@ -126,7 +128,7 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
         }
         return equips;
     }
@@ -144,7 +146,7 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
 
         }
         return equips;
@@ -154,7 +156,7 @@ public class EquipDAO {
         try(Statement stmt = con.createStatement();){
             EquipQuery.deleteItem(stmt, email);
         } catch (SQLException sqlException){
-            throw new SqlException(ERROR_MSG);
+            logger.log(Level.INFO, "SQLException Error");
 
         }
     }
