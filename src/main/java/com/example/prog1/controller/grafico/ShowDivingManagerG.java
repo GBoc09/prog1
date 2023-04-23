@@ -46,10 +46,10 @@ public class ShowDivingManagerG implements Initializable {
             MenuBarManegerManagement.getMenuBarManagerInstance().acceptReject(sourceItem);
         }
     }
-    private ManagerApplicativo managerApplicativo = new ManagerApplicativo();
     Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ManagerApplicativo managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         List<DivingBean> divingBeanList = null;
         try {

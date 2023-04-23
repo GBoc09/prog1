@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SummaryRentalScubaControllerG implements Initializable {
     @FXML private MenuItem cart;
@@ -58,7 +60,7 @@ public class SummaryRentalScubaControllerG implements Initializable {
         rentalEquipApplicativo.deleteRent(userBean);
         SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
     }
-
+    Logger logger = Logger.getLogger(SummaryRentalScubaControllerG.class.getName());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
@@ -67,7 +69,7 @@ public class SummaryRentalScubaControllerG implements Initializable {
         try {
             rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
         } catch (SqlException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
         for (RentalBean r : rentalBeans){
             String type = r.getEquipType();

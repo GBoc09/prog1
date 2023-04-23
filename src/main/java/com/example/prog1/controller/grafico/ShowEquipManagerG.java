@@ -71,7 +71,7 @@ public class ShowEquipManagerG implements Initializable {
         try {
             equipBeanList = managerApplicativo.getEquips(userBean, cominicationBean);
         } catch (SqlException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.INFO, e.getMessage());
         }
         for (EquipBean d: equipBeanList){
             String type = d.getType();

@@ -42,7 +42,7 @@ public class RegistrationControllerGrafico {
     void onBackClicked(MouseEvent event) throws IOException {
         SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
     }
-    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
+    Logger logger = Logger.getLogger(RegistrationControllerGrafico.class.getName());
     @FXML
     void signUp(ActionEvent event) throws InvalidCredentialException {
         UserBean userBean;
