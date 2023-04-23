@@ -70,11 +70,8 @@ public class ShowEquipManagerG implements Initializable {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         List<EquipBean> equipBeanList = null;
-        try {
-            equipBeanList = ManagerApplicativo.getEquips(userBean, cominicationBean);
-        } catch (SqlException e) {
-            logger.log(Level.INFO, e.getMessage());
-        }
+        equipBeanList = ManagerApplicativo.getEquips(userBean, cominicationBean);
+
         for (EquipBean d: equipBeanList){
             String type = d.getType();
             String size = d.getSize();

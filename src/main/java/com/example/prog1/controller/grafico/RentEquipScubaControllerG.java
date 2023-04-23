@@ -4,7 +4,6 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,14 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class RentEquipScubaControllerG implements Initializable {
     @FXML private Button quantity;
@@ -63,7 +58,6 @@ public class RentEquipScubaControllerG implements Initializable {
         }
     }
     private IntegerComunicationBean cominicationBean1;
-    Logger logger = Logger.getLogger(RentEquipScubaControllerG.class.getName());
     /** settare la lista delle attrezzature disponibili in un diving scelto
      * name = divingName */
     @Override
@@ -74,17 +68,9 @@ public class RentEquipScubaControllerG implements Initializable {
         String str = cominicationBean.getStr();
         List<EquipBean> equipBeanList = null;
         if (str != null){
-            try {
-                equipBeanList = rentalEquipApplicativo.getEquipsName(str);
-            } catch (SqlException e) {
-                logger.log(Level.INFO, e.getMessage());
-            }
+            equipBeanList = rentalEquipApplicativo.getEquipsName(str);
         } else {
-            try {
-                equipBeanList = rentalEquipApplicativo.getEquips();
-            } catch (SqlException e) {
-               logger.log(Level.INFO, e.getMessage());
-            }
+            equipBeanList = rentalEquipApplicativo.getEquips();
         }
         for (EquipBean d : equipBeanList) {
             String type = d.getType();

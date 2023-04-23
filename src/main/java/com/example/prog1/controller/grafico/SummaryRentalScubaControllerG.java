@@ -16,6 +16,7 @@ import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -66,11 +67,7 @@ public class SummaryRentalScubaControllerG implements Initializable {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<RentalBean> rentalBeans = null;
-        try {
-            rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
-        } catch (SqlException e) {
-            logger.log(Level.INFO, e.getMessage());
-        }
+        rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
         for (RentalBean r : rentalBeans){
             String type = r.getEquipType();
             listView.getItems().add(type+"   "+"\n\n");

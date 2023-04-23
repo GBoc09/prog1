@@ -4,16 +4,13 @@ import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RegistrationApplicativo;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.exception.InvalidCredentialException;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class RegistrationControllerGrafico {
     @FXML private ToggleGroup attivita;
@@ -42,7 +39,6 @@ public class RegistrationControllerGrafico {
     void onBackClicked(MouseEvent event) throws IOException {
         SwapPage.getInstance().gotoPage(LOGIN_SCREEN);
     }
-    Logger logger = Logger.getLogger(RegistrationControllerGrafico.class.getName());
     @FXML
     void signUp(ActionEvent event) throws InvalidCredentialException {
         UserBean userBean;
@@ -72,8 +68,6 @@ public class RegistrationControllerGrafico {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please check credentials");
             alert.showAndWait();
             throw new InvalidCredentialException();
-        } catch (SqlException e) {
-            logger.log(Level.INFO, e.getMessage());
         }
     }
     private UserBean insertInfo() throws InvalidCredentialException {

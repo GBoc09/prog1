@@ -79,8 +79,6 @@ j
 :src/main/java/com/example/prog1/bean/CominicationBean.java,4\b\4b73998c432a4de1840d17349b08fc21b9a50be7
 w
 Gsrc/main/java/com/example/prog1/exception/NotExistentUserException.java,4\3\435c5e66c7ca6ad14751a36f963525fab2ab9fc1
-~
-Nsrc/main/java/com/example/prog1/controller/cli_graphic/HomeFreeCLIGrafico.java,7\e\7eb2f94d36e609d1ca040bcdeff6ec94914c100c
 Å
 Qsrc/main/java/com/example/prog1/controller/cli_graphic/HomeManagerCLIGrafico.java,f\6\f6acf660892b9dfc019c4f8de596858583fabd44
 
@@ -89,8 +87,6 @@ Osrc/main/java/com/example/prog1/controller/cli_graphic/HomeScubaCLIGrafico.java
 Psrc/main/java/com/example/prog1/controller/cli_graphic/SignUpCliControllerG.java,a\8\a83f6f66364df16c5a76eb1e7f582672f43e5763
 Ö
 Usrc/main/java/com/example/prog1/controller/cli_graphic/LoginCliControllerGrafico.java,3\4\34bf0ff14875e899c37ee7264a0a85c5b34855bf
-Ü
-Vsrc/main/java/com/example/prog1/controller/cli_graphic/ControllerGraficoInterface.java,3\f\3f48c589e4f8e66e0a6a7bc4eab8a685cd0517c9
 \
 ,src/main/java/com/example/prog1/MainCLI.java,b\8\b8345caefe22b2d52f6bb210e58b5b9be540e3e6
 i
@@ -99,7 +95,5 @@ f
 6src/main/java/com/example/prog1/query/DivingQuery.java,8\0\80f23869274028cdf3275e43d6ed44419c1a99cd
 e
 5src/main/java/com/example/prog1/query/EquipQuery.java,b\f\bfb341e13c3acf4340c2521cca5c653add65fded
-f
-6src/main/java/com/example/prog1/query/RentalQuery.java,d\f\dfc6c3e4b18e57855d73341fc3532d61a03a54ea
 d
 4src/main/java/com/example/prog1/query/UserQuery.java,6\3\634d1813cc8c7dd6de256749f3e83bf3677862db

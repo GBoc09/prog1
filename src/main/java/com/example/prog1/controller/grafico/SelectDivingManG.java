@@ -4,7 +4,6 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,13 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SelectDivingManG implements Initializable {
     @FXML private MenuItem courses;
@@ -58,17 +54,14 @@ public class SelectDivingManG implements Initializable {
     }
     private String str;
     private CominicationBean cominicationBean;
-    Logger logger = Logger.getLogger(SelectDivingManG.class.getName());
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         List<DivingBean> divingBeanList = null;
-        try {
-            divingBeanList = rentalEquipApplicativo.getDivingListMan(userBean);
-        } catch (SqlException e) {
-            logger.log(Level.INFO, e.getMessage());
-        }
+        divingBeanList = rentalEquipApplicativo.getDivingListMan(userBean);
+
         for (DivingBean d : divingBeanList) {
             String name = d.getName();
             String loc = d.getLocation();

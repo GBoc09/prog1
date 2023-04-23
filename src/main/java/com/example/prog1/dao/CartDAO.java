@@ -25,7 +25,7 @@ public class CartDAO {
         Integer price  = takePrice(item);
         Connection con = MyConnectionSingleton.getConnection();
         try (Statement stmt = con.createStatement()) {
-            RentalQuery.insertIntoCartCLI(stmt, item, size, price, quant, email);
+            RentalQuery.insertIntoCart(stmt, item, size, price, quant, email);
         } catch (SQLException e) {
             logger.log(Level.INFO, error);
         }

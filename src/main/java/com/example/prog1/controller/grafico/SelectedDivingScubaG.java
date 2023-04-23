@@ -16,8 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class SelectedDivingScubaG implements Initializable {
     @FXML private MenuItem cart;
@@ -55,18 +54,14 @@ public class SelectedDivingScubaG implements Initializable {
     }
     private String str;
     private CominicationBean cominicationBean;
-    Logger logger = Logger.getLogger(SelectedDivingScubaG.class.getName());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectDiving.setDisable(true);
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<DivingBean> divingBeanList = null;
-        try {
-            divingBeanList = rentalEquipApplicativo.getDivingList();
-        } catch (SqlException e) {
-           logger.log(Level.INFO, e.getMessage());
-        }
+        divingBeanList = rentalEquipApplicativo.getDivingList();
+
         for (DivingBean d : divingBeanList) {
             String name = d.getName();
             String loc = d.getLocation();

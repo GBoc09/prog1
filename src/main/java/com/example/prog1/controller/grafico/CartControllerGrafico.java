@@ -4,8 +4,6 @@ import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
-import com.example.prog1.controller.cli_graphic.LoginCliControllerGrafico;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,13 +13,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class CartControllerGrafico implements Initializable {
     @FXML private Button addItems;
@@ -35,15 +31,13 @@ public class CartControllerGrafico implements Initializable {
     @FXML private MenuItem rent;
     @FXML private MenuBar menuBar;
 
-    Logger logger = Logger.getLogger(CartControllerGrafico.class.getName());
-
     private static final String RENT_EQUIP = "rentEquip1.fxml";
     private static final String SCUBA_HOME = "scubaHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String CART_SCREEN = "cart1.fxml";
     private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
     @FXML
-    void onButtonClicked(ActionEvent event) throws IOException, SqlException {
+    void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
         if (source == addItems) {
             SwapPage.getInstance().gotoPage(RENT_EQUIP);
@@ -73,11 +67,8 @@ public class CartControllerGrafico implements Initializable {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = null;
-        try {
-            cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
-        } catch (SqlException e) {
-           logger.log(Level.INFO, e.getMessage());
-        }
+        cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
+
         for (CartBean c : cartBeanList){
             String type = c.getType();
             String size = c.getSize();
@@ -87,14 +78,14 @@ public class CartControllerGrafico implements Initializable {
         }
     }
     /** cancella il carrello completo */
-    private void deleteCart() throws IOException, SqlException {
+    private void deleteCart() throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         rentalEquipApplicativo.deleteItem(userBean);
         SwapPage.getInstance().gotoPage(CART_SCREEN);
     }
     /** salvataggio dell'ordine nella tabella RENTAL */
-    private void saveOrder() throws SqlException {
+    private void saveOrder()  {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
