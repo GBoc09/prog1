@@ -2,7 +2,6 @@ package com.example.prog1.dao;
 
 import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.exception.NotExistentUserException;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.query.UserQuery;
 
 import java.sql.Connection;
@@ -22,7 +21,7 @@ public class UserDAO {
     private static final Integer FREE_CODE = 1;
     private static final Integer MANAGER_CODE = 2;
 
-    public Integer loadUserByCredentials(String userEmail, String userPass) throws NotExistentUserException, SqlException {
+    public Integer loadUserByCredentials(String userEmail, String userPass) throws NotExistentUserException {
         Connection con = MyConnectionSingleton.getConnection();
         Integer userType = -1;
         try (Statement stmt = con.createStatement();

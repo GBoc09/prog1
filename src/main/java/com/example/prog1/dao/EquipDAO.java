@@ -4,7 +4,6 @@ import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.db.MyConnectionSingleton;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.Equipment;
 import com.example.prog1.query.DivingQuery;
 import com.example.prog1.query.EquipQuery;
@@ -17,11 +16,12 @@ import java.util.logging.Logger;
 
 public class EquipDAO {
     Logger logger = Logger.getLogger(EquipDAO.class.getName());
+    private String error = "SQLException Error";
     /** inserimento diretto per tipo prezzo taglia e diponibilità
      * inserimento diretto per license
      * inserimento indiretto per diving: prendi diving name con query da diving se il numero di license corrisponde
      * poi salvarlo in una stringa e passalo alla query di inserimento in equipment */
-    public String divingName (String manEmail) throws SqlException {
+    public String divingName (String manEmail) {
         String name = null;
         Connection con = MyConnectionSingleton.getConnection();
         try (Statement stmt = con.createStatement();
@@ -30,21 +30,21 @@ public class EquipDAO {
                  name = rs.getString(1);
             }
         } catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
         }
         return name;
     }
-    public void insertEquip( EquipBean equipBean, String manEmail) throws SqlException {
+    public void insertEquip( EquipBean equipBean, String manEmail) {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
             String nomeDiving = divingName(manEmail);
            EquipQuery.insertEquip(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getAvail(), equipBean.getPrice(), nomeDiving,manEmail);
 
         }catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
         }
     }
-    public EquipBean selectEquipByOrder (int index) throws SqlException {
+    public EquipBean selectEquipByOrder (int index) {
         EquipBean equipBean= new EquipBean();
         Connection con = MyConnectionSingleton.getConnection();
         try (Statement stmt = con.createStatement();
@@ -55,11 +55,11 @@ public class EquipDAO {
                 equipBean.setPrice(rs.getInt(3));
             }
         }catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
         }
         return equipBean;
     }
-    public Integer selectAvailability(int index) throws SqlException {
+    public Integer selectAvailability(int index) {
         Integer i=0;
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();
@@ -68,11 +68,11 @@ public class EquipDAO {
                 i = rs.getInt(1);
             }
         }catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
         }
         return i;
     }
-    public List<Equipment> getEquipInfo() throws SqlException {
+    public List<Equipment> getEquipInfo()  {
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();
         try(Statement stmt = con.createStatement();
@@ -87,12 +87,12 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
 
         }
         return equips;
     }
-    public List<Equipment> getEquipInfoManEDiv(UserBean userBean, CominicationBean cominicationBean) throws SqlException {
+    public List<Equipment> getEquipInfoManEDiv(UserBean userBean, CominicationBean cominicationBean) {
         Connection con = MyConnectionSingleton.getConnection();
         String user = userBean.getUserEmail();
         String diving = cominicationBean.getStr();
@@ -108,12 +108,12 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
 
         }
         return equips;
     }
-    public List<Equipment> getEquipInfoName(String name) throws SqlException {
+    public List<Equipment> getEquipInfoName(String name) {
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();
         try(Statement stmt = con.createStatement();
@@ -128,11 +128,11 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
         }
         return equips;
     }
-    public List<Equipment> getCart(String email) throws SqlException {
+    public List<Equipment> getCart(String email)  {
         Connection con = MyConnectionSingleton.getConnection();
         List<Equipment> equips = new ArrayList<>();
         try(Statement stmt = con.createStatement();
@@ -146,17 +146,17 @@ public class EquipDAO {
                 equips.add(newEquip);
             }
         }catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
 
         }
         return equips;
     }
-    public void deleteItemsFromCart(String email) throws SqlException {
+    public void deleteItemsFromCart(String email)  {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();){
             EquipQuery.deleteItem(stmt, email);
         } catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
 
         }
     }

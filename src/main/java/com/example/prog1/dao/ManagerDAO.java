@@ -2,7 +2,6 @@ package com.example.prog1.dao;
 
 import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.exception.DuplicatedUserException;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.Manager;
 import com.example.prog1.model.User;
 import com.example.prog1.query.UserQuery;
@@ -13,6 +12,7 @@ import java.util.logging.Logger;
 
 public class ManagerDAO {
     Logger logger = Logger.getLogger(ManagerDAO.class.getName());
+    private String error = "SQLException Error";
     private static final String MANAGER = "manager";
     /* colonne SQL */
     private static final String MANAGER_EMAIL = "email";
@@ -20,7 +20,7 @@ public class ManagerDAO {
     private static final String MANAGER_SURNAME = "lastname";
     private static final String MANAGER_LICENSE = "license";
 
-    public void insertManager(User manager) throws DuplicatedUserException, SqlException {
+    public void insertManager(User manager) throws DuplicatedUserException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement())
         {
@@ -30,10 +30,10 @@ public class ManagerDAO {
             throw new DuplicatedUserException("User already registered");
         }
         catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO,error);
         }
     }
-    public Manager loadManager(String manLic) throws SqlException {
+    public Manager loadManager(String manLic) {
         Connection con = MyConnectionSingleton.getConnection();
         Manager manager = null;
         try (Statement stmt = con.createStatement();
@@ -42,7 +42,7 @@ public class ManagerDAO {
                 manager = createManager(rs);
             }
         }catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
         }
         return manager;
     }
@@ -54,7 +54,7 @@ public class ManagerDAO {
 
         return new Manager(email,"",name,surname,license);
     }
-    public Manager selectEmailMan() throws SqlException {
+    public Manager selectEmailMan(){
         Connection con = MyConnectionSingleton.getConnection();
         Manager emailMan = null;
         try (Statement stmt = con.createStatement();
@@ -63,7 +63,7 @@ public class ManagerDAO {
                 emailMan.setEmail(rs.getString(1));
             }
         } catch (SQLException sqlException){
-            logger.log(Level.INFO, "SQLException Error");
+            logger.log(Level.INFO, error);
         }
         return emailMan;
     }

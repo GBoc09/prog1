@@ -3,7 +3,6 @@ package com.example.prog1.dao;
 import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.exception.NotExistentUserException;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.model.Scuba;
 import com.example.prog1.model.User;
 import com.example.prog1.query.UserQuery;
@@ -21,7 +20,7 @@ public class ScubaDAO {
     private static final String SCUBA_SURNAME = "lastname";
     private static final String SCUBA_LICENSE = "license";
 
-    public void insertScuba (User scuba) throws DuplicatedUserException, SqlException {
+    public void insertScuba (User scuba) throws DuplicatedUserException {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement())
         {
@@ -34,14 +33,14 @@ public class ScubaDAO {
             logger.log(Level.INFO, "SQLException Error");
         }
     }
-    public Scuba loadScubaByEmail(String email) throws NotExistentUserException, SqlException {
+    public Scuba loadScubaByEmail(String email) throws NotExistentUserException {
         Scuba scuba = takeInfo(email);
         if(scuba == null){
             throw new NotExistentUserException("User not found");
         }
         return scuba;
     }
-    public Scuba takeInfo(String email) throws SqlException {
+    public Scuba takeInfo(String email) {
         Scuba scuba = null;
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();
