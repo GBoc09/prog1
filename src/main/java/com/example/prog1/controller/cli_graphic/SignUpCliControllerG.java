@@ -91,7 +91,7 @@ public class SignUpCliControllerG extends ControllerGraficoManagementCli{
                 default -> type = NOT_LOG;
 
             }
-        } catch (IOException | DuplicatedUserException | SqlException | StartException e) {
+        } catch (IOException | DuplicatedUserException | StartException e) {
             logger.log(Level.INFO, e.getMessage());
         }
     }

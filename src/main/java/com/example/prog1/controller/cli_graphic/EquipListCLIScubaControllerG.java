@@ -4,7 +4,6 @@ import com.example.prog1.bean.*;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.InvalidFormatException;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 import java.io.BufferedReader;
@@ -31,7 +30,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
                     default -> throw new InvalidFormatException("Invalid choice");
                 }
 
-            } catch (IOException | SqlException e) {
+            } catch (IOException e) {
                 logger.log(Level.INFO, e.getMessage());
             } catch (InvalidFormatException e) {
                logger.log(Level.INFO, e.getMessage());
@@ -58,7 +57,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
         PrinterCli.printMessage("6) LogOut\n");
         return getMenuChoice(1,6);
     }
-    private void showEquip() throws SqlException {
+    private void showEquip() {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         String str = cominicationBean.getStr();
@@ -77,7 +76,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
             PrinterCli.printMessage(type + " " + size + " " + avail + "   " + price + "\n");
         }
     }
-    private void addQuantity() throws IOException, SqlException {
+    private void addQuantity() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         PassStringsBean passStringsBean;
@@ -91,7 +90,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         rentalEquipApplicativo.infoEquipCartCLI(passStringsBean, userBean);
     }
-    private void showCart(UserBean userBean) throws SqlException {
+    private void showCart(UserBean userBean)  {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
         PrinterCli.printMessage("--- YOUR CART ---");
@@ -103,7 +102,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
             PrinterCli.printMessage(type + " " + size + " " + quant + "   " + price + "\n");
         }
     }
-    private void completeOrder() throws SqlException {
+    private void completeOrder()  {
         /** salvare all'interno della tabella Rental e trovare un modo per stampare il totale */
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();

@@ -52,7 +52,7 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
     private void login() throws StartException {
         LoginApplicativo loginApplicativo = new LoginApplicativo();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        try{
+        try {
             PrinterCli.printMessage("Username: ");
             String username = reader.readLine();
             PrinterCli.printMessage("Password: ");
@@ -63,7 +63,7 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
             userBean = loginApplicativo.verifyUser(accessInfoBean);
             Integer type = userBean.getUserType();
             switch (type) {
-                case 0 :
+                case 0:
                     InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
                     new HomeScubaCLIGrafico().start();
                     break;
@@ -75,14 +75,13 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
                     InternalControllerGrafico.getInternalControllerInstance().setLoggedUser(userBean);
                     new HomeManagerCLIGrafico().start();
                     break;
-                default: type = NOT_LOG;
+                default:
+                    type = NOT_LOG;
             }
 
-        } catch (IOException e){
+        } catch (IOException e) {
             logger1.log(Level.INFO, e.getMessage());
         } catch (NotExistentUserException e) {
-            logger.log(Level.INFO, e.getMessage());
-        } catch (SqlException e) {
             logger.log(Level.INFO, e.getMessage());
         }
     }
