@@ -24,7 +24,7 @@ public class ManagerApplicativo {
     public static List<DivingBean> getDivings(UserBean userBean) {
         List<DivingBean> div = new ArrayList<>();
         DivingDAO divingDAO = new DivingDAO();
-        List<Diving> div2 = divingDAO.getDivInfo();
+        List<Diving> div2 = divingDAO.getDivInfoMan(userBean);
         for (Diving d : div2) {
             DivingBean divingBean = new DivingBean();
             divingBean.setName(d.getName());

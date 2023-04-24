@@ -5,7 +5,6 @@ import com.example.prog1.controller.applicativo.RegistrationApplicativo;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.exception.DuplicatedUserException;
 import com.example.prog1.exception.InvalidFormatException;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 
@@ -66,6 +65,10 @@ public class SignUpCliControllerG extends ControllerGraficoManagementCli{
             String conf = reader.readLine();
             PrinterCli.printMessage("Select role:\n 1) Scuba Diver \n 2) Free Diver\n 3) Diving Manager\n");
             String role = reader.readLine();
+
+            if (!pass.equals(conf)){
+                PrinterCli.printMessage("The password are differnt, insert them again.");
+            }
 
             userBeanInfo.setUserEmail(email);
             userBeanInfo.setPass(pass);

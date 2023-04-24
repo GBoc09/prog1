@@ -55,8 +55,6 @@ b
 2src/main/java/com/example/prog1/bean/UserBean.java,7\3\738130eae596b5f89371d49ec4342f9e1f8c4620
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
-u
-Esrc/main/java/com/example/prog1/exception/InvalidFormatException.java,6\5\652b5913115a0c28ae885cee7e4e63f67c7f24fe
 j
 :src/main/java/com/example/prog1/model/InterfaceRental.java,b\1\b1a27a48835cf30c6389300d855b32664896222c
 a
