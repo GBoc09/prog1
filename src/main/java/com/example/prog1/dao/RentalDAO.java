@@ -16,18 +16,10 @@ import java.util.logging.Logger;
 public class RentalDAO {
     Logger logger = Logger.getLogger(RentalDAO.class.getName());
     private String error = "SQLException Error";
-    public void insertRent(String type, String email, String name, Integer price) {
+    public void insertRent(String type, String email, String name, Integer price, Integer total) {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
-            RentalQuery.insertIntoRent(stmt,type,email, name, price);
-        }catch (SQLException sqlException){
-            logger.log(Level.INFO, error);
-        }
-    }
-    public void insertRentPart(Integer total){
-        Connection con = MyConnectionSingleton.getConnection();
-        try(Statement stmt = con.createStatement()){
-            RentalQuery.insertIntoRentPart(stmt, total);
+            RentalQuery.insertIntoRent(stmt,type,email, name, price,total );
         }catch (SQLException sqlException){
             logger.log(Level.INFO, error);
         }

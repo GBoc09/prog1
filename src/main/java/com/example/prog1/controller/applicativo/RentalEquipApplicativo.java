@@ -94,9 +94,12 @@ public class RentalEquipApplicativo {
         RentalDAO rentalDAO = new RentalDAO();
         rentalDAO.deleteItemsFromRental(userBean.getUserEmail());
     }
-    /** errori nell'inserzione dei dati nella bd
+    /**
      * e communication bean non ritorna il valore corretto se riprendiamo il processo di comprare cose dopo aver
-     * chiuso l'applicazione */
+     * chiuso l'applicazione
+     *
+     * RIEPILOGO DEI DATI NELLA SCHERMATA (FXML) RENTAL FUNZIONANTE
+     */
     public void saveItem(List<CartBean> cartBeans, UserBean userBean, CominicationBean cominicationBean) {
         RentalDAO rentalDAO = new RentalDAO();
         String type = null;
@@ -106,9 +109,9 @@ public class RentalEquipApplicativo {
             type = d.getType();
             price = d.getPrice();
             total = total+price;
-            rentalDAO.insertRent(type, userBean.getUserEmail(), cominicationBean.getStr(), price);
+
+            rentalDAO.insertRent(type, userBean.getUserEmail(), cominicationBean.getStr(), price, total);
         }
-        rentalDAO.insertRentPart(total);
     }
     public EquipBean infoEquipGeneral(int selectedIndex){
         EquipDAO equipDAO = new EquipDAO();
