@@ -50,4 +50,17 @@ public class RentalDAO {
             logger.log(Level.INFO, error);
         }
     }
+    public String divingEmail(String diving) {
+        Connection con = MyConnectionSingleton.getConnection();
+        String divEmail = null;
+        try(Statement stmt = con.createStatement();
+        ResultSet rs = RentalQuery.selectDivingEmail(stmt, diving)){
+            while(rs.next()) {
+                divEmail = rs.getString(1);
+            }
+        }catch (SQLException sqlException){
+            logger.log(Level.INFO, error);
+        }
+        return divEmail;
+    }
 }

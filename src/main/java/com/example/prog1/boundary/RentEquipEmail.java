@@ -1,44 +1,29 @@
 package com.example.prog1.boundary;
 
 import com.example.prog1.bean.VendorOrderBean;
-import com.example.prog1.exception.EmailSenderException;
-import com.example.prog1.pattern.observer.Observer;
 
-import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.FileWriter;
+import java.io.IOException;
 
-public class RentEquipEmail implements Observer {
-    private static final String NOTIFY_DIVING_FILE = "emailText.txt";
-    private VendorOrderBean vendorOrderBean;
+public class RentEquipEmail {
+    private static final String VENDOR_NOTIFY_FILE_NAME = "vendorNotifyFile";
 
-    public RentEquipEmail (VendorOrderBean vendorOrderBean) throws EmailSenderException {
-        checkFile();
-        this.vendorOrderBean = vendorOrderBean;
+    public void notifyVendors(VendorOrderBean vendorOrderBean) {
+        sendEmail(vendorOrderBean);
     }
 
-    @Override
-    public void update() {
-        try (PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter(NOTIFY_DIVING_FILE)))) {
-
-            checkFile();
-            for (String email : vendorOrderBean.getSubscribedEmails()){
-            printWriter.println("Rental placed by: "+vendorOrderBean.getOrderOwner());
-            printWriter.println("Email sent to: "+email);
-            }
-        } catch (IOException e){
-            Logger.getAnonymousLogger().log(Level.INFO,e.getMessage());
-        } catch (EmailSenderException e) {
-
+    private void sendEmail(VendorOrderBean vendorOrderBean){
+        try(FileWriter fileWriter = new FileWriter(VENDOR_NOTIFY_FILE_NAME)){
+            fileWriter.write(String.format("""
+                    Dear %s, 
+                    We are pleased to inform you that %s has placed an order with you. 
+                    Visit the details section to learn more. 
+                    
+                    Best Wishes
+                    DiversWorld's team
+                    """, vendorOrderBean.getVendor(), vendorOrderBean.getOrderOwner()));
+        } catch (IOException ioException){
+            ioException.printStackTrace();
         }
-    }
-    private boolean checkFile() throws EmailSenderException {
-        File f = new File(NOTIFY_DIVING_FILE);
-        if(!f.exists()){ throw new EmailSenderException("File does not exist");
-        }
-        if (!f.canWrite()){
-            throw new EmailSenderException("Can not write on file");
-        }
-        return true;
     }
 }

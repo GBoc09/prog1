@@ -85,8 +85,6 @@ a
 1src/main/java/com/example/prog1/dao/EquipDAO.java,d\5\d5a2d68298e9cf42c3aa779171c535c69a1b059f
 |
 Lsrc/main/java/com/example/prog1/controller/applicativo/LoginApplicativo.java,0\8\087a6ac431f321c277a678de875225e3db13b408
-ƒ
-Ssrc/main/java/com/example/prog1/controller/applicativo/RegistrationApplicativo.java,a\b\ab65067dcf94d7990d2b46a6bea2d833cff2f2bf
 `
 0src/main/java/com/example/prog1/dao/FreeDAO.java,a\d\adc302c31f149f75f4aadfc16091f3de693a0bb4
 c
@@ -151,3 +149,9 @@ k
 ;src/main/java/com/example/prog1/exception/SqlException.java,1\7\17646a5418d937838e4c3c2dbc0e6f8b66e29ae8
 z
 Jsrc/main/java/com/example/prog1/controller/grafico/ShowDivingManagerG.java,c\3\c3b52f466018e57bebb3ffd487b9213ee3f40735
+b
+2src/main/java/com/example/prog1/dao/DivingDAO.java,c\2\c20379fbc85e18fb302c967cce0b3b351113c802
+€
+Psrc/main/java/com/example/prog1/controller/cli_graphic/SignUpCliControllerG.java,a\8\a83f6f66364df16c5a76eb1e7f582672f43e5763
+…
+Usrc/main/java/com/example/prog1/controller/grafico/RegistrationControllerGrafico.java,b\7\b7506f720319095111131db5d48f9996b08e9493
