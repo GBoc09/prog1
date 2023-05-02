@@ -1,10 +1,8 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +14,8 @@ import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SummaryRentalScubaControllerG implements Initializable {
     @FXML private MenuItem cart;
@@ -41,7 +36,7 @@ public class SummaryRentalScubaControllerG implements Initializable {
     private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
 
     @FXML
-    void onMenuItemSelected(ActionEvent event) throws IOException, SqlException {
+    void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
         if (sourceItem == home){
             SwapPage.getInstance().gotoPage(SCUBA_HOME);
@@ -55,13 +50,12 @@ public class SummaryRentalScubaControllerG implements Initializable {
             deleteRental();
         }
     }
-    private void deleteRental() throws IOException, SqlException {
+    private void deleteRental() throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         rentalEquipApplicativo.deleteRent(userBean);
         SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
     }
-    Logger logger = Logger.getLogger(SummaryRentalScubaControllerG.class.getName());
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();

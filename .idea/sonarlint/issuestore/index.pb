@@ -67,8 +67,6 @@ j
 :src/main/java/com/example/prog1/bean/CominicationBean.java,4\b\4b73998c432a4de1840d17349b08fc21b9a50be7
 w
 Gsrc/main/java/com/example/prog1/exception/NotExistentUserException.java,4\3\435c5e66c7ca6ad14751a36f963525fab2ab9fc1
-\
-,src/main/java/com/example/prog1/MainCLI.java,b\8\b8345caefe22b2d52f6bb210e58b5b9be540e3e6
 i
 9src/main/java/com/example/prog1/utilities/PrinterCli.java,6\a\6a8d74f653893956647ef6fd777378e985b9193f
 f
@@ -117,8 +115,6 @@ Hsrc/main/java/com/example/prog1/controller/grafico/SelectDivingManG.java,0\f\0
 Lsrc/main/java/com/example/prog1/controller/grafico/SelectedDivingScubaG.java,2\6\267f03122bb2b76de3939454348b681b96a6232a
 y
 Isrc/main/java/com/example/prog1/controller/grafico/ShowEquipManagerG.java,e\d\eddb28b553623c9e45967a54821cd14770978d76
-…
-Usrc/main/java/com/example/prog1/controller/grafico/SummaryRentalScubaControllerG.java,b\f\bfe5fa940ccde8794f7611d4d45244c876bd4dbd
 ‚
 Rsrc/main/java/com/example/prog1/controller/grafico/AccettazioneRentalManagerG.java,e\a\eabff646d464a0b86f34005044da150a024334f3
 †
@@ -155,3 +151,9 @@ b
 Psrc/main/java/com/example/prog1/controller/cli_graphic/SignUpCliControllerG.java,a\8\a83f6f66364df16c5a76eb1e7f582672f43e5763
 …
 Usrc/main/java/com/example/prog1/controller/grafico/RegistrationControllerGrafico.java,b\7\b7506f720319095111131db5d48f9996b08e9493
+\
+,src/main/java/com/example/prog1/MainApp.java,2\1\21c8f303caf6472d633dc08d39e27e62b9b92940
+~
+Nsrc/main/java/com/example/prog1/controller/applicativo/ManagerApplicativo.java,8\8\88d93cde407d671e39f674f861813ea504752d9f
+ƒ
+Ssrc/main/java/com/example/prog1/controller/applicativo/RegistrationApplicativo.java,a\b\ab65067dcf94d7990d2b46a6bea2d833cff2f2bf

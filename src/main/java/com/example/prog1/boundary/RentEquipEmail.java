@@ -4,9 +4,13 @@ import com.example.prog1.bean.VendorOrderBean;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RentEquipEmail {
+    Logger logger = Logger.getLogger(RentEquipEmail.class.getName());
     private static final String VENDOR_NOTIFY_FILE_NAME = "vendorNotifyFile";
+    private String error = "IOException Error";
 
     public void notifyVendors(VendorOrderBean vendorOrderBean) {
         sendEmail(vendorOrderBean);
@@ -23,7 +27,7 @@ public class RentEquipEmail {
                     DiversWorld's team
                     """, vendorOrderBean.getVendor(), vendorOrderBean.getOrderOwner()));
         } catch (IOException ioException){
-            ioException.printStackTrace();
+            logger.log(Level.INFO, error);
         }
     }
 }
