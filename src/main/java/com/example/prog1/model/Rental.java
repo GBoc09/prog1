@@ -1,7 +1,5 @@
 package com.example.prog1.model;
 
-import com.example.prog1.pattern.state.RentalState;
-
 public class Rental {
     private Integer idRent;
     private String equipType;
@@ -9,7 +7,6 @@ public class Rental {
     private String diving;
     private Integer total;
     private Integer equipPrice;
-    private RentalState statoRental;
     public Rental(){}
     public Rental (Integer id, String type, String diving, Integer tot){
         this.idRent =id;
@@ -20,14 +17,6 @@ public class Rental {
     /** applicazione del pattern state all'interno dello stato dell'ordine di un cliente:
      *
      * lo stato è un oggetto di tipo RENTAL */
-
-    public RentalState getStatoRental() {
-        return statoRental;
-    }
-
-    public void setStatoRental(RentalState statoRental) {
-        this.statoRental = statoRental;
-    }
 
     /**public Rental (){
         this.statoRental = new StatoNuovo();

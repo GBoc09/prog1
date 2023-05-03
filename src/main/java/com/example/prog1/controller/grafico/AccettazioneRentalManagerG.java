@@ -1,10 +1,7 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
-import com.example.prog1.model.Rental;
-import com.example.prog1.pattern.state.RentalState;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,14 +43,11 @@ public class AccettazioneRentalManagerG {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         Node source = (Node) event.getSource();
-//        Rental rental1 = new Rental();
-//        RentalState stateRental = rental1.getStatoRental();
         if (acceptButt.isSelected() && source == sendEmail){
             decisione = ACCEPT;
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "The email has been sent");
             alert.showAndWait();
             SwapPage.getInstance().gotoPage(MANAGER_HOME);
-//            stateRental.gestioneStatoRental(rental1, decisione);
             /** comunicazione con un controller applicativo che inivia la mail */
             rentalEquipApplicativo.sendConfirmation(userBean.getUserEmail(),decisione);
         } else if (rejectButt.isSelected() && source == sendEmail) {
@@ -62,7 +56,6 @@ public class AccettazioneRentalManagerG {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION,  "The email has been sent ");
             alert.showAndWait();
             SwapPage.getInstance().gotoPage(MANAGER_HOME);
-//            stateRental.gestioneStatoRental(rental1, decisione);
             /** comunicazione con controller applicativo che invia la mail */
         }
     }

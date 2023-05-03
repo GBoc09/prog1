@@ -47,16 +47,6 @@ b
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 j
 :src/main/java/com/example/prog1/model/InterfaceRental.java,b\1\b1a27a48835cf30c6389300d855b32664896222c
-n
->src/main/java/com/example/prog1/pattern/state/RentalState.java,2\9\296eec558de152d47e20d4a7e22f1502ea2d29c6
-q
-Asrc/main/java/com/example/prog1/pattern/state/StatoAccettato.java,2\6\26c1f97a1e33c5c84de129fe72c8b0177a6fc67f
-o
-?src/main/java/com/example/prog1/pattern/state/StatoInCorso.java,e\e\ee024f6648b9735efbfeb209f6610cd4761a788d
-m
-=src/main/java/com/example/prog1/pattern/state/StatoNuovo.java,6\1\612e3c5725a4eb64b8acf0912c81d8f690c7791e
-q
-Asrc/main/java/com/example/prog1/pattern/state/StatoRifiutato.java,6\4\6436e40d7179317cde39ef6751fbdb4b6efa8e3d
 j
 :src/main/java/com/example/prog1/bean/CominicationBean.java,4\b\4b73998c432a4de1840d17349b08fc21b9a50be7
 w
