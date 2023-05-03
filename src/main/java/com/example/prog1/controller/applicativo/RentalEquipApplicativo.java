@@ -1,5 +1,6 @@
 package com.example.prog1.controller.applicativo;
 
+import com.example.prog1.boundary.RentEquipDecisionEmail;
 import com.example.prog1.boundary.RentEquipEmail;
 import com.example.prog1.dao.*;
 import com.example.prog1.bean.*;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentalEquipApplicativo {
+    private static final String ACCEPT = "accept";
     public RentalEquipApplicativo(){/* costruttore */ }
     /** seleziona tutte le attrezzature */
     public List<EquipBean> getEquips () {
@@ -161,10 +163,23 @@ public class RentalEquipApplicativo {
         RentEquipEmail equipEmail = new RentEquipEmail();
         RentalDAO rentalDAO = new RentalDAO();
         String vendorsInfo = rentalDAO.divingEmail(diving);
-        equipEmail.notifyVendors(createNotificationInfo(user, vendorsInfo));
+        equipEmail.notifyVendors(createNotificationInfoD(user, vendorsInfo));
     }
-    public VendorOrderBean createNotificationInfo(String orderOwner, String vendor){
+    public VendorOrderBean createNotificationInfoD(String orderOwner, String vendor){
         return new VendorOrderBean(vendor, orderOwner);
+    }
+    public void sendConfirmation(String divingMan, String decisione){
+        RentEquipDecisionEmail rentEquipDecisionEmail = new RentEquipDecisionEmail();
+        RentalDAO rentalDAO = new RentalDAO();
+        String buyerInfo = rentalDAO.buyerInfo(divingMan);
+        if (decisione.equals(ACCEPT)){
+            rentEquipDecisionEmail.notifyBuyersOK(createNotificationInfoB(buyerInfo, divingMan));
+        } else {
+            rentEquipDecisionEmail.notifyBuyersKO(createNotificationInfoB(buyerInfo, divingMan));
+        }
+    }
+    public BuyerOrderBean createNotificationInfoB(String orderOwner, String vendor){
+        return new BuyerOrderBean(orderOwner, vendor);
     }
 }
 

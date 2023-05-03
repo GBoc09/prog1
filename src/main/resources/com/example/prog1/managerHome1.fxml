@@ -58,7 +58,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Equipment">
                <items>
-                  <MenuItem fx:id="equipment" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Select Diving" />
+                  <MenuItem fx:id="equipment" mnemonicParsing="false" onAction="#onMenuItemSelected" text="Manage Equipmet" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="LogOut">

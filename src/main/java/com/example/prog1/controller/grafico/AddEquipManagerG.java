@@ -3,7 +3,6 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.ManagerApplicativo;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,7 +45,7 @@ public class AddEquipManagerG {
     }
 
     @FXML
-    void addNewProduct(ActionEvent event) throws IOException, SqlException {
+    void addNewProduct(ActionEvent event) throws IOException {
         ManagerApplicativo managerApplicativo = new ManagerApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         checkFields();

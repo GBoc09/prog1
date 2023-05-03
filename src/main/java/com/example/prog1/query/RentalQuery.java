@@ -26,4 +26,9 @@ public class RentalQuery{
         String query = String.format("SELECT divingManager FROM diving WHERE name = '%s';", diving);
         return stmt.executeQuery(query);
     }
+    public static ResultSet selectBuyerEmail(Statement stmt, String diving ) throws SQLException {
+        String query = String.format("SELECT scuba FROM Rental join Diving WHERE divingManager = '%s';", diving);
+        return stmt.executeQuery(query);
+    }
+
 }

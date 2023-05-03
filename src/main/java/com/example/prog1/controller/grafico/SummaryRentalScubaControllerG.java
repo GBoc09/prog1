@@ -1,5 +1,6 @@
 package com.example.prog1.controller.grafico;
 
+import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
@@ -70,7 +71,5 @@ public class SummaryRentalScubaControllerG implements Initializable {
             totalLabel.setText(String.valueOf(r.getTotal()));
         }
     }
-
-
 }
 

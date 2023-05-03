@@ -63,4 +63,18 @@ public class RentalDAO {
         }
         return divEmail;
     }
+
+    public String buyerInfo(String divingMan){
+        Connection con = MyConnectionSingleton.getConnection();
+        String email = null;
+        try(Statement stmt = con.createStatement();
+            ResultSet rs = RentalQuery.selectBuyerEmail(stmt, divingMan)){
+            while(rs.next()) {
+                email = rs.getString(1);
+            }
+        }catch (SQLException sqlException){
+            logger.log(Level.INFO, error);
+        }
+        return email;
+    }
 }

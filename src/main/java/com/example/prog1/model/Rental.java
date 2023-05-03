@@ -2,7 +2,6 @@ package com.example.prog1.model;
 
 import com.example.prog1.pattern.state.RentalState;
 
-
 public class Rental {
     private Integer idRent;
     private String equipType;

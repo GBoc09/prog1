@@ -35,8 +35,6 @@ l
 <src/main/java/com/example/prog1/pattern/factory/Factory.java,7\9\799121925edb9131aafc0757a047510fa7c3b66a
 a
 1src/main/java/com/example/prog1/model/Diving.java,3\a\3a5f2249262ae5f295374d19e33c335464180522
-q
-Asrc/main/java/com/example/prog1/bean/IntegerComunicationBean.java,f\6\f65f68170fd7d796bcfc3fad887d01cf542d1067
 d
 4src/main/java/com/example/prog1/bean/RentalBean.java,9\3\93ee93a73cb6a1f8264c16c3c694095912db3c8f
 b
@@ -49,8 +47,6 @@ b
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 j
 :src/main/java/com/example/prog1/model/InterfaceRental.java,b\1\b1a27a48835cf30c6389300d855b32664896222c
-a
-1src/main/java/com/example/prog1/model/Rental.java,c\0\c0e7a333e8ae215e1a282a6b5cc74dccfb9bb154
 n
 >src/main/java/com/example/prog1/pattern/state/RentalState.java,2\9\296eec558de152d47e20d4a7e22f1502ea2d29c6
 q
@@ -61,8 +57,6 @@ m
 =src/main/java/com/example/prog1/pattern/state/StatoNuovo.java,6\1\612e3c5725a4eb64b8acf0912c81d8f690c7791e
 q
 Asrc/main/java/com/example/prog1/pattern/state/StatoRifiutato.java,6\4\6436e40d7179317cde39ef6751fbdb4b6efa8e3d
-i
-9src/main/java/com/example/prog1/bean/PassStringsBean.java,f\2\f20843b1e91fe34e593e9ad2b15604ceb88dcf1c
 j
 :src/main/java/com/example/prog1/bean/CominicationBean.java,4\b\4b73998c432a4de1840d17349b08fc21b9a50be7
 w
@@ -91,14 +85,8 @@ a
 1src/main/java/com/example/prog1/dao/ScubaDAO.java,8\e\8eef2853b90adda743627169574937f6ec5e9172
 `
 0src/main/java/com/example/prog1/dao/UserDAO.java,f\1\f1302c2862dcf1a0ac82f1846cf3332b4349ba5f
-}
-Msrc/main/java/com/example/prog1/controller/grafico/CasaControllerGrafico.java,8\a\8a6cd67cfc6ceecf4c60c2031b5d29878a876c3a
-Ç
-Rsrc/main/java/com/example/prog1/controller/grafico/ScubaHomeControllerGrafico.java,2\d\2d57e78c568ee84e0bec79ba34521aeda881f2e3
 ~
 Nsrc/main/java/com/example/prog1/controller/grafico/ManagerHomeControllerG.java,d\2\d2f2668a186c137c9b3e0376eba685720d3b6019
-x
-Hsrc/main/java/com/example/prog1/controller/grafico/AddEquipManagerG.java,7\d\7d500445710f67178e357595e2d0c14187c15502
 y
 Isrc/main/java/com/example/prog1/controller/grafico/AddDivingManagerG.java,f\d\fda0a034b35501e9202130355c462ee05152803a
 }
@@ -107,16 +95,10 @@ Msrc/main/java/com/example/prog1/controller/grafico/CartControllerGrafico.java,
 0src/main/java/com/example/prog1/dao/CartDAO.java,b\d\bde7c767567b2cc2357bad94fea845b9a05626b0
 ~
 Nsrc/main/java/com/example/prog1/controller/grafico/LoginControllerGrafico.java,2\6\26aaac8a981b1be4a8dc686456d869f04de5ca71
-Å
-Qsrc/main/java/com/example/prog1/controller/grafico/RentEquipScubaControllerG.java,1\f\1f51dbb03d3d84a8062c6aa82d518be53b1ef7fe
 x
 Hsrc/main/java/com/example/prog1/controller/grafico/SelectDivingManG.java,0\f\0fdf549298cdc6a3aaf581499615489694b7b2ac
 |
 Lsrc/main/java/com/example/prog1/controller/grafico/SelectedDivingScubaG.java,2\6\267f03122bb2b76de3939454348b681b96a6232a
-y
-Isrc/main/java/com/example/prog1/controller/grafico/ShowEquipManagerG.java,e\d\eddb28b553623c9e45967a54821cd14770978d76
-Ç
-Rsrc/main/java/com/example/prog1/controller/grafico/AccettazioneRentalManagerG.java,e\a\eabff646d464a0b86f34005044da150a024334f3
 Ü
 Vsrc/main/java/com/example/prog1/controller/cli_graphic/ControllerGraficoInterface.java,3\f\3f48c589e4f8e66e0a6a7bc4eab8a685cd0517c9
 ä
@@ -135,8 +117,6 @@ Xsrc/main/java/com/example/prog1/controller/cli_graphic/EquipListCLIScubaControl
 Usrc/main/java/com/example/prog1/controller/cli_graphic/LoginCliControllerGrafico.java,3\4\34bf0ff14875e899c37ee7264a0a85c5b34855bf
 Å
 Qsrc/main/java/com/example/prog1/controller/grafico/InternalControllerGrafico.java,2\7\27979a854e1a341575e78dd1e63ac5690b66cf8d
-z
-Jsrc/main/java/com/example/prog1/controller/grafico/CartRowControllerG.java,7\a\7a2cd064a96a12fd74a62257d586d24736b63120
 u
 Esrc/main/java/com/example/prog1/exception/InvalidFormatException.java,6\5\652b5913115a0c28ae885cee7e4e63f67c7f24fe
 m
@@ -153,7 +133,5 @@ Psrc/main/java/com/example/prog1/controller/cli_graphic/SignUpCliControllerG.jav
 Usrc/main/java/com/example/prog1/controller/grafico/RegistrationControllerGrafico.java,b\7\b7506f720319095111131db5d48f9996b08e9493
 \
 ,src/main/java/com/example/prog1/MainApp.java,2\1\21c8f303caf6472d633dc08d39e27e62b9b92940
-~
-Nsrc/main/java/com/example/prog1/controller/applicativo/ManagerApplicativo.java,8\8\88d93cde407d671e39f674f861813ea504752d9f
 É
 Ssrc/main/java/com/example/prog1/controller/applicativo/RegistrationApplicativo.java,a\b\ab65067dcf94d7990d2b46a6bea2d833cff2f2bf

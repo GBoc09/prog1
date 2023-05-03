@@ -1,17 +1,15 @@
 package com.example.prog1.controller.grafico;
 
+import com.example.prog1.bean.IntegerComunicationBean;
+import com.example.prog1.bean.UserBean;
+import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.model.Rental;
 import com.example.prog1.pattern.state.RentalState;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 
@@ -39,17 +37,32 @@ public class AccettazioneRentalManagerG {
 
     /** gestione del pattern state per modificare lo stato dell'ordine */
     @FXML
-    void onButtonClicked(ActionEvent event) {
+    public void initialize () {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        manLabel.setText(userBean.getUserEmail());
+    }
+    @FXML
+    void onButtonClicked(ActionEvent event) throws IOException {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         Node source = (Node) event.getSource();
-        Rental rental1 = new Rental();
-        RentalState stateRental = rental1.getStatoRental();
+//        Rental rental1 = new Rental();
+//        RentalState stateRental = rental1.getStatoRental();
         if (acceptButt.isSelected() && source == sendEmail){
             decisione = ACCEPT;
-            stateRental.gestioneStatoRental(rental1, decisione);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "The email has been sent");
+            alert.showAndWait();
+            SwapPage.getInstance().gotoPage(MANAGER_HOME);
+//            stateRental.gestioneStatoRental(rental1, decisione);
             /** comunicazione con un controller applicativo che inivia la mail */
+            rentalEquipApplicativo.sendConfirmation(userBean.getUserEmail(),decisione);
         } else if (rejectButt.isSelected() && source == sendEmail) {
             decisione = REJECT;
-            stateRental.gestioneStatoRental(rental1, decisione);
+            rentalEquipApplicativo.sendConfirmation(userBean.getUserEmail(), decisione);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,  "The email has been sent ");
+            alert.showAndWait();
+            SwapPage.getInstance().gotoPage(MANAGER_HOME);
+//            stateRental.gestioneStatoRental(rental1, decisione);
             /** comunicazione con controller applicativo che invia la mail */
         }
     }
