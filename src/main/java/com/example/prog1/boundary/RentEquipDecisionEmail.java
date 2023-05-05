@@ -37,7 +37,7 @@ public class RentEquipDecisionEmail {
             fileWriter.write(String.format("""
                     Dear %s, 
                     We are sorry to inform you that your order has been rejected.
-                    If you want more information, please contact '%s' directly.  
+                    If you want more information, please contact %s directly.  
                                         
                     Best Wishes
                     DiversWorld's team

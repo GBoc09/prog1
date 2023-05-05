@@ -133,8 +133,6 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
     public List<CartBean> loadCart(UserBean userBean) {
         email = userBean.getUserEmail();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        /*List<CartBean> cartBeans = rentalEquipApplicativo.showCart(email);
-        * return cartBeans; */
         return (rentalEquipApplicativo.showCart(email));
     }
 }
