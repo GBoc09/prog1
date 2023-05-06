@@ -57,10 +57,9 @@ public class SelectDivingManG implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         List<DivingBean> divingBeanList = null;
-        divingBeanList = rentalEquipApplicativo.getDivingListMan(userBean);
+        divingBeanList = RentalEquipApplicativo.getDivingListMan(userBean);
 
         for (DivingBean d : divingBeanList) {
             String name = d.getName();

@@ -50,7 +50,7 @@ public class EquipListCLIMan extends ControllerGraficoManagementCli{
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         List<EquipBean> equipBeanList = null;
-        equipBeanList = rentalEquipApplicativo.getEquips(userBean, cominicationBean);
+        equipBeanList = RentalEquipApplicativo.getEquips(userBean, cominicationBean);
 
         PrinterCli.printMessage("--- DIVING'S EQUIP ---");
         for (EquipBean d : equipBeanList) {

@@ -4,7 +4,6 @@ import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
-import com.example.prog1.exception.InvalidFormatException;
 import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 
