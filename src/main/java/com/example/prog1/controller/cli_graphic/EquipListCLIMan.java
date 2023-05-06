@@ -47,7 +47,6 @@ public class EquipListCLIMan extends ControllerGraficoManagementCli{
     private void logOut() throws StartException { new LoginCliControllerGrafico().start(); }
     private void back() throws StartException { new HomeManagerCLIGrafico().start(); }
     private void showEquip(UserBean userBean) {
-        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         List<EquipBean> equipBeanList = null;
         equipBeanList = RentalEquipApplicativo.getEquips(userBean, cominicationBean);
