@@ -4,12 +4,14 @@ package com.example.prog1.model;
  * la serializzazione prevede che venga salvata l'istanza considerata, ma anche tutti i riferimenti in essa contenuti
  * INTERFACCIA SERIALIZABLE: non definisce nessuna operazione, non richiede la definizione di nessun metodo della classe
  * che realizza */
-public class Cart{
+public class Cart /* implements Priceable*/{
     private String equipType;
     private String equipSize;
     private Integer equipPrice;
     private Integer equipQuantity;
 
+    /*
+    */
     public String getEquipType() {
         return equipType;
     }
@@ -41,4 +43,10 @@ public class Cart{
     public void setEquipQuantity(Integer equipQuantity) {
         this.equipQuantity = equipQuantity;
     }
+    /*
+    @Override
+    public Integer getPrice () {
+    total = 0;
+
+    } */
 }

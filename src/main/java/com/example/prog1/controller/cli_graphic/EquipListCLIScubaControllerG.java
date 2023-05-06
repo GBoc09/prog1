@@ -102,12 +102,13 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
             PrinterCli.printMessage(type + " " + size + " " + quant + "   " + price + "\n");
         }
     }
-    private void completeOrder()  {
+    private void completeOrder() throws StartException {
         /** salvare all'interno della tabella Rental e trovare un modo per stampare il totale */
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
         rentalEquipApplicativo.saveItem(cartBeanList, userBean, cominicationBean);
+        new RentSummaryScubaCLI().start();
     }
 }

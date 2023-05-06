@@ -29,8 +29,6 @@ N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
 m
 =src/main/java/com/example/prog1/db/MyConnectionSingleton.java,e\8\e846a814fc289b1c48ef60e75f56864addde5a9d
-_
-/src/main/java/com/example/prog1/model/Cart.java,d\1\d1e79980a760e24c6fd05f38622b2e8a3effac1d
 l
 <src/main/java/com/example/prog1/pattern/factory/Factory.java,7\9\799121925edb9131aafc0757a047510fa7c3b66a
 a
@@ -79,8 +77,6 @@ a
 Nsrc/main/java/com/example/prog1/controller/grafico/ManagerHomeControllerG.java,d\2\d2f2668a186c137c9b3e0376eba685720d3b6019
 y
 Isrc/main/java/com/example/prog1/controller/grafico/AddDivingManagerG.java,f\d\fda0a034b35501e9202130355c462ee05152803a
-}
-Msrc/main/java/com/example/prog1/controller/grafico/CartControllerGrafico.java,d\a\da64839da4221a75b7dc192cecd0f460e11ba03d
 `
 0src/main/java/com/example/prog1/dao/CartDAO.java,b\d\bde7c767567b2cc2357bad94fea845b9a05626b0
 ~
@@ -101,8 +97,6 @@ Qsrc/main/java/com/example/prog1/controller/cli_graphic/HomeManagerCLIGrafico.ja
 Osrc/main/java/com/example/prog1/controller/cli_graphic/HomeScubaCLIGrafico.java,d\e\dee178638c54f1f13772eb9425e8f158889e93bd
 ‚
 Rsrc/main/java/com/example/prog1/controller/cli_graphic/ChooseDivingCLIGrafico.java,3\7\3729fad8554ba61aab996fd1ce710f5cf6307bf9
-ˆ
-Xsrc/main/java/com/example/prog1/controller/cli_graphic/EquipListCLIScubaControllerG.java,3\f\3f349201e3d3b7d602040301617822d9a855f68c
 …
 Usrc/main/java/com/example/prog1/controller/cli_graphic/LoginCliControllerGrafico.java,3\4\34bf0ff14875e899c37ee7264a0a85c5b34855bf
 
@@ -123,8 +117,6 @@ Psrc/main/java/com/example/prog1/controller/cli_graphic/SignUpCliControllerG.jav
 Usrc/main/java/com/example/prog1/controller/grafico/RegistrationControllerGrafico.java,b\7\b7506f720319095111131db5d48f9996b08e9493
 ƒ
 Ssrc/main/java/com/example/prog1/controller/applicativo/RegistrationApplicativo.java,a\b\ab65067dcf94d7990d2b46a6bea2d833cff2f2bf
-\
-,src/main/java/com/example/prog1/MainCLI.java,b\8\b8345caefe22b2d52f6bb210e58b5b9be540e3e6
 y
 Isrc/main/java/com/example/prog1/controller/grafico/ShowEquipManagerG.java,e\d\eddb28b553623c9e45967a54821cd14770978d76
 ~
