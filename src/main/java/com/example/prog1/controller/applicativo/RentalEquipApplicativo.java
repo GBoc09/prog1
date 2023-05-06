@@ -45,6 +45,20 @@ public class RentalEquipApplicativo {
         }
         return equip;
     }
+    public static List<EquipBean> getEquips(UserBean userBean, CominicationBean cominicationBean) {
+        List<EquipBean> equip = new ArrayList<>();
+        EquipDAO equipDAO = new EquipDAO();
+        List<Equipment> equip2 = equipDAO.getEquipInfoManEDiv(userBean, cominicationBean);
+        for (Equipment d : equip2) {
+            EquipBean equipBean = new EquipBean();
+            equipBean.setType(d.getEquipType());
+            equipBean.setSize(d.getSize());
+            equipBean.setAvail(d.getAvail());
+            equipBean.setPrice(d.getPrice());
+            equip.add(equipBean);
+        }
+        return equip;
+    }
     /** lista di tutti i diving */
     public List<DivingBean> getDivingList() {
         List<DivingBean> div = new ArrayList<>();
@@ -60,7 +74,7 @@ public class RentalEquipApplicativo {
         return div;
     }
     /** lista dei diving associatiad un manager */
-    public List<DivingBean> getDivingListMan(UserBean userBean)  {
+    public static List<DivingBean> getDivingListMan(UserBean userBean)  {
         List<DivingBean> div = new ArrayList<>();
         DivingDAO divingDAO = new DivingDAO();
         List<Diving> div2 = divingDAO.getDivInfoMan(userBean);
@@ -180,6 +194,15 @@ public class RentalEquipApplicativo {
     }
     public BuyerOrderBean createNotificationInfoB(String orderOwner, String vendor){
         return new BuyerOrderBean(orderOwner, vendor);
+    }
+
+    public void addProduct (EquipBean equipBean, UserBean userBean)  {
+        EquipDAO equipDAO = new EquipDAO();
+        equipDAO.insertEquip(equipBean, userBean.getUserEmail());
+    }
+    public void addDiving(UserBean userBean, DivingBean divingBean)  {
+        DivingDAO divingDAO = new DivingDAO();
+        divingDAO.insertDiving(divingBean, userBean.getUserEmail());
     }
 }
 

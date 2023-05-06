@@ -2,7 +2,7 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.bean.UserBean;
-import com.example.prog1.controller.applicativo.ManagerApplicativo;
+import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,10 +37,10 @@ public class AddDivingManagerG {
      * button continue deve portare alla pagina che mostra l'elenco dei diving assegiati al manager; */
     @FXML
     void goOn(ActionEvent event) throws IOException {
-        ManagerApplicativo managerApplicativo = new ManagerApplicativo();
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         DivingBean divingBean = new DivingBean(divingName.getText(), divingLoc.getText(), divingPhone.getText());
-        managerApplicativo.addDiving(userBean,divingBean);
+        rentalEquipApplicativo.addDiving(userBean,divingBean);
         SwapPage.getInstance().gotoPage(SHOW_DIV_MAN);
     }
     @FXML

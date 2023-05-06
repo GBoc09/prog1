@@ -3,8 +3,7 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
-import com.example.prog1.controller.applicativo.ManagerApplicativo;
-import com.example.prog1.exception.SqlException;
+import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,13 +63,15 @@ public class ShowEquipManagerG implements Initializable {
             SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
-    /** mostra l'equip disponibile in un diving a seconda del diving e del manager selezionati */
+    /** mostra l'equip disponibile in un diving a seconda del diving e del manager selezionati
+     *
+     * MODIFICARE USANDO IL CONTROLLER DEL RENTAL APPLICATIVO */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         List<EquipBean> equipBeanList = null;
-        equipBeanList = ManagerApplicativo.getEquips(userBean, cominicationBean);
+        equipBeanList = RentalEquipApplicativo.getEquips(userBean, cominicationBean);
 
         for (EquipBean d: equipBeanList){
             String type = d.getType();

@@ -22,8 +22,9 @@ public class HomeManagerCLIGrafico extends ControllerGraficoManagementCli{
                     case 3 -> addDiving();
                     case 4 -> showEquip();
                     case 5 -> showDiving();
-                    case 6 -> logOut();
-                    case 7 -> System.exit(0);
+                    case 6 -> order();
+                    case 7 -> logOut();
+                    case 8 -> System.exit(0);
                     default -> throw new InvalidFormatException("invalid choice");
                 }
             } catch (InvalidFormatException e){
@@ -43,17 +44,19 @@ public class HomeManagerCLIGrafico extends ControllerGraficoManagementCli{
         PrinterCli.printMessage("3) Add Diving \n");
         PrinterCli.printMessage("4) Show Equipment for a selected diving\n");
         PrinterCli.printMessage("5) Show all of your diving\n");
-        PrinterCli.printMessage("6) LogOut\n");
-        PrinterCli.printMessage("7) Quit\n");
-        return getMenuChoice(1,6);
+        PrinterCli.printMessage("6) Order section\n");
+        PrinterCli.printMessage("7) LogOut\n");
+        PrinterCli.printMessage("8) Quit\n");
+        return getMenuChoice(1,8);
     }
-    private void addEquip(){/** crea controller */}
-    private void addDiving(){/** crea controller */}
+    private void addEquip() throws StartException{ new AddEquipManCLI().start();}
+    private void addDiving() throws StartException{ new AddDivingManCLI().start(); }
     private void addCourse() throws InvalidFormatException {
         PrinterCli.printMessage("Not implemented");
         throw new InvalidFormatException("Function not implemented");
     }
-    private void showEquip(){/** crea controller */}
-    private void showDiving(){/** crea controller */}
-    private void logOut() throws StartException {new LoginCliControllerGrafico().start();}
+    private void showEquip() throws StartException{ new ShowEquipManCLI().start(); }
+    private void showDiving() throws StartException {new DivingListManCLI().start(); }
+    private void order() throws StartException { new AcceptRejectOrderManCLI().start(); }
+    private void logOut() throws StartException { new LoginCliControllerGrafico().start(); }
 }

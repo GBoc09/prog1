@@ -41,8 +41,6 @@ b
 Msrc/main/java/com/example/prog1/exception/InvalidInsertionEquipException.java,f\a\fa2f07ceb91c18fb7693b462e5883f8d55fe223f
 b
 2src/main/java/com/example/prog1/bean/UserBean.java,7\3\738130eae596b5f89371d49ec4342f9e1f8c4620
-\
-,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
 j
 :src/main/java/com/example/prog1/model/InterfaceRental.java,b\1\b1a27a48835cf30c6389300d855b32664896222c
 j
@@ -75,12 +73,8 @@ a
 0src/main/java/com/example/prog1/dao/UserDAO.java,f\1\f1302c2862dcf1a0ac82f1846cf3332b4349ba5f
 ~
 Nsrc/main/java/com/example/prog1/controller/grafico/ManagerHomeControllerG.java,d\2\d2f2668a186c137c9b3e0376eba685720d3b6019
-y
-Isrc/main/java/com/example/prog1/controller/grafico/AddDivingManagerG.java,f\d\fda0a034b35501e9202130355c462ee05152803a
 `
 0src/main/java/com/example/prog1/dao/CartDAO.java,b\d\bde7c767567b2cc2357bad94fea845b9a05626b0
-x
-Hsrc/main/java/com/example/prog1/controller/grafico/SelectDivingManG.java,0\f\0fdf549298cdc6a3aaf581499615489694b7b2ac
 |
 Lsrc/main/java/com/example/prog1/controller/grafico/SelectedDivingScubaG.java,2\6\267f03122bb2b76de3939454348b681b96a6232a
 Ü
@@ -89,12 +83,8 @@ Vsrc/main/java/com/example/prog1/controller/cli_graphic/ControllerGraficoInterfa
 Zsrc/main/java/com/example/prog1/controller/cli_graphic/ControllerGraficoManagementCli.java,8\5\85166e21b7b9cc892f3a78ac9be049a2ef3d07e7
 ~
 Nsrc/main/java/com/example/prog1/controller/cli_graphic/HomeFreeCLIGrafico.java,7\e\7eb2f94d36e609d1ca040bcdeff6ec94914c100c
-Å
-Qsrc/main/java/com/example/prog1/controller/cli_graphic/HomeManagerCLIGrafico.java,f\6\f6acf660892b9dfc019c4f8de596858583fabd44
 
 Osrc/main/java/com/example/prog1/controller/cli_graphic/HomeScubaCLIGrafico.java,d\e\dee178638c54f1f13772eb9425e8f158889e93bd
-Ç
-Rsrc/main/java/com/example/prog1/controller/cli_graphic/ChooseDivingCLIGrafico.java,3\7\3729fad8554ba61aab996fd1ce710f5cf6307bf9
 Ö
 Usrc/main/java/com/example/prog1/controller/cli_graphic/LoginCliControllerGrafico.java,3\4\34bf0ff14875e899c37ee7264a0a85c5b34855bf
 Å
@@ -113,10 +103,6 @@ Psrc/main/java/com/example/prog1/controller/cli_graphic/SignUpCliControllerG.jav
 Usrc/main/java/com/example/prog1/controller/grafico/RegistrationControllerGrafico.java,b\7\b7506f720319095111131db5d48f9996b08e9493
 É
 Ssrc/main/java/com/example/prog1/controller/applicativo/RegistrationApplicativo.java,a\b\ab65067dcf94d7990d2b46a6bea2d833cff2f2bf
-y
-Isrc/main/java/com/example/prog1/controller/grafico/ShowEquipManagerG.java,e\d\eddb28b553623c9e45967a54821cd14770978d76
-~
-Nsrc/main/java/com/example/prog1/controller/applicativo/ManagerApplicativo.java,8\8\88d93cde407d671e39f674f861813ea504752d9f
 }
 Msrc/main/java/com/example/prog1/controller/grafico/CasaControllerGrafico.java,8\a\8a6cd67cfc6ceecf4c60c2031b5d29878a876c3a
 Ç

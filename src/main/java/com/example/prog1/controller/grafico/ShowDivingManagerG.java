@@ -2,7 +2,7 @@ package com.example.prog1.controller.grafico;
 
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.bean.UserBean;
-import com.example.prog1.controller.applicativo.ManagerApplicativo;
+import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,7 +52,7 @@ public class ShowDivingManagerG implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         List<DivingBean> divingBeanList = null;
-        divingBeanList = ManagerApplicativo.getDivings(userBean);
+        divingBeanList = RentalEquipApplicativo.getDivingListMan(userBean);
 
         for (DivingBean d: divingBeanList){
             String name = d.getName();
