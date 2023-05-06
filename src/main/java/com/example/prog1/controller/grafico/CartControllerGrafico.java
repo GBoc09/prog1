@@ -85,12 +85,13 @@ public class CartControllerGrafico implements Initializable {
         SwapPage.getInstance().gotoPage(CART_SCREEN);
     }
     /** salvataggio dell'ordine nella tabella RENTAL */
-    private void saveOrder()  {
+    private void saveOrder() throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
         rentalEquipApplicativo.saveItem(cartBeanList, userBean, cominicationBean);
+        deleteCart();
     }
 }
 

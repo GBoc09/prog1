@@ -1,7 +1,5 @@
 package com.example.prog1.controller.cli_graphic;
 
-import com.example.prog1.bean.CominicationBean;
-import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;

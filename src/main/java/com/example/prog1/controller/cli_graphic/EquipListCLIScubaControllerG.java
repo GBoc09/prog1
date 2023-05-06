@@ -25,8 +25,9 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
                     case 2 -> addQuantity();
                     case 3 -> showCart(userBean);
                     case 4 -> completeOrder();
-                    case 5 -> back();
-                    case 6 -> logOut();
+                    case 5 -> deleteCart(userBean);
+                    case 6 -> back();
+                    case 7 -> logOut();
                     default -> throw new InvalidFormatException("Invalid choice");
                 }
 
@@ -45,6 +46,10 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
     private void back() throws StartException {
         new HomeScubaCLIGrafico().start();
     }
+    private void deleteCart(UserBean userBean){
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        rentalEquipApplicativo.deleteItem(userBean);
+    }
 
     @Override
     public int showMenu() throws IOException {
@@ -53,9 +58,10 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
         PrinterCli.printMessage("2) Add Quantity\n");
         PrinterCli.printMessage("3) Show Cart\n");
         PrinterCli.printMessage("4) Complete Order\n");
-        PrinterCli.printMessage("5) Home\n");
-        PrinterCli.printMessage("6) LogOut\n");
-        return getMenuChoice(1,6);
+        PrinterCli.printMessage("5) Delete Cart\n");
+        PrinterCli.printMessage("6) Home\n");
+        PrinterCli.printMessage("7) LogOut\n");
+        return getMenuChoice(1,7);
     }
     private void showEquip() {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
@@ -109,6 +115,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
         rentalEquipApplicativo.saveItem(cartBeanList, userBean, cominicationBean);
+        deleteCart(userBean);
         new RentSummaryScubaCLI().start();
     }
 }

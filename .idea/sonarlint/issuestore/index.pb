@@ -79,8 +79,6 @@ y
 Isrc/main/java/com/example/prog1/controller/grafico/AddDivingManagerG.java,f\d\fda0a034b35501e9202130355c462ee05152803a
 `
 0src/main/java/com/example/prog1/dao/CartDAO.java,b\d\bde7c767567b2cc2357bad94fea845b9a05626b0
-~
-Nsrc/main/java/com/example/prog1/controller/grafico/LoginControllerGrafico.java,2\6\26aaac8a981b1be4a8dc686456d869f04de5ca71
 x
 Hsrc/main/java/com/example/prog1/controller/grafico/SelectDivingManG.java,0\f\0fdf549298cdc6a3aaf581499615489694b7b2ac
 |
@@ -107,8 +105,6 @@ m
 =src/main/java/com/example/prog1/exception/StartException.java,8\f\8f770dd7cd84ef7936273a296ae0a4bfdb097bdd
 k
 ;src/main/java/com/example/prog1/exception/SqlException.java,1\7\17646a5418d937838e4c3c2dbc0e6f8b66e29ae8
-z
-Jsrc/main/java/com/example/prog1/controller/grafico/ShowDivingManagerG.java,c\3\c3b52f466018e57bebb3ffd487b9213ee3f40735
 b
 2src/main/java/com/example/prog1/dao/DivingDAO.java,c\2\c20379fbc85e18fb302c967cce0b3b351113c802
 €
@@ -133,7 +129,5 @@ q
 Asrc/main/java/com/example/prog1/bean/IntegerComunicationBean.java,f\6\f65f68170fd7d796bcfc3fad887d01cf542d1067
 i
 9src/main/java/com/example/prog1/bean/VendorOrderBean.java,e\1\e1b56fe7beacd51da8a7cd7f6d598520822fb66e
-x
-Hsrc/main/java/com/example/prog1/controller/grafico/AddEquipManagerG.java,7\d\7d500445710f67178e357595e2d0c14187c15502
 h
 8src/main/java/com/example/prog1/bean/BuyerOrderBean.java,2\a\2ac96aa56a4873268c7bd7c332e75abe80c6f446
