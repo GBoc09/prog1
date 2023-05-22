@@ -1,5 +1,6 @@
 package com.example.prog1.controller.grafico;
 
+import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;

@@ -4,8 +4,6 @@ public class PassStringsBean implements Bean{
     private String item;
     private String size;
     private Integer quant;
-
-    public PassStringsBean (){}
     public PassStringsBean(String str1, String str2, Integer i){
         setItem(str1);
         setSize(str2);

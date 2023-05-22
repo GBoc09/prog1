@@ -42,10 +42,9 @@ public class CartControllerGrafico implements Initializable {
         if (source == addItems) {
             SwapPage.getInstance().gotoPage(RENT_EQUIP);
         } else if (source == deleteItems) {
-            deleteCart();
+            deleteTotCart();
         } else if (source == completeRental){
             saveOrder();
-            SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
             /** MANDARE EMAIL AL DIVING PER NOTIFICA ORDINE */
         }
     }
@@ -82,9 +81,10 @@ public class CartControllerGrafico implements Initializable {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         rentalEquipApplicativo.deleteItem(userBean);
-        SwapPage.getInstance().gotoPage(CART_SCREEN);
+        SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
     }
-    /** salvataggio dell'ordine nella tabella RENTAL */
+    /** salvataggio dell'ordine nella tabella RENTAL
+     * communication bean = passaggio nome diving */
     private void saveOrder() throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
@@ -92,6 +92,12 @@ public class CartControllerGrafico implements Initializable {
         List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
         rentalEquipApplicativo.saveItem(cartBeanList, userBean, cominicationBean);
         deleteCart();
+    }
+    private void deleteTotCart() throws IOException {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        rentalEquipApplicativo.deleteItem(userBean);
+        SwapPage.getInstance().gotoPage(CART_SCREEN );
     }
 }
 

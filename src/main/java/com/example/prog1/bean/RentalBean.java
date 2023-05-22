@@ -8,12 +8,6 @@ public class RentalBean implements Bean{
     private Integer total;
 
     public RentalBean (){}
-    public RentalBean(Integer idR, String eqT, String s, String m){
-        this.idRental = idR;
-        this.equipType = eqT;
-        this.scuba = s;
-        this.div = m;
-    }
     public Integer getIdRental() {
         return idRental;
     }
