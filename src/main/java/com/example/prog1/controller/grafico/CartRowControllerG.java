@@ -102,13 +102,6 @@ public class CartRowControllerG { /** FXML per inserimento di una quantita */
         priceLabel.setText(String.valueOf(equipBean.getPrice()));
     }
     private Integer quantity;
-    /**
-     * LA COMUNICATION BEAN MANTIENE IL NOME DEL DIVING QUINDI E' POSSIBILE PASSARLO ALLA RENTAL MA VIENE STAMPATO DUE VOLTE
-     * RICONDUCIBILE AL PROBLEMA SCRITTO SOPRA.
-     *
-     * IL NOME DEL DIVING LO POSSO PASSARE COME LA MAIL DELL'UTENTE COME UNA STRINGA DA AGGIUNGERE AL DB E POI RIPRENDERLO
-     * SUCCESSIVAMENTE PER STAMPARLO A SCHERMO
-     */
     private Integer checkQuantity() {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         email = userBean.getUserEmail();

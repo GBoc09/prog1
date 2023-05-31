@@ -2,6 +2,7 @@ package com.example.prog1.controller.applicativo;
 
 import com.example.prog1.boundary.RentEquipDecisionEmail;
 import com.example.prog1.boundary.RentEquipEmail;
+import com.example.prog1.controller.grafico.InternalControllerGrafico;
 import com.example.prog1.dao.*;
 import com.example.prog1.bean.*;
 import com.example.prog1.model.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class RentalEquipApplicativo {
     private static final String ACCEPT = "accept";
+    private Integer id = 0;
     public RentalEquipApplicativo(){/* costruttore */ }
     /** seleziona tutte le attrezzature */
     public List<EquipBean> getEquips () {
@@ -110,24 +112,23 @@ public class RentalEquipApplicativo {
         RentalDAO rentalDAO = new RentalDAO();
         rentalDAO.deleteItemsFromRental(userBean.getUserEmail());
     }
-    /**
-     * e communication bean non ritorna il valore corretto se riprendiamo il processo di comprare cose dopo aver
-     * chiuso l'applicazione
-     *
-     * RIEPILOGO DEI DATI NELLA SCHERMATA (FXML) RENTAL FUNZIONANTE
-     */
     public void saveItem(List<CartBean> cartBeans, UserBean userBean, CominicationBean cominicationBean) {
         RentalDAO rentalDAO = new RentalDAO();
         String type = null;
         Integer price = 0;
+        Integer quant = 0;
         Integer total = 0;
         for (CartBean d : cartBeans){
             type = d.getType();
+            quant = d.getQuant();
             price = d.getPrice();
-            total = total+price;
+            total = total+(price*quant);
 
             rentalDAO.insertRent(type, userBean.getUserEmail(), cominicationBean.getStr(), price, total);
         }
+        id = rentalDAO.idRent();
+        IntegerComunicationBean integerComunicationBean = new IntegerComunicationBean(id);
+        InternalControllerGrafico.getInternalControllerInstance().setBeanInt(integerComunicationBean);
     }
     public EquipBean infoEquipGeneral(int selectedIndex){
         EquipDAO equipDAO = new EquipDAO();
@@ -156,10 +157,10 @@ public class RentalEquipApplicativo {
         CartDAO cartDAO = new CartDAO();
         cartDAO.insertIntoCartCLI(item,size,quant,user);
     }
-    public List<RentalBean> summaryRental (String user) {
+    public List<RentalBean> summaryRental (String user, Integer id) {
         List<RentalBean> equip = new ArrayList<>();
         RentalDAO rentalDAO = new RentalDAO();
-        List<Rental> equip2 = rentalDAO.getRentInfo(user);
+        List<Rental> equip2 = rentalDAO.getRentInfo(user, id);
         String diving = null;
         for (Rental d : equip2) {
             RentalBean rentalBean = new RentalBean();
@@ -204,5 +205,6 @@ public class RentalEquipApplicativo {
         DivingDAO divingDAO = new DivingDAO();
         divingDAO.insertDiving(divingBean, userBean.getUserEmail());
     }
+
 }
 

@@ -109,7 +109,6 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
         }
     }
     private void completeOrder() throws StartException {
-        /** salvare all'interno della tabella Rental e trovare un modo per stampare il totale */
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();

@@ -1,6 +1,5 @@
 package com.example.prog1.controller.grafico;
 
-import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;
@@ -61,9 +60,10 @@ public class SummaryRentalScubaControllerG implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        IntegerComunicationBean integerBean = InternalControllerGrafico.getInternalControllerInstance().getIntBean();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<RentalBean> rentalBeans = null;
-        rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
+        rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail(), integerBean.getIndex());
         for (RentalBean r : rentalBeans){
             String type = r.getEquipType();
             listView.getItems().add(type+"   "+"\n\n");

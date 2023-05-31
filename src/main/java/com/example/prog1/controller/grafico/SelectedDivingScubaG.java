@@ -3,7 +3,6 @@ package com.example.prog1.controller.grafico;
 import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.DivingBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
-import com.example.prog1.exception.SqlException;
 import com.example.prog1.utilities.SwapPage;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

@@ -19,16 +19,30 @@ public class RentalDAO {
     public void insertRent(String type, String email, String name, Integer price, Integer total) {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
+            System.out.println(total);
             RentalQuery.insertIntoRent(stmt,type,email, name, price,total );
         }catch (SQLException sqlException){
             logger.log(Level.INFO, error);
         }
     }
-    public List<Rental> getRentInfo (String email) {
+    public Integer idRent() {
+        Connection con = MyConnectionSingleton.getConnection();
+        Integer id = null;
+        try(Statement stmt = con.createStatement();
+            ResultSet rs = RentalQuery.loadIdRent(stmt)){
+            while(rs.next()) {
+                id = rs.getInt(1);
+            }
+        }catch (SQLException sqlException){
+            logger.log(Level.INFO, error);
+        }
+        return id;
+    }
+    public List<Rental> getRentInfo (String email, Integer id) {
         Connection con = MyConnectionSingleton.getConnection();
         List<Rental> rents = new ArrayList<>();
         try(Statement stmt = con.createStatement();
-            ResultSet rs = RentalQuery.loadRent(stmt, email)){
+            ResultSet rs = RentalQuery.loadRent(stmt, id, email)){
             while (rs. next()){
                 Rental newEquip = new Rental();
                 newEquip.setIdRent(rs.getInt(1));

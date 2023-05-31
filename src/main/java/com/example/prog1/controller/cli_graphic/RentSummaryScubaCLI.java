@@ -1,5 +1,6 @@
 package com.example.prog1.controller.cli_graphic;
 
+import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
@@ -45,7 +46,8 @@ public class RentSummaryScubaCLI extends ControllerGraficoManagementCli {
     private void showSummary(UserBean userBean) {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<RentalBean> rentalBeans = null;
-        rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail());
+        IntegerComunicationBean comunicationBean = InternalControllerGrafico.getInternalControllerInstance().getIntBean();
+        rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail(), comunicationBean.getIndex());
         PrinterCli.printMessage("--- RENTAL SUMMARY ---");
         for (RentalBean d : rentalBeans){
             Integer id = d.getIdRental();
