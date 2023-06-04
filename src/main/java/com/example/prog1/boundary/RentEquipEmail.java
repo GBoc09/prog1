@@ -16,7 +16,7 @@ public class RentEquipEmail {
         sendEmail(vendorOrderBean);
     }
 
-    private void sendEmail(VendorOrderBean vendorOrderBean){
+    public void sendEmail(VendorOrderBean vendorOrderBean){
         try(FileWriter fileWriter = new FileWriter(VENDOR_NOTIFY_FILE_NAME)){
             fileWriter.write(String.format("""
                     Dear %s, 

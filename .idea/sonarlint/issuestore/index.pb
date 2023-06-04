@@ -3,8 +3,6 @@ _
 /src/main/java/com/example/prog1/model/Free.java,a\d\ad00d2c8094c2d6bcef0758113ff65d61482702f
 b
 2src/main/java/com/example/prog1/model/Manager.java,2\5\25abacf5fb712449f373f77d71c028f4da30d4b9
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 `
 0src/main/java/com/example/prog1/model/Scuba.java,7\e\7e57a6dcffc65e5b695d78e45f99c289de7f3bee
 v
@@ -27,8 +25,6 @@ d
 .src/main/java/com/example/prog1/bean/Bean.java,1\b\1b13e4fbb6faee7c7851e7d2d7b92ef30aace528
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
-m
-=src/main/java/com/example/prog1/db/MyConnectionSingleton.java,e\8\e846a814fc289b1c48ef60e75f56864addde5a9d
 l
 <src/main/java/com/example/prog1/pattern/factory/Factory.java,7\9\799121925edb9131aafc0757a047510fa7c3b66a
 a
@@ -83,8 +79,6 @@ k
 ;src/main/java/com/example/prog1/exception/SqlException.java,1\7\17646a5418d937838e4c3c2dbc0e6f8b66e29ae8
 b
 2src/main/java/com/example/prog1/dao/DivingDAO.java,c\2\c20379fbc85e18fb302c967cce0b3b351113c802
-€
-Psrc/main/java/com/example/prog1/controller/cli_graphic/SignUpCliControllerG.java,a\8\a83f6f66364df16c5a76eb1e7f582672f43e5763
 …
 Usrc/main/java/com/example/prog1/controller/grafico/RegistrationControllerGrafico.java,b\7\b7506f720319095111131db5d48f9996b08e9493
 ƒ
@@ -101,8 +95,6 @@ a
 1src/main/java/com/example/prog1/model/Rental.java,c\0\c0e7a333e8ae215e1a282a6b5cc74dccfb9bb154
 ?
 buyerNotifyFile,1\f\1fd84d9f1c0200a67d46fd2b98da0fdea9195e79
-@
-vendorNotifyFile,2\5\254a4a4d80b52790c21bdba992025467c8176c77
 t
 Dsrc/main/java/com/example/prog1/boundary/RentEquipDecisionEmail.java,5\1\51af39af33387317f363b53a715367650b31fbb0
 _
@@ -149,3 +141,19 @@ j
 Qsrc/main/java/com/example/prog1/controller/grafico/InternalControllerGrafico.java,2\7\27979a854e1a341575e78dd1e63ac5690b66cf8d
 i
 9src/main/java/com/example/prog1/bean/PassStringsBean.java,f\2\f20843b1e91fe34e593e9ad2b15604ceb88dcf1c
+d
+4src/main/java/com/example/prog1/bean/RentalBean.java,9\3\93ee93a73cb6a1f8264c16c3c694095912db3c8f
+}
+Msrc/main/java/com/example/prog1/controller/grafico/CartControllerGrafico.java,d\a\da64839da4221a75b7dc192cecd0f460e11ba03d
+‚
+Rsrc/main/java/com/example/prog1/controller/grafico/AccettazioneRentalManagerG.java,e\a\eabff646d464a0b86f34005044da150a024334f3
+
+Qsrc/main/java/com/example/prog1/controller/grafico/RentEquipScubaControllerG.java,1\f\1f51dbb03d3d84a8062c6aa82d518be53b1ef7fe
+q
+Asrc/main/java/com/example/prog1/bean/IntegerComunicationBean.java,f\6\f65f68170fd7d796bcfc3fad887d01cf542d1067
+z
+Jsrc/main/java/com/example/prog1/controller/grafico/CartRowControllerG.java,7\a\7a2cd064a96a12fd74a62257d586d24736b63120
+|
+Lsrc/main/java/com/example/prog1/controller/grafico/SelectedDivingScubaG.java,2\6\267f03122bb2b76de3939454348b681b96a6232a
+g
+7src/main/java/com/example/prog1/utilities/SwapPage.java,8\5\859e38fdea8ebe5b80038fc0060c96168770ff74
