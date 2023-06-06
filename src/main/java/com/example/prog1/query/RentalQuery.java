@@ -19,7 +19,7 @@ public class RentalQuery{
         return stmt.executeQuery(query);
     }
     public static ResultSet loadIdRent(Statement stmt ) throws SQLException {
-        String query = String.format("SELECT MAX(idRental) FROM Rental;");
+        String query = "SELECT MAX(idRental) FROM Rental";
         return stmt.executeQuery(query);
     }
     public static boolean deleteItem(Statement stmt, String email) throws SQLException {

@@ -35,6 +35,7 @@ public class LoginCliControllerGrafico extends ControllerGraficoManagementCli{
                     default:
                         throw new InvalidFormatException("Invalid choice");
                 }
+                break;
             } catch (InvalidFormatException e){
                 logger1.log(Level.INFO, e.getMessage());
             }

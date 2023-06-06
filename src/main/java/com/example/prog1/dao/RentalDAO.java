@@ -19,7 +19,6 @@ public class RentalDAO {
     public void insertRent(String type, String email, String name, Integer price, Integer total) {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
-            System.out.println(total);
             RentalQuery.insertIntoRent(stmt,type,email, name, price,total );
         }catch (SQLException sqlException){
             logger.log(Level.INFO, error);

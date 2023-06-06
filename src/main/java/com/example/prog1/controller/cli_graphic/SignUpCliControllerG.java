@@ -32,6 +32,7 @@ public class SignUpCliControllerG extends ControllerGraficoManagementCli{
                     case 3 -> System.exit(0);
                     default -> throw new InvalidFormatException("Invalid choice");
                 }
+                break;
             } catch (InvalidFormatException | IOException e){
                 logger.log(Level.INFO, e.getMessage());
             }

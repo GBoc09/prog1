@@ -7,7 +7,8 @@ public class RentalBean implements Bean{
     private String div;
     private Integer total;
 
-    public RentalBean (){}
+    public RentalBean (){ // constructor
+         }
     public Integer getIdRental() {
         return idRental;
     }

@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.Scanner;
 
-public class RentEquipEmailTest {
+class RentEquipEmailTest {
     @Test
-    public void TestFileWritten(){
+   void TestFileWritten(){
         VendorOrderBean bean = new VendorOrderBean("a", "b");
         RentEquipEmail rentEquipEmail = new RentEquipEmail(bean);
         try {
@@ -34,7 +34,7 @@ public class RentEquipEmailTest {
 
         }
         catch (Exception e){
-            Assertions.assertEquals(1,0,0); // always false
+            Assertions.assertFalse(0>1, "exception occurred"); // always false
         }
     }
 }

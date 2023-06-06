@@ -30,6 +30,7 @@ public class ChooseDivingCLIGrafico extends ControllerGraficoManagementCli {
                         break;
                     default: throw new InvalidFormatException("Invalid choice");
                 }
+                break;
             } catch (IOException e) {
                throw new StartException("IOException");
             } catch (InvalidFormatException e) {

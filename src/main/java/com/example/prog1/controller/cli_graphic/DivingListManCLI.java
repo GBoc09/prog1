@@ -26,7 +26,7 @@ public class DivingListManCLI extends ControllerGraficoManagementCli{
                     case 3 -> logOut();
                     default -> throw new InvalidFormatException("Invalid choice");
                 }
-
+                break;
             } catch (IOException e) {
                 logger.log(Level.INFO, e.getMessage());
             } catch (InvalidFormatException e) {

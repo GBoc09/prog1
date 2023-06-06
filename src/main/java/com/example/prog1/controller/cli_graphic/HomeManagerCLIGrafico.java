@@ -27,6 +27,7 @@ public class HomeManagerCLIGrafico extends ControllerGraficoManagementCli{
                     case 8 -> System.exit(0);
                     default -> throw new InvalidFormatException("invalid choice");
                 }
+                break;
             } catch (InvalidFormatException e){
                 logger.log(Level.INFO, e.getMessage());
             } catch (IOException e) {
