@@ -1,22 +1,24 @@
 package com.example.prog1.boundary;
 
 import com.example.prog1.bean.VendorOrderBean;
+import com.example.prog1.pattern.observer.Observer;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RentEquipEmail {
+public class RentEquipEmail implements Observer{
     Logger logger = Logger.getLogger(RentEquipEmail.class.getName());
     private static final String VENDOR_NOTIFY_FILE_NAME = "vendorNotifyFile";
     private String error = "IOException Error";
-
-    public void notifyVendors(VendorOrderBean vendorOrderBean) {
-        sendEmail(vendorOrderBean);
+    private VendorOrderBean vendorOrderBean;
+    public RentEquipEmail (VendorOrderBean vendorOrderBean){
+        this.vendorOrderBean = vendorOrderBean;
+        this.vendorOrderBean.attach(this);
     }
-
-    public void sendEmail(VendorOrderBean vendorOrderBean){
+    @Override
+    public void update() {
         try(FileWriter fileWriter = new FileWriter(VENDOR_NOTIFY_FILE_NAME)){
             fileWriter.write(String.format("""
                     Dear %s, 

@@ -11,10 +11,10 @@ import java.util.Scanner;
 public class RentEquipEmailTest {
     @Test
     public void TestFileWritten(){
-        RentEquipEmail rentEquipEmail = new RentEquipEmail();
         VendorOrderBean bean = new VendorOrderBean("a", "b");
+        RentEquipEmail rentEquipEmail = new RentEquipEmail(bean);
         try {
-            rentEquipEmail.sendEmail(bean);
+            rentEquipEmail.update();
             Scanner reader = new Scanner(new File("vendorNotifyFile"));
             String data = "";
             while(reader.hasNextLine()){

@@ -113,8 +113,16 @@ public class RentalEquipApplicativo {
         rentalDAO.deleteItemsFromRental(userBean.getUserEmail());
     }
     public void saveItem(List<CartBean> cartBeans, UserBean userBean, CominicationBean cominicationBean) {
+        /** query per info vendorOrder bean
+         * new vendor order bean
+         * new boundary
+         * attach boundary */
         RentalDAO rentalDAO = new RentalDAO();
-        String type = null;
+        String man = rentalDAO.divingEmail(cominicationBean.getStr());
+        VendorOrderBean v = new VendorOrderBean(man, userBean.getUserEmail());
+        RentEquipEmail r = new RentEquipEmail(v);
+
+        String type = "";
         Integer price = 0;
         Integer quant = 0;
         Integer total = 0;
@@ -126,6 +134,8 @@ public class RentalEquipApplicativo {
 
             rentalDAO.insertRent(type, userBean.getUserEmail(), cominicationBean.getStr(), price, total);
         }
+        /** notify */
+        v.notifyChanges();
         id = rentalDAO.idRent();
         IntegerComunicationBean integerComunicationBean = new IntegerComunicationBean(id);
         InternalControllerGrafico.getInternalControllerInstance().setBeanInt(integerComunicationBean);
@@ -161,27 +171,15 @@ public class RentalEquipApplicativo {
         List<RentalBean> equip = new ArrayList<>();
         RentalDAO rentalDAO = new RentalDAO();
         List<Rental> equip2 = rentalDAO.getRentInfo(user, id);
-        String diving = null;
         for (Rental d : equip2) {
             RentalBean rentalBean = new RentalBean();
             rentalBean.setIdRental(d.getIdRent());
             rentalBean.setEquipType(d.getEquipType());
             rentalBean.setDiv(d.getDiving());
-            diving = d.getDiving();
             rentalBean.setTotal(d.getTotal());
             equip.add(rentalBean);
         }
-        completeRent(user, diving);
         return equip;
-    }
-    public void completeRent(String user, String diving) {
-        RentEquipEmail equipEmail = new RentEquipEmail();
-        RentalDAO rentalDAO = new RentalDAO();
-        String vendorsInfo = rentalDAO.divingEmail(diving);
-        equipEmail.notifyVendors(createNotificationInfoD(user, vendorsInfo));
-    }
-    public VendorOrderBean createNotificationInfoD(String orderOwner, String vendor){
-        return new VendorOrderBean(vendor, orderOwner);
     }
     public void sendConfirmation(String divingMan, String decisione){
         RentEquipDecisionEmail rentEquipDecisionEmail = new RentEquipDecisionEmail();

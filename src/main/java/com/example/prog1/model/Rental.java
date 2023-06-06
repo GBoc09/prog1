@@ -14,20 +14,6 @@ public class Rental {
         this.total = tot;
         this.diving = diving;
     }
-    /** applicazione del pattern state all'interno dello stato dell'ordine di un cliente:
-     *
-     * lo stato è un oggetto di tipo RENTAL */
-
-    /**public Rental (){
-        this.statoRental = new StatoNuovo();
-    }
-     da errore in dao cercare di capire come risolvere
-
-     CREARE INTERFACCIA CHE INTERAGISCE CON TUTTO IL RESTO DELL'APPLICAZIONI
-     E LA CLASSE CONCRETA INTERAGISCE CON STATE PATTERN
-     AGGIUNGERE CAMPO STATO ALL'INTERNO DEL DB
-     */
-
     public Integer getIdRent() {
         return idRent;
     }
