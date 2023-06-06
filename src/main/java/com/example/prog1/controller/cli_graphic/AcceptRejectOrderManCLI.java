@@ -26,6 +26,7 @@ public class AcceptRejectOrderManCLI extends ControllerGraficoManagementCli{
                     case 2 -> rejectOrder(userBean);
                     case 3 -> back();
                     case 4 -> logOut();
+                    case 5 -> System.exit(0);
                     default -> throw new InvalidFormatException("Invalid choice");
                 }
 
