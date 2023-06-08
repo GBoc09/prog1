@@ -1,5 +1,6 @@
 package com.example.prog1.controller.cli_graphic;
 
+import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
@@ -38,8 +39,9 @@ public class AddEquipManCLI extends ControllerGraficoManagementCli{
         PrinterCli.printMessage("Please write the equipment's price: ");
         Integer price = Integer.valueOf(reader.readLine());
         EquipBean equipBean = new EquipBean(type,size,avail,price);
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        rentalEquipApplicativo.addProduct(equipBean,userBean);
+        rentalEquipApplicativo.addProduct(equipBean,cominicationBean);
         PrinterCli.printMessage("*** INSERTION SUCCESSFUL *** \n");
     }
 }

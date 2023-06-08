@@ -1,5 +1,6 @@
 package com.example.prog1.controller.grafico;
 
+import com.example.prog1.bean.CominicationBean;
 import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
@@ -48,9 +49,10 @@ public class AddEquipManagerG {
     void addNewProduct(ActionEvent event) throws IOException {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         checkFields();
         EquipBean equipBean = new EquipBean(equipType.getText(), size.getValue(), Integer.parseInt(availability.getText()), Integer.parseInt(price.getText()));
-        rentalEquipApplicativo.addProduct(equipBean,userBean);
+        rentalEquipApplicativo.addProduct(equipBean,cominicationBean);
         if (flag) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion Successful");
             alert.showAndWait();

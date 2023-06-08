@@ -50,7 +50,7 @@ public class HomeManagerCLIGrafico extends ControllerGraficoManagementCli{
         PrinterCli.printMessage("8) Quit\n");
         return getMenuChoice(1,8);
     }
-    private void addEquip() throws StartException{ new AddEquipManCLI().start();}
+    private void addEquip() throws StartException{ new ChooseDivingManCLI().start();}
     private void addDiving() throws StartException{ new AddDivingManCLI().start(); }
     private void addCourse() throws InvalidFormatException {
         PrinterCli.printMessage("Not implemented");

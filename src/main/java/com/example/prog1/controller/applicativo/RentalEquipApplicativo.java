@@ -195,9 +195,10 @@ public class RentalEquipApplicativo {
         return new BuyerOrderBean(orderOwner, vendor);
     }
 
-    public void addProduct (EquipBean equipBean, UserBean userBean)  {
+    public void addProduct (EquipBean equipBean, CominicationBean cominicationBean)  {
         EquipDAO equipDAO = new EquipDAO();
-        equipDAO.insertEquip(equipBean, userBean.getUserEmail());
+
+        equipDAO.insertEquip(equipBean, cominicationBean.getStr());
     }
     public void addDiving(UserBean userBean, DivingBean divingBean)  {
         DivingDAO divingDAO = new DivingDAO();
