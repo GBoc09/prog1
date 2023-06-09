@@ -5,7 +5,7 @@ import com.example.prog1.controller.applicativo.LoginApplicativo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class LoginApplicativoTest {
+class LoginApplicativoTest {
     @Test
     void verifyUserTest(){
         LoginApplicativo loginApplicativo = new LoginApplicativo();

@@ -1,5 +1,6 @@
 package com.example.prog1.controller.grafico;
 
+import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;
@@ -65,11 +66,19 @@ public class SummaryRentalScubaControllerG implements Initializable {
         List<RentalBean> rentalBeans = null;
         rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail(), integerBean.getIndex());
         for (RentalBean r : rentalBeans){
-            String type = r.getEquipType();
-            listView.getItems().add(type+"   "+"\n\n");
             rentLabel.setText(String.valueOf(r.getIdRental()));
             divingLabel.setText(r.getDiv());
             totalLabel.setText(String.valueOf(r.getTotal()));
+       }
+        List<CartBean> cartBeanList = null;
+        cartBeanList = rentalEquipApplicativo.showCartMan();
+        Integer total = 0;
+        for (CartBean c : cartBeanList) {
+            String type = c.getType();
+            String size = c.getSize();
+            Integer quant = c.getQuant();
+            Integer price = c.getPrice()*quant;
+            listView.getItems().add(type + "   " + size + "   " + quant + "   " + price);
         }
     }
 }

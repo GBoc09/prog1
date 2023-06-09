@@ -1,5 +1,6 @@
 package com.example.prog1.controller.cli_graphic;
 
+import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.IntegerComunicationBean;
 import com.example.prog1.bean.RentalBean;
 import com.example.prog1.bean.UserBean;
@@ -49,11 +50,20 @@ public class RentSummaryScubaCLI extends ControllerGraficoManagementCli {
         IntegerComunicationBean comunicationBean = InternalControllerGrafico.getInternalControllerInstance().getIntBean();
         rentalBeans = rentalEquipApplicativo.summaryRental(userBean.getUserEmail(), comunicationBean.getIndex());
         PrinterCli.printMessage("--- RENTAL SUMMARY ---");
-        for (RentalBean d : rentalBeans){
+        for (RentalBean d : rentalBeans) {
             Integer id = d.getIdRental();
-            String type = d.getEquipType();
+//            String type = d.getEquipType();
             Integer total = d.getTotal();
-            PrinterCli.printMessage("IdRental: "+id + " " +"Equipment: " + type + " " + "Total: €"+total + "\n");
+            PrinterCli.printMessage("IdRental: " + id + " " + "Total: €" + total + "\n");
+        }
+        List<CartBean> cartBeanList = null;
+        cartBeanList = rentalEquipApplicativo.showCartMan();
+        Integer total = 0;
+        for (CartBean c : cartBeanList) {
+            String type = c.getType();
+            String size = c.getSize();
+            Integer quant = c.getQuant();
+            PrinterCli.printMessage("Equip type: " + type + " " + "Size: " + size + "Quantity: "+ quant +"\n");
         }
     }
     private void logOut() throws StartException {

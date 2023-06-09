@@ -52,7 +52,7 @@ public class AddEquipManagerG {
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         checkFields();
         EquipBean equipBean = new EquipBean(equipType.getText(), size.getValue(), Integer.parseInt(availability.getText()), Integer.parseInt(price.getText()));
-        rentalEquipApplicativo.addProduct(equipBean,cominicationBean);
+        rentalEquipApplicativo.addProduct(equipBean,cominicationBean, userBean);
         if (flag) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Insertion Successful");
             alert.showAndWait();

@@ -6,12 +6,15 @@ import java.sql.Statement;
 
 public class EquipQuery{
     private EquipQuery(){}
-    public static boolean insertEquip (Statement stmt, String type, String size, Integer avail, Integer price, String divingName, String manEmail) throws SQLException {
-        String query = String.format("INSERT INTO Equipment (EquipType, size, availability, price, divingName, manager)values ('%s', '%s', '%d', '%d', '%s','%s');", type, size, avail, price, divingName,manEmail);
+    public static boolean insertEquip (Statement stmt, String type, String size, Integer avail, Integer price, String divingName, String man) throws SQLException {
+        String query = String.format("INSERT INTO Equipment (equipType, size, availability, price, divingName, manager)values ('%s', '%s', '%d', '%d', '%s', '%s');", type, size, avail, price, divingName, man);
         return stmt.execute(query);
     }
     public static boolean deleteItem(Statement stmt, String email) throws SQLException {
         String query = String.format("DELETE FROM Cart WHERE scuba = '%s';", email);
+        return stmt.execute(query);
+    }public static boolean deleteItem(Statement stmt) throws SQLException {
+        String query = String.format("DELETE FROM Cart");
         return stmt.execute(query);
     }
     public static ResultSet loadEquip(Statement stmt) throws SQLException {
@@ -36,6 +39,10 @@ public class EquipQuery{
     }
     public static ResultSet loadEquipCart(Statement stmt, String mail ) throws SQLException {
         String query = String.format("SELECT equipType, equipSize, equipPrice, equipQuantity FROM Cart WHERE scuba = '%s';", mail);
+        return stmt.executeQuery(query);
+    }
+    public static ResultSet loadEquipCart(Statement stmt) throws SQLException {
+        String query = String.format("SELECT equipType, equipSize, equipPrice, equipQuantity FROM Cart");
         return stmt.executeQuery(query);
     }
     public static ResultSet loadAvail(Statement stmt, int index) throws SQLException {

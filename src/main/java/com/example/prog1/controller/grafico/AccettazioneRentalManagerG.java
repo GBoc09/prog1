@@ -1,16 +1,21 @@
 package com.example.prog1.controller.grafico;
 
+import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.utilities.SwapPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class AccettazioneRentalManagerG {
+public class AccettazioneRentalManagerG implements Initializable {
     @FXML private RadioButton acceptButt;
     @FXML private ToggleGroup accettazione;
     @FXML private MenuItem courses;
@@ -23,6 +28,8 @@ public class AccettazioneRentalManagerG {
     @FXML private RadioButton rejectButt;
     @FXML private MenuItem rental;
     @FXML private Button sendEmail;
+    @FXML private ListView<String> listView;
+
     private static final String MANAGER_HOME = "managerHome1.fxml";
     private static final String LOGIN_SCREEN = "login1.fxml";
     private static final String SELECT_EQUIP = "selectDivingMan.fxml";
@@ -32,12 +39,6 @@ public class AccettazioneRentalManagerG {
     private static final String REJECT = "reject";
     private String decisione;
 
-    /** gestione del pattern state per modificare lo stato dell'ordine */
-    @FXML
-    public void initialize () {
-        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        manLabel.setText(userBean.getUserEmail());
-    }
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
@@ -75,6 +76,27 @@ public class AccettazioneRentalManagerG {
             SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        manLabel.setText(userBean.getUserEmail());
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        List<CartBean> cartBeanList = null;
+        cartBeanList = rentalEquipApplicativo.showCartMan();
+        Integer total = 0;
+        for (CartBean c : cartBeanList){
+            String type = c.getType();
+            String size = c.getSize();
+            Integer quant = c.getQuant();
+            Integer price = c.getPrice()*quant;
+            listView.getItems().add(type+"   "+size+"   "+quant+"   "+price);
+        }
+        deleteCart();
+    }
+    /** cancella il carrello completo */
+    private void deleteCart() {
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        rentalEquipApplicativo.deleteItem();
+    }
 }
 

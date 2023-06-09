@@ -5,7 +5,6 @@ import com.example.prog1.bean.EquipBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.db.MyConnectionSingleton;
 import com.example.prog1.model.Equipment;
-import com.example.prog1.query.DivingQuery;
 import com.example.prog1.query.EquipQuery;
 
 import java.sql.*;
@@ -21,24 +20,10 @@ public class EquipDAO {
      * inserimento diretto per license
      * inserimento indiretto per diving: prendi diving name con query da diving se il numero di license corrisponde
      * poi salvarlo in una stringa e passalo alla query di inserimento in equipment */
-    public String divingName (String manEmail) {
-        String name = null;
-        Connection con = MyConnectionSingleton.getConnection();
-        try (Statement stmt = con.createStatement();
-             ResultSet rs = DivingQuery.selectDivingName(stmt, manEmail);){
-             if (rs.next()){
-                 name = rs.getString(1);
-            }
-        } catch (SQLException sqlException){
-            logger.log(Level.INFO, error);
-        }
-        return name;
-    }
-    public void insertEquip( EquipBean equipBean, String manEmail) {
+    public void insertEquip( EquipBean equipBean, String diving, String man) {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement()){
-            String nomeDiving = divingName(manEmail);
-           EquipQuery.insertEquip(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getAvail(), equipBean.getPrice(), nomeDiving,manEmail);
+           EquipQuery.insertEquip(stmt, equipBean.getType(), equipBean.getSize(), equipBean.getAvail(), equipBean.getPrice(), diving, man);
 
         }catch (SQLException sqlException){
             logger.log(Level.INFO, error);
@@ -151,10 +136,37 @@ public class EquipDAO {
         }
         return equips;
     }
+    public List<Equipment> getCartMan() {
+        Connection con = MyConnectionSingleton.getConnection();
+        List<Equipment> equips = new ArrayList<>();
+        try (Statement stmt = con.createStatement();
+             ResultSet rs = EquipQuery.loadEquipCart(stmt)) {
+            while (rs.next()) {
+                Equipment newEquip = new Equipment();
+                newEquip.setEquipType(rs.getString(1));
+                newEquip.setSize(rs.getString(2));
+                newEquip.setPrice(rs.getInt(3));
+                newEquip.setAvail(rs.getInt(4));
+                equips.add(newEquip);
+            }
+        } catch (SQLException sqlException) {
+            logger.log(Level.INFO, error);
+
+        }
+        return equips;
+    }
     public void deleteItemsFromCart(String email)  {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();){
             EquipQuery.deleteItem(stmt, email);
+        } catch (SQLException sqlException){
+            logger.log(Level.INFO, error);
+
+        }
+    }public void deleteItemsFromCart()  {
+        Connection con = MyConnectionSingleton.getConnection();
+        try(Statement stmt = con.createStatement();){
+            EquipQuery.deleteItem(stmt);
         } catch (SQLException sqlException){
             logger.log(Level.INFO, error);
 

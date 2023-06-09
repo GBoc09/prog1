@@ -1,5 +1,6 @@
 package com.example.prog1.controller.cli_graphic;
 
+import com.example.prog1.bean.CartBean;
 import com.example.prog1.bean.UserBean;
 import com.example.prog1.controller.applicativo.RentalEquipApplicativo;
 import com.example.prog1.controller.grafico.InternalControllerGrafico;
@@ -8,6 +9,7 @@ import com.example.prog1.exception.StartException;
 import com.example.prog1.utilities.PrinterCli;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 
 public class AcceptRejectOrderManCLI extends ControllerGraficoManagementCli{
@@ -50,12 +52,37 @@ public class AcceptRejectOrderManCLI extends ControllerGraficoManagementCli{
     }
     private void acceptOrder(UserBean userBean){
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        List<CartBean> cartBeanList = null;
+        cartBeanList = rentalEquipApplicativo.showCartMan();
+        Integer total = 0;
+        for (CartBean c : cartBeanList){
+            String type = c.getType();
+            String size = c.getSize();
+            Integer quant = c.getQuant();
+            Integer price = c.getPrice()*quant;
+            PrinterCli.printMessage("Rental:\n"+"Equip: "+type+"Size: "+size+"Quantity: "+quant+"Price: "+price);
+        }
         decisione = ACCEPT;
         rentalEquipApplicativo.sendConfirmation(userBean.getUserEmail(),decisione);
         PrinterCli.printMessage("--- THE CONFIRMATION EMAIL HAS BEEN SENT --- \n");
+        deleteCart();
+    }
+    private void deleteCart() {
+        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        rentalEquipApplicativo.deleteItem();
     }
     private void rejectOrder(UserBean userBean){
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
+        List<CartBean> cartBeanList = null;
+        cartBeanList = rentalEquipApplicativo.showCartMan();
+        Integer total = 0;
+        for (CartBean c : cartBeanList){
+            String type = c.getType();
+            String size = c.getSize();
+            Integer quant = c.getQuant();
+            Integer price = c.getPrice()*quant;
+            PrinterCli.printMessage("Rental:\n"+"Equip: "+type+"Size: "+size+"Quantity: "+quant+"Price: "+price);
+        }
         decisione = REJECT;
         rentalEquipApplicativo.sendConfirmation(userBean.getUserEmail(),decisione);
         PrinterCli.printMessage("--- THE EMAIL HAS BEEN SENT --- \n");

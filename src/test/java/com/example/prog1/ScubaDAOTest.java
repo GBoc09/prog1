@@ -6,8 +6,7 @@ import com.example.prog1.model.User;
 import com.example.prog1.pattern.factory.Factory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-public class ScubaDAOTest {
+ class ScubaDAOTest {
     Factory factory;
     public ScubaDAOTest(){
         factory = new Factory();

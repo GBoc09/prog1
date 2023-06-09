@@ -41,7 +41,7 @@ public class AddEquipManCLI extends ControllerGraficoManagementCli{
         EquipBean equipBean = new EquipBean(type,size,avail,price);
         CominicationBean cominicationBean = InternalControllerGrafico.getInternalControllerInstance().getBeanString();
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        rentalEquipApplicativo.addProduct(equipBean,cominicationBean);
+        rentalEquipApplicativo.addProduct(equipBean,cominicationBean, userBean);
         PrinterCli.printMessage("*** INSERTION SUCCESSFUL *** \n");
     }
 }

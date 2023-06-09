@@ -104,9 +104,26 @@ public class RentalEquipApplicativo {
         }
         return cart;
     }
+    public List<CartBean> showCartMan () {
+        List<CartBean> cart = new ArrayList<>();
+        EquipDAO equipDAO = new EquipDAO();
+        List<Equipment> equip2 = equipDAO.getCartMan();
+        for (Equipment d : equip2) {
+            CartBean cartBean1 = new CartBean();
+            cartBean1.setType(d.getEquipType());
+            cartBean1.setSize(d.getSize());
+            cartBean1.setQuant(d.getAvail());
+            cartBean1.setPrice(d.getPrice());
+            cart.add(cartBean1);
+        }
+        return cart;
+    }
     public void deleteItem(UserBean userBean)  {
         EquipDAO equipDAO = new EquipDAO();
         equipDAO.deleteItemsFromCart(userBean.getUserEmail());
+    }public void deleteItem()  {
+        EquipDAO equipDAO = new EquipDAO();
+        equipDAO.deleteItemsFromCart();
     }
     public void deleteRent(UserBean userBean)  {
         RentalDAO rentalDAO = new RentalDAO();
@@ -195,10 +212,9 @@ public class RentalEquipApplicativo {
         return new BuyerOrderBean(orderOwner, vendor);
     }
 
-    public void addProduct (EquipBean equipBean, CominicationBean cominicationBean)  {
+    public void addProduct (EquipBean equipBean, CominicationBean cominicationBean, UserBean userBean)  {
         EquipDAO equipDAO = new EquipDAO();
-
-        equipDAO.insertEquip(equipBean, cominicationBean.getStr());
+        equipDAO.insertEquip(equipBean, cominicationBean.getStr(), userBean.getUserEmail());
     }
     public void addDiving(UserBean userBean, DivingBean divingBean)  {
         DivingDAO divingDAO = new DivingDAO();

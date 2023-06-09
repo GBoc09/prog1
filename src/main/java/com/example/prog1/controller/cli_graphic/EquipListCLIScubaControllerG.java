@@ -30,7 +30,6 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
                     case 7 -> logOut();
                     default -> throw new InvalidFormatException("Invalid choice");
                 }
-                break;
             } catch (IOException e) {
                 logger.log(Level.INFO, e.getMessage());
             } catch (InvalidFormatException e) {
@@ -114,7 +113,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
         rentalEquipApplicativo.saveItem(cartBeanList, userBean, cominicationBean);
-        deleteCart(userBean);
+//        deleteCart(userBean);
         new RentSummaryScubaCLI().start();
     }
 }

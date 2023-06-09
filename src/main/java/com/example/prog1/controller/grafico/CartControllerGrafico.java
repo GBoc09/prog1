@@ -76,13 +76,6 @@ public class CartControllerGrafico implements Initializable {
             cartView.getItems().add(type+"   "+size+"   "+quant+"   "+price);
         }
     }
-    /** cancella il carrello completo */
-    private void deleteCart() throws IOException {
-        UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
-        RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
-        rentalEquipApplicativo.deleteItem(userBean);
-        SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
-    }
     /** salvataggio dell'ordine nella tabella RENTAL
      * communication bean = passaggio nome diving */
     private void saveOrder() throws IOException {
@@ -91,7 +84,7 @@ public class CartControllerGrafico implements Initializable {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = rentalEquipApplicativo.showCart(userBean.getUserEmail());
         rentalEquipApplicativo.saveItem(cartBeanList, userBean, cominicationBean);
-        deleteCart();
+        SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
     }
     private void deleteTotCart() throws IOException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();

@@ -18,6 +18,14 @@ public class RentalQuery{
         String query = String.format("SELECT idRental ,equipType, diving, total FROM Rental WHERE idRental = '%d' AND scuba = '%s';", id, email);
         return stmt.executeQuery(query);
     }
+    public static ResultSet loadRentMan(Statement stmt, Integer id) throws SQLException {
+        String query = String.format("SELECT equipType, total FROM Rental WHERE idRental = '%d';", id);
+        return stmt.executeQuery(query);
+    }
+    public static ResultSet loadMaxRent(Statement stmt ) throws SQLException {
+        String query = "SELECT MAX(idRental) FROM Rental";
+        return stmt.executeQuery(query);
+    }
     public static ResultSet loadIdRent(Statement stmt ) throws SQLException {
         String query = "SELECT MAX(idRental) FROM Rental";
         return stmt.executeQuery(query);
