@@ -137,7 +137,8 @@ public class RentalEquipApplicativo {
         RentalDAO rentalDAO = new RentalDAO();
         String man = rentalDAO.divingEmail(cominicationBean.getStr());
         VendorOrderBean v = new VendorOrderBean(man, userBean.getUserEmail());
-        RentEquipEmail r = new RentEquipEmail(v);
+//        RentEquipEmail r = new RentEquipEmail(v);
+        new RentEquipEmail(v);
 
         String type = "";
         Integer price = 0;

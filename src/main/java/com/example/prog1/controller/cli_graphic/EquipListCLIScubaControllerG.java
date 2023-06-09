@@ -27,12 +27,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
                     case 4 -> completeOrder();
                     case 5 -> deleteCart(userBean);
                     case 6 -> back();
-                    case 7 -> {
-                        logOut();
-                        if(choice > 7){
-                            break;
-                        }
-                    }
+                    case 7 -> logOut();
                     default -> throw new InvalidFormatException("Invalid choice");
                 }
             } catch (IOException e) {
@@ -83,7 +78,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
             String size = d.getSize();
             Integer avail = d.getAvail();
             Integer price = d.getPrice();
-            PrinterCli.printMessage(type + " " + size + " " + avail + "   " + price + "\n");
+            PrinterCli.printMessage("Equip: "+ type + " " +"Size: "+ size + " " + "Availability: "+avail + "   " + "Price: €"+price + "\n");
         }
     }
     private void addQuantity() throws IOException {
@@ -109,7 +104,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
             String size = c.getSize();
             Integer quant = c.getQuant();
             Integer price = c.getPrice();
-            PrinterCli.printMessage(type + " " + size + " " + quant + "   " + price + "\n");
+            PrinterCli.printMessage("Equip: "+ type + " " +"Size: "+ size + " " + "Quantity: "+quant + "   " + "Price: €"+price + "\n");
         }
     }
     private void completeOrder() throws StartException {
