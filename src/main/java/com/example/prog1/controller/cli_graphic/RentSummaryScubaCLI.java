@@ -52,13 +52,11 @@ public class RentSummaryScubaCLI extends ControllerGraficoManagementCli {
         PrinterCli.printMessage("--- RENTAL SUMMARY ---");
         for (RentalBean d : rentalBeans) {
             Integer id = d.getIdRental();
-//            String type = d.getEquipType();
             Integer total = d.getTotal();
             PrinterCli.printMessage("IdRental: " + id + " " + "Total: €" + total + "\n");
         }
         List<CartBean> cartBeanList = null;
         cartBeanList = rentalEquipApplicativo.showCartMan();
-        Integer total = 0;
         for (CartBean c : cartBeanList) {
             String type = c.getType();
             String size = c.getSize();

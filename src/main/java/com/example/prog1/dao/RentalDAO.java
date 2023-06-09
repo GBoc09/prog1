@@ -55,19 +55,6 @@ public class RentalDAO {
     }
         return rents;
     }
-    public Integer getMaxIdRent(){
-        Connection con = MyConnectionSingleton.getConnection();
-        Integer id = 0;
-        try(Statement stmt = con.createStatement();
-            ResultSet rs = RentalQuery.loadMaxRent(stmt)){
-            if (rs.next()){
-                id = rs.getInt(1);
-            }
-        }catch (SQLException sqlException){
-            logger.log(Level.INFO, error);
-        }
-        return id;
-    }
     public void deleteItemsFromRental(String email) {
         Connection con = MyConnectionSingleton.getConnection();
         try(Statement stmt = con.createStatement();){

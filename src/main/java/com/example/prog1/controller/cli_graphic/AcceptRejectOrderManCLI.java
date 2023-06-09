@@ -54,7 +54,6 @@ public class AcceptRejectOrderManCLI extends ControllerGraficoManagementCli{
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = null;
         cartBeanList = rentalEquipApplicativo.showCartMan();
-        Integer total = 0;
         for (CartBean c : cartBeanList){
             String type = c.getType();
             String size = c.getSize();
@@ -75,7 +74,6 @@ public class AcceptRejectOrderManCLI extends ControllerGraficoManagementCli{
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
         List<CartBean> cartBeanList = null;
         cartBeanList = rentalEquipApplicativo.showCartMan();
-        Integer total = 0;
         for (CartBean c : cartBeanList){
             String type = c.getType();
             String size = c.getSize();

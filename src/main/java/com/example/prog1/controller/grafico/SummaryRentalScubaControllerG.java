@@ -72,7 +72,6 @@ public class SummaryRentalScubaControllerG implements Initializable {
        }
         List<CartBean> cartBeanList = null;
         cartBeanList = rentalEquipApplicativo.showCartMan();
-        Integer total = 0;
         for (CartBean c : cartBeanList) {
             String type = c.getType();
             String size = c.getSize();

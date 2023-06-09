@@ -14,7 +14,7 @@ public class EquipQuery{
         String query = String.format("DELETE FROM Cart WHERE scuba = '%s';", email);
         return stmt.execute(query);
     }public static boolean deleteItem(Statement stmt) throws SQLException {
-        String query = String.format("DELETE FROM Cart");
+        String query = "DELETE FROM Cart";
         return stmt.execute(query);
     }
     public static ResultSet loadEquip(Statement stmt) throws SQLException {
@@ -42,7 +42,7 @@ public class EquipQuery{
         return stmt.executeQuery(query);
     }
     public static ResultSet loadEquipCart(Statement stmt) throws SQLException {
-        String query = String.format("SELECT equipType, equipSize, equipPrice, equipQuantity FROM Cart");
+        String query ="SELECT equipType, equipSize, equipPrice, equipQuantity FROM Cart";
         return stmt.executeQuery(query);
     }
     public static ResultSet loadAvail(Statement stmt, int index) throws SQLException {
