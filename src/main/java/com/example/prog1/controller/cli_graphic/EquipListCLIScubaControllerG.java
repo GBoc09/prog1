@@ -12,24 +12,29 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.logging.Level;
 
+import static java.lang.Integer.MAX_VALUE;
+
 public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli{
     @Override
     public void start() throws StartException {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();
+        int i=0;
         while (true){
             int choice;
             try{
                 choice = showMenu();
                 switch (choice){
-                    case 1 -> showEquip();
-                    case 2 -> addQuantity();
-                    case 3 -> showCart(userBean);
-                    case 4 -> completeOrder();
+                    case 1 -> {showEquip(); i++;}
+                    case 2 -> {addQuantity();i++;}
+                    case 3 -> {showCart(userBean);i++;}
+                    case 4 -> {completeOrder();i++;}
                     case 5 -> deleteCart(userBean);
                     case 6 -> back();
                     case 7 -> logOut();
-                    case 8 -> System.exit(0);
                     default -> throw new InvalidFormatException("Invalid choice");
+                }
+                if (i> MAX_VALUE){
+                    break;
                 }
             } catch (IOException e) {
                 logger.log(Level.INFO, e.getMessage());
@@ -61,8 +66,7 @@ public class EquipListCLIScubaControllerG extends ControllerGraficoManagementCli
         PrinterCli.printMessage("5) Delete Cart\n");
         PrinterCli.printMessage("6) Home\n");
         PrinterCli.printMessage("7) LogOut\n");
-        PrinterCli.printMessage("8) Exit\n");
-        return getMenuChoice(1,8);
+        return getMenuChoice(1,7);
     }
     private void showEquip() {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();
