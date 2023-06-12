@@ -33,6 +33,8 @@ public class SelectedDivingScubaG implements Initializable {
     private static final String CART_SCREEN = "cart1.fxml";
     private static final String RENT_EQUIP = "rentEquip1.fxml";
     private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
+    private String str;
+    private CominicationBean cominicationBean;
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
@@ -46,14 +48,10 @@ public class SelectedDivingScubaG implements Initializable {
             SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
         }
     }
-
     @FXML
     void selectDiving(ActionEvent event) throws IOException {
         SwapPage.getInstance().gotoPage(RENT_EQUIP);
     }
-    private String str;
-    private CominicationBean cominicationBean;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectDiving.setDisable(true);

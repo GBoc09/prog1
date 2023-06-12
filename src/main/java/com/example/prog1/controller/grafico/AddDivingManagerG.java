@@ -58,6 +58,5 @@ public class AddDivingManagerG {
             SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
-
 }
 

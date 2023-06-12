@@ -36,7 +36,8 @@ public class SelectDivingManG implements Initializable {
     private static final String SELECT_EQUIP = "selectDivingMan.fxml";
     private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
     private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
-
+    private String str;
+    private CominicationBean cominicationBean;
     @FXML
     void onMenuItemSelected(ActionEvent event) throws IOException {
         MenuItem sourceItem = (MenuItem) event.getSource();
@@ -52,9 +53,6 @@ public class SelectDivingManG implements Initializable {
             SwapPage.getInstance().gotoPage(ACCEPT_REJECT);
         }
     }
-    private String str;
-    private CominicationBean cominicationBean;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UserBean userBean = InternalControllerGrafico.getInternalControllerInstance().getLoggedUser();

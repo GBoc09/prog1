@@ -33,18 +33,16 @@ public class AddEquipManagerG {
     private static final String SELECT_EQUIP = "selectDivingMan.fxml";
     private static final String SHOW_DIV_MAN = "showDivingMan.fxml";
     private static final String ACCEPT_REJECT = "accettazioneRentalManager.fxml";
-
+    private boolean flag;
     ObservableList<String> sizeList = FXCollections.observableArrayList("none", "XS", "S", "M","L", "XL");
     @FXML
     private void initialize(){
         size.setItems(sizeList);
         size.getValue();
     }
-    private boolean flag;
     public AddEquipManagerG(){
         flag = true;
     }
-
     @FXML
     void addNewProduct(ActionEvent event) throws IOException {
         RentalEquipApplicativo rentalEquipApplicativo = new RentalEquipApplicativo();

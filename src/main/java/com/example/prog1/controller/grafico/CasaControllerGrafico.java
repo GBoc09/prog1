@@ -22,5 +22,4 @@ public class CasaControllerGrafico {
          logger.log(Level.INFO, "Exception Error");
       }
    }
-
 }

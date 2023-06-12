@@ -35,6 +35,7 @@ public class RentEquipScubaControllerG implements Initializable {
     private static final String SUMMARY_RENT_SCUBA = "summaryRentalScuba.fxml";
 
     private Integer selectionIndex;
+    private IntegerComunicationBean cominicationBean1;
     @FXML
     void onButtonClicked(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
@@ -57,7 +58,6 @@ public class RentEquipScubaControllerG implements Initializable {
             SwapPage.getInstance().gotoPage(SUMMARY_RENT_SCUBA);
         }
     }
-    private IntegerComunicationBean cominicationBean1;
     /** settare la lista delle attrezzature disponibili in un diving scelto
      * name = divingName */
     @Override
