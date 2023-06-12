@@ -9,6 +9,7 @@ public class InternalControllerGrafico {
     private UserBean loggedUser;
     private CominicationBean bean;
     private IntegerComunicationBean intBean;
+    private InternalControllerGrafico(){}
     public static InternalControllerGrafico getInternalControllerInstance () {
         if(internalControllerGrafico == null){
             internalControllerGrafico = new InternalControllerGrafico();
